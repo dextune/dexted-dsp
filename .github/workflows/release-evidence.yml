@@ -1,0 +1,30 @@
+name: Release source evidence
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-snapshot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Archive the exact tracked source, without credentials or build products
+        shell: bash
+        run: |
+          mkdir -p /tmp/dexted-evidence
+          git archive --format=tar.gz HEAD > /tmp/dexted-evidence/source.tar.gz
+          git rev-parse HEAD > /tmp/dexted-evidence/commit.txt
+          git ls-tree -r HEAD > /tmp/dexted-evidence/tree.txt
+          cd /tmp/dexted-evidence
+          sha256sum source.tar.gz > SHA256SUMS
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: release-source-evidence
+          path: /tmp/dexted-evidence/
+          if-no-files-found: error
+          retention-days: 14
