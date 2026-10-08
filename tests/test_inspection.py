@@ -109,6 +109,15 @@ class HighLevelInspectionTests(unittest.TestCase):
         for fs in (0,-1,float('nan'),float('inf')):
             with self.subTest(fs=fs),self.assertRaises(ValueError):inspect_sos(self.sos,fs=fs)
 
+    def test_binary32_label_requires_binary32_values(self):
+        f=Biquad.from_coefficients([.1,0,0,0,0],precision='float64')
+        with self.assertRaises(ValueError):
+            inspect_biquad(f,precision='float32')
+        with self.assertRaises(ValueError):
+            inspect_cascade([f],precision='float32')
+        report=inspect_biquad(f,precision='float64')
+        self.assertFalse(verify_inspection(report.as_dict(),f,precision='float32'))
+
     def test_do_not_silently_normalize_a0(self):
         with self.assertRaises(ValueError):
             inspect_sos([[1,0,0,2,0,0]])

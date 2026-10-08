@@ -42,6 +42,15 @@ def _digest(rows: tuple[Biquad, ...], gamma: float, fs: float | None,
     return hashlib.sha256(raw).hexdigest()
 
 
+def _validate_precision(rows: tuple[Biquad, ...], precision: str) -> None:
+    """Do not label an unrounded binary64 filter as deployed binary32."""
+    if precision == 'float32':
+        for section in rows:
+            rounded = Biquad.from_coefficients(section.coefficients, precision='float32')
+            if rounded.coefficients != section.coefficients:
+                raise ValueError('float32 inspection requires already deployed binary32 coefficients')
+
+
 @dataclass(frozen=True, slots=True)
 class InspectionReport:
     kind: str
@@ -99,6 +108,7 @@ def inspect_biquad(biquad: Biquad | Iterable[float], *, max_gain: float = 1.0,
         raise ValueError('precision must be float32 or float64')
     f = biquad if isinstance(biquad,Biquad) else Biquad.from_coefficients(biquad,precision=precision)
     gamma,rate = positive_gamma(max_gain),_sample_rate(fs)
+    _validate_precision((f,),precision)
     result = certify(f,gamma)
     bounds = bound_peak_gain(f,precision_bits=peak_bits)
     status = 'certified' if result.certified else 'rejected'
@@ -116,6 +126,7 @@ def inspect_cascade(sections: Iterable[Biquad], *, max_gain: float = 1.0,
     if type(peak_bits) is not int or not 0 <= peak_bits <= 32:
         raise ValueError('peak_bits must be an integer in [0,32]')
     rows = validate_sections(sections)
+    _validate_precision(rows,precision)
     gamma,rate = positive_gamma(max_gain),_sample_rate(fs)
     core = certify_cascade(rows,gamma,max_depth=max_depth,max_nodes=max_nodes)
     if core['certified']:
@@ -170,6 +181,7 @@ def verify_inspection(report: dict, expected, *, precision: str = 'float64',
         if kind=='biquad':
             f=expected if isinstance(expected,Biquad) else Biquad.from_coefficients(expected,precision=precision)
             rows=(f,)
+            _validate_precision(rows,precision)
             if _digest(rows,gamma,rate,precision,kind)!=report.get('input_digest'):
                 return False
             proof=report.get('proof')
@@ -183,6 +195,7 @@ def verify_inspection(report: dict, expected, *, precision: str = 'float64',
                 return False
             rows=(validate_sections(expected) if isinstance(expected,(tuple,list)) and expected
                   and all(isinstance(f,Biquad) for f in expected) else from_sos(expected,precision=precision))
+            _validate_precision(rows,precision)
             if _digest(rows,gamma,rate,precision,kind)!=report.get('input_digest'):
                 return False
             depth,nodes=report.get('max_depth'),report.get('max_nodes')
