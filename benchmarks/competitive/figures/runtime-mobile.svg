@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="630" viewBox="0 0 390 630" role="img" aria-labelledby="title desc">
+<title id="title">Proof is slower</title>
+<desc id="desc">Cost is higher; no sampling speedup claim. Same 9 synthetic filters and 30 repeat observations.</desc>
+<rect width="390" height="630" rx="16" fill="#0b1425"/>
+<text x="26" y="46" text-anchor="start" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" fill="#63ded2">VERIFICATION COST</text>
+<text x="26" y="83" text-anchor="start" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="25" font-weight="750" fill="#f5f8ff">Proof is slower</text>
+<text x="26" y="114" text-anchor="start" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="16" font-weight="400" fill="#a9bad2">ms (median) · 9 synthetic filters</text>
+<text x="26" y="159" text-anchor="start" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="21" font-weight="700" fill="#f5f8ff">SciPy freqz_sos</text>
+<text x="26" y="201" text-anchor="start" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="17" font-weight="650" fill="#f5f8ff">BEFORE · grid</text>
+<rect x="26" y="217" width="273" height="22" rx="5" fill="#30445f"/>
+<rect x="26" y="217" width="49.925" height="22" rx="5" fill="#f5a56b"/>
+<text x="365" y="235" text-anchor="end" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="18" font-weight="700" fill="#f5a56b">0.230</text>
+<text x="26" y="300" text-anchor="start" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="17" font-weight="650" fill="#f5f8ff">AFTER · grid + proof</text>
+<rect x="26" y="316" width="273" height="22" rx="5" fill="#30445f"/>
+<rect x="26" y="316" width="273.000" height="22" rx="5" fill="#63ded2"/>
+<text x="365" y="334" text-anchor="end" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="18" font-weight="700" fill="#63ded2">1.258</text>
+<text x="26" y="382" text-anchor="start" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="21" font-weight="700" fill="#f5f8ff">python-control</text>
+<text x="26" y="423" text-anchor="start" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="17" font-weight="650" fill="#f5f8ff">BEFORE · grid</text>
+<rect x="26" y="439" width="273" height="22" rx="5" fill="#30445f"/>
+<rect x="26" y="439" width="47.169" height="22" rx="5" fill="#f5a56b"/>
+<text x="365" y="457" text-anchor="end" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="18" font-weight="700" fill="#f5a56b">0.217</text>
+<text x="26" y="522" text-anchor="start" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="17" font-weight="650" fill="#f5f8ff">AFTER · grid + proof</text>
+<rect x="26" y="538" width="273" height="22" rx="5" fill="#30445f"/>
+<rect x="26" y="538" width="247.844" height="22" rx="5" fill="#63ded2"/>
+<text x="365" y="556" text-anchor="end" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="18" font-weight="700" fill="#63ded2">1.142</text>
+<text x="26" y="604" text-anchor="start" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="12" font-weight="400" fill="#a9bad2">Cost is higher; no sampling speedup claim</text>
+</svg>
