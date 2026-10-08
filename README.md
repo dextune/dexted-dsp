@@ -44,11 +44,11 @@ Both tools missed **the same single case** among **9 preselected synthetic filte
 
 Dexted adds mathematical verification, **not speed**. Figures come from **30 timing repetitions per case and method** on one shared Linux host. The differences are *differences of medians*, not paired mean overhead.
 
-[Raw observations, p95, allocation measurements and test environment](benchmarks/competitive/results/run-20261008.json) · [Protocol, limitations and memory chart](benchmarks/competitive/README.md)
+[Raw observations, p95 and environment](benchmarks/competitive/results/run-20261008.json) · [Full protocol and limitations](benchmarks/competitive/README.md) · [Python-allocation chart](benchmarks/competitive/figures/memory.svg)
 
 ## 4. Reproduce the evidence
 
-Copy these commands (installation and benchmark execution take longer than 30 seconds):
+Use **Python 3.13** for this pinned third-party benchmark (the Dexted core supports Python 3.10+). Copy the commands below; installation and full benchmark execution take longer than 30 seconds:
 
 ```bash
 git clone https://github.com/dextune/dexted-dsp.git

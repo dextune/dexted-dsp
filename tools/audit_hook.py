@@ -30,6 +30,14 @@ def audit() -> dict:
     for token in ('356 / 485','213 / 485','0 / 485','0.03974','2.0',
                   'demo hidden-peak','synthetic'):
         assert token in readme,f'Landing page missing factual caveat/evidence: {token}'
+    # The top hook must visually explain the *size* of the hidden violation
+    # before summary benchmark charts, and preserve readable sections/mobile art.
+    assert readme.index('peak-gap-mobile.svg') < readme.index('decision-mobile.svg')
+    assert readme.index('peak-gap.svg') < readme.index('decision.svg')
+    assert all(f'## {i}. ' in readme for i in range(1, 7))
+    assert readme.count('\n\n## ') >= 6
+    assert 'actual production failure rate' not in readme.lower()
+
     return {'status':'passed','archived_high_q_failures':485,'archived_false_accepts':{'grid1024':356,'grid16384':213,'exact':0},
             'demo_sampled_peak':demo['grid']['estimated_max_gain'],'analytical_global_peak':2,
             'caveat':'historical synthetic fixtures, not production prevalence'}

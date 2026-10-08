@@ -47,6 +47,8 @@ Results correspond to ONE GitHub Actions host, not independent external
 reproduction; separate hardware and 1,000+ holdout production-grade filters
 remain outside this pilot. Archived v0.1.0 results are not overwritten.
 
+[Python-traced allocation chart](figures/memory.svg) · [Mobile allocation chart](figures/memory-mobile.svg) · [Verified timing chart](figures/runtime.svg)
+
 ## Observed run: 2026-10-08 (single shared runner)
 
 Actual tested versions: SciPy 1.17.0, python-control 0.10.2, NumPy 2.3.5,
