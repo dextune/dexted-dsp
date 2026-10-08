@@ -203,3 +203,8 @@ ctest --test-dir build -C Release --output-on-failure
 ## 新しいソース機能（未リリース）
 
 [隠れたピークの再現デモ](../../examples/hidden_peak/README.md) · [SOS検証と厳密なピーク利得区間](../product/inspection.md) · [未完了の公開検証項目](../product/implementation-status.md)。既存のベンチマークは過去のv0.1.0結果です。
+
+
+## 新しいソース: ピーク位置の厳密な区間
+
+安定した単一 biquad について、`localize_peak` はすべての大域的ピークを含む `cos(ω)` の**厳密な有理区間**を返します。Hz 表示は**近似値であり、認証済みの Hz 区間ではありません**。[数学的根拠](../research/proofs/peak-localization.md) · [合成 SOS パイロット](../../benchmarks/suites/PROTOCOL_V2.md)。独立した外部監査は未実施です。

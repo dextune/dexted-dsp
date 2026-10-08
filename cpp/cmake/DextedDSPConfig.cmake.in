@@ -1,4 +1,5 @@
 @PACKAGE_INIT@
 include(CMakeFindDependencyMacro)
-find_dependency(Boost 1.74)
+find_dependency(Boost 1.74 REQUIRED)
 include("${CMAKE_CURRENT_LIST_DIR}/DextedDSPTargets.cmake")
+check_required_components(DextedDSP)

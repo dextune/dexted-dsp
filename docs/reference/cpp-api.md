@@ -15,3 +15,8 @@ The header API is `dexted_dsp::certify_biquad_f32`; see `cpp/include/dexted_dsp/
 ## New C++20 SOS cascade predicate
 
 `#include <dexted_dsp/cascade.hpp>` supplies `dexted_dsp::certify_cascade_f32(const float *rows, size_t count, double gamma, unsigned max_depth=48, size_t max_nodes=20000)` for 1–32 fixed f32 biquads. The C ABI `dexted_dsp_cascade_f32` adds exception-catching `-2`; `-3` is budget-limited UNKNOWN. Native code returns a predicate, not a serialized mathematical certificate. [Full contract](../product/inspection.md).
+
+
+## Installed consumer CI
+
+The exported `DextedDSPConfig.cmake` now resolves `Boost::headers` via `find_dependency(Boost 1.74)`. Run `python tools/native_consumer_smoke.py --build-dir build` from repository root to install to a temporary prefix and build/run an external standalone C++ client. [Consumer source](../../examples/native_consumer/CMakeLists.txt). Native C++ still returns predicates, not portable serialized proof objects.

@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.20)
+project(DextedConsumerSmoke LANGUAGES CXX)
+find_package(DextedDSP 0.1 CONFIG REQUIRED)
+add_executable(dexted_consumer main.cpp)
+target_link_libraries(dexted_consumer PRIVATE DextedDSP::dexted_dsp)
+include(CTest)
+add_test(NAME installed_dexted_consumer COMMAND dexted_consumer)

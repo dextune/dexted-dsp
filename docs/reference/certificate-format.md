@@ -12,3 +12,8 @@ Certificates bind the exact decoded input coefficients and the strict gain thres
 ## Versioned inspection envelope
 
 `dexted-dsp/inspection/v1` wraps an existing `biquad/v1` or `cascade/v1` certificate and binds final hex coefficients, precision, threshold and optional sample rate via SHA-256. New gain bound rational strings are rechecked at verification, never promoted from unknown. SHA-256 is not a digital signature. [Detailed contract](../product/inspection.md).
+
+
+## Inspection v2
+
+New `dexted-dsp/inspection/v2` envelopes carry a `peak_region` (biquads) and `region_bits`; the verifier redoes exact rational stationary-point isolation for the caller-supplied coefficients. Existing `dexted-dsp/inspection/v1` envelopes remain verifiable without an implied peak-location claim. `frequency_hz_approx` is explicitly **non-certified**. Neither an SHA-256 digest nor this exact model guarantees finite-precision runtime/device safety. [Proof derivation](../research/proofs/peak-localization.md).

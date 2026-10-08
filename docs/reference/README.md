@@ -14,3 +14,6 @@ Examples can be run from the repository root. API parameters and status strings 
 ## Inspection and bound APIs
 
 [High-level Python inspection, gain enclosures and C++ SOS predicate](../product/inspection.md) · [Mathematical enclosure proof](../research/proofs/peak-enclosure.md)
+
+
+- [Inspection v2 peak-region contract and v1 verification compatibility](../product/inspection.md)

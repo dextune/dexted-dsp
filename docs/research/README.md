@@ -21,3 +21,6 @@ The research notes do not constitute a proof-assistant or independent safety aud
 
 - [Exact rational peak-gain enclosures](proofs/peak-enclosure.md) — implemented offline for fixed real filters
 - [Pinned OpenAI matrix-theorem applicability research](design-notes/openai-math-adapter.md) — hypothesis only, not runtime
+
+
+- [New: exact biquad peak-location region derivation](proofs/peak-localization.md) — integer/rational stationary-point isolation, no certified Hz interval

@@ -39,3 +39,13 @@ Research alpha prepared for publication, not uploaded to PyPI or GitHub.
 
 Not included: arbitrary graph parsing, automatic filter repair, Crouzeix runtime
 certification, GPU/WASM, real-time audio processing, runtime-roundoff proof or perceptual-quality evaluation.
+
+
+## Unreleased — next proof-and-integration milestone (2026-10-08)
+
+- Exact rational cosine-domain localization for every global peak of stable fixed real biquads; tied/flat peaks and explicit non-certified Hz display.
+- Version new inspection wrappers to `dexted-dsp/inspection/v2`; verify legacy inspection/v1 envelopes.
+- Add CMake consumer dependency discovery, independent compile/link/run smoke, Linux/macOS/Windows native CI proposal.
+- Freeze a separate 25-case designed synthetic SOS pilot with 30 trials, raw p50/p95 data and integrity audit, without overwriting the v0.1.0 historical benchmark.
+
+See [source changelog](HOOK_CHANGELOG.md) and [unmet 9.5 gates](../product/implementation-status.md).

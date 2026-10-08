@@ -31,3 +31,10 @@ Reference command: run `python tools/check_links.py`, `python tools/check_docume
 - [Implementation gates and what remains unverified](product/implementation-status.md)
 - [Reproducible hidden-peak demo](../examples/hidden_peak/README.md)
 - [Release-gate example](../examples/release_gate/README.md)
+
+
+## Current-source verification additions
+
+- [Exact rational cosine-domain peak localization](research/proofs/peak-localization.md) — certified `cos(ω)` union, Hz approximation only
+- [Designed-SOS pilot protocol and current-code measurements](../benchmarks/suites/PROTOCOL_V2.md) — synthetic pilot, not external validation
+- [Standalone installed CMake consumer example](../examples/native_consumer/CMakeLists.txt)

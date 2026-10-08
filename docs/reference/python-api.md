@@ -20,3 +20,8 @@ assert r.certified and verify_biquad(r.as_dict(), b, max_gain=1.0)
 ## New offline user-facing inspection
 
 [Precise API semantics, strict thresholds, gain enclosures, certificate verification and examples](../product/inspection.md).
+
+
+## Peak-localization API
+
+`from dexted_dsp import localize_peak, PeakRegion`. Certified output is `PeakRegion.cosine_intervals` as rational strings. Optional `frequency_hz_approx` must never be treated as an outward-rounded certified Hz interval. [Exact derivation](../research/proofs/peak-localization.md).

@@ -52,6 +52,7 @@ def main(argv=None):
     inspect.add_argument('--output',type=Path,help='save JSON proof envelope')
     inspect.add_argument('--report',type=Path,help='save Markdown inspection report')
     inspect.add_argument('--peak-bits',type=int,default=8)
+    inspect.add_argument('--region-bits',type=int,default=24,help='exact biquad peak cosine-location isolation bits')
     inspect.add_argument('--max-depth',type=int,default=48)
     inspect.add_argument('--max-nodes',type=int,default=20000)
     demo=subs.add_parser('demo',help='run a deterministic proof-versus-grid demonstration')
@@ -68,10 +69,11 @@ def main(argv=None):
         precision=load_json(args.input).get('precision','float64') if args.command=='inspect' else 'float64'
         if args.command=='verify':
             certificate=load_json(args.certificate)
-            if certificate.get('schema')=='dexted-dsp/inspection/v1':
+            if certificate.get('schema') in ('dexted-dsp/inspection/v1','dexted-dsp/inspection/v2'):
                 from .inspection import verify_inspection
                 ok=verify_inspection(certificate,rows[0] if kind=='biquad' else rows,
-                                     precision=load_json(args.input).get('precision','float64'),max_gain=gamma)
+                                     precision=load_json(args.input).get('precision','float64'),max_gain=gamma,
+                                     fs=load_json(args.input).get('sample_rate_hz'))
             else:
                 ok=(verify_biquad(certificate,rows[0],gamma) if kind=='biquad'
                     else verify_cascade(certificate,rows,gamma))
@@ -85,8 +87,10 @@ def main(argv=None):
                 raise ValueError('report must not overwrite input')
             if args.output is not None and args.report is not None and args.output.resolve()==args.report.resolve():
                 raise ValueError('report and JSON output must be different paths')
-            report=(inspect_biquad(rows[0],max_gain=gamma,precision=precision,peak_bits=args.peak_bits)
-                if kind=='biquad' else inspect_cascade(rows,max_gain=gamma,precision=precision,
+            sample_rate=load_json(args.input).get('sample_rate_hz')
+            report=(inspect_biquad(rows[0],max_gain=gamma,precision=precision,peak_bits=args.peak_bits,
+                   region_bits=args.region_bits,fs=sample_rate)
+                if kind=='biquad' else inspect_cascade(rows,max_gain=gamma,precision=precision,fs=sample_rate,
                     peak_bits=args.peak_bits,max_depth=args.max_depth,max_nodes=args.max_nodes))
             text=json.dumps(report.as_dict(),indent=2,ensure_ascii=False,allow_nan=False)+'\n'
             if args.output:args.output.write_text(text,encoding='utf-8')

@@ -10,7 +10,7 @@ For a strictly Schur-stable denominator and `c=cos(ω)`, write `N(c)=|B(e^{iω})
 
 The right-hand polynomial is quadratic; checking its two endpoints and an interior minimum (if any) with **exact integers** decides the proposition. Strictly positive `g` eventually succeeds, while any `g` at or below the true maximum fails. Find neighboring powers of two, then bisect exactly `precision_bits` times. At each step `lower` is known **not** to exceed the actual maximum, and `upper` is known **strictly above** it. A constant-zero numerator returns `[0,0]`. No Schur stability ⇒ no finite certified response bound is emitted.
 
-The JSON stores those rational endpoints as decimal integer fractions. Any float display values use `math.nextafter` outward, so they cannot appear tighter than the underlying rational interval. A returned `frequency_region_hz=null` is intentional: the position of the maximum is not certified yet.
+The JSON stores those rational endpoints as decimal integer fractions. Any float display values use `math.nextafter` outward, so they cannot appear tighter than the underlying rational interval. A returned `GainBounds.frequency_region_hz=null` is intentional: rigorous **Hz intervals** are not yet implemented. A separate [exact biquad peak-localization procedure](peak-localization.md) now certifies rational **cos(omega)** intervals for all global maximizers; its Hz coordinates are explicitly approximate display hints only.
 
 ## Serial SOS cascade
 

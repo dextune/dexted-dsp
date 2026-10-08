@@ -203,3 +203,8 @@ ctest --test-dir build -C Release --output-on-failure
 ## 신규 소스 기능 (미출시)
 
 [주파수 샘플링이 피크를 놓치는 데모](../../examples/hidden_peak/README.md) · [SOS 검사 및 엄밀한 최대 이득 구간 API](../product/inspection.md) · [미완료 검증·배포 조건](../product/implementation-status.md). 기존 벤치마크는 v0.1.0 기록이며 신규 코드 성능 측정이 아닙니다.
+
+
+## 신규 소스: 최대 이득의 주파수 위치 격리
+
+단일 안정 biquad에 대해 `localize_peak`는 전역 최대 이득의 모든 위치를 포함하는 `cos(ω)`의 **정확한 유리수 구간**을 반환합니다. Hz 표시는 **근삿값이며 인증된 Hz 구간이 아닙니다**. [수학적 근거](../research/proofs/peak-localization.md) · [25개 합성 SOS 파일럿](../../benchmarks/suites/PROTOCOL_V2.md). 외부 독립 검증은 별도입니다.

@@ -203,3 +203,8 @@ ctest --test-dir build -C Release --output-on-failure
 ## 新增源码功能（尚未发布）
 
 [采样遗漏峰值的复现实例](../../examples/hidden_peak/README.md) · [SOS检验及可证明的峰值增益区间](../product/inspection.md) · [仍未通过的外部验证门槛](../product/implementation-status.md)。现有性能表仅对应历史v0.1.0测试。
+
+
+## 新增源码：精确定位峰值区域
+
+对于稳定的单个 biquad，`localize_peak` 返回涵盖所有全局峰值位置的 `cos(ω)` **精确有理数区间**。Hz 数值**仅供近似显示，并非严格认证的 Hz 区间**。[数学推导](../research/proofs/peak-localization.md) · [25 个合成 SOS 试验](../../benchmarks/suites/PROTOCOL_V2.md)。尚未进行独立外部审核。

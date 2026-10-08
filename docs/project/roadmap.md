@@ -12,3 +12,8 @@ The Crouzeix `openai/math` result is a **conditional theoretical reference**; im
 ## Current product track (not a release claim)
 
 See [implementation status and unmet external gates](../product/implementation-status.md) and the [prospective benchmark protocol](../../benchmarks/suites/PROTOCOL_V2.md). Actual external adoption and independently audited `openai/math` integration remain uncompleted.
+
+
+### Next validation gates
+
+Hosted native cross-platform jobs, independent math review, certified Hz conversion, SOS peak localization, licensed representative holdout, independent current-code timing replication and approved public packaging remain open. [Current implementation status](../product/implementation-status.md).

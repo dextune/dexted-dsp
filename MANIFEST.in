@@ -13,3 +13,6 @@ recursive-include validation *.log *.json *.md *.npz
 recursive-include .github *.yml *.md
 
 recursive-include examples *.md
+
+
+recursive-include examples *.cpp CMakeLists.txt

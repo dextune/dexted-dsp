@@ -23,3 +23,8 @@ For automated deployment gates, accept **only zero**. A failed sufficient-condit
 ## New commands
 
 `dexted-dsp demo hidden-peak` demonstrates an exact global peak missed by a sampled grid. `dexted-dsp inspect examples/safe.json --output proof.json --report report.md` produces bound/reason/proof envelope. Existing `verify` rechecks both v1 core and new inspection proofs. `unknown` exits 3. [Developer contract](../product/inspection.md).
+
+
+## Inspection/v2 options
+
+`dexted-dsp inspect input.json --region-bits 32 --output proof.json` includes exact cosine-domain peak intervals for one stable biquad. Input JSON may contain `sample_rate_hz: 48000`; this metadata is bound into the proof and validated by `verify`. Existing v1 proof commands remain supported. [Proof contract](../product/inspection.md).

@@ -103,3 +103,8 @@ hardware is controlled. `CERTIFIED` applies only to the documented mathematical 
 ## High-level inspection and peak intervals (unreleased)
 
 See [the detailed inspection contract](../product/inspection.md). New functions `inspect_biquad`, `inspect_sos`, `inspect_cascade`, `verify_inspection`, `bound_peak_gain`, `bound_sos_peak_gain` preserve existing `certify`/`verify_biquad`/v1 semantics. `GainBounds.lower_ratio` and `.upper_ratio` are proven rational enclosures; `frequency_region_hz` is currently null. New `dexted-dsp inspect ... --report report.md` and `demo hidden-peak` commands are available in source. New native `dexted_dsp_cascade_f32` has error-aware integer returns and **does not** serialize a proof object.
+
+
+## Source inspection/v2 — rigorous cosine peak region
+
+`localize_peak(Biquad, isolation_bits=24, fs=None) -> PeakRegion | None` returns **closed rational `cos(ω)` intervals** including *every* ideal global maximizer for a strictly stable real biquad. `PeakRegion.frequency_hz_approx` is for visual orientation only; **Hz bounds are not certified**. `inspect_biquad(..., region_bits=24)` adds the `peak_region` proof field to `dexted-dsp/inspection/v2`; `verify_inspection` recomputes it and continues to verify old `inspection/v1` reports. The CLI accepts `--region-bits` and optional JSON `sample_rate_hz`. Details: [mathematical derivation](../research/proofs/peak-localization.md) and [API guide](../product/inspection.md).

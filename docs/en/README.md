@@ -203,3 +203,8 @@ A certificate describes the ideal fixed linear system with the supplied deployed
 ## What's new in source (unreleased)
 
 [Try the exact-grid hidden-peak demo](../../examples/hidden_peak/README.md), [inspect SciPy SOS and bound peak gain](../product/inspection.md), or view [current implementation gates](../product/implementation-status.md). New API benchmarks have **not** been run; existing tables are historical v0.1.0 measurements.
+
+
+## Current source: exact peak-location region
+
+For a single stable fixed real biquad, `localize_peak` now certifies rational intervals in `cos(ω)` that cover every global peak, including ties. Ordinary Hz values are **approximations, not certified Hz bounds**. See the [derivation](../research/proofs/peak-localization.md) and the [25-case designed-SOS pilot](../../benchmarks/suites/PROTOCOL_V2.md); neither supplies an external audit.

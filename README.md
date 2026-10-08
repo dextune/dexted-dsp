@@ -4,7 +4,7 @@
 
 Proof-carrying offline IIR gain verification · Python 3.10+ · C++20 · MIT
 
-[![CI](https://github.com/dextune/dexted-dsp/actions/workflows/ci.yml/badge.svg)](https://github.com/dextune/dexted-dsp/actions/workflows/ci.yml) · [Docs](docs/README.md) · [Python/C++ API](docs/reference/README.md) · [Raw evidence](benchmarks/results/benchmark.json) · [한국어](docs/ko/README.md) · [日本語](docs/ja/README.md) · [简体中文](docs/zh-CN/README.md)
+[![CI](https://github.com/dextune/dexted-dsp/actions/workflows/ci.yml/badge.svg)](https://github.com/dextune/dexted-dsp/actions/workflows/ci.yml) · [Docs](docs/README.md) · [Python/C++ API](docs/reference/README.md) · [Archived v0.1.0 evidence](benchmarks/results/benchmark.json) · [Current-code synthetic pilot](benchmarks/suites/PROTOCOL_V2.md) · [한국어](docs/ko/README.md) · [日本語](docs/ja/README.md) · [简体中文](docs/zh-CN/README.md)
 
 ## The problem: sampling can return a false PASS
 
@@ -32,7 +32,7 @@ from dexted_dsp import inspect_sos, verify_inspection
 sos = butter(8, 0.2, output="sos")
 result = inspect_sos(sos, precision="float32", fs=48_000, max_gain=1.01)
 print(result.status, result.reason)     # certified certified
-print(result.gain_bounds.as_dict())     # provable rational enclosure, when available
+print(result.gain_bounds.as_dict())     # provable rational gain enclosure, when available
 result.save("filter-proof.json")
 assert verify_inspection(result.as_dict(), sos, precision="float32", fs=48_000, max_gain=1.01)
 ```
@@ -52,11 +52,23 @@ Only exit code `0` passes a deployment gate. Rejections return `1`, invalid inpu
 |---|---|
 | Exact, whole-band biquad stability + strict gain decision (Python & C++20) | Audio processing/throughput acceleration or perceptual improvement |
 | Python SOS certificate with independently rationally rechecked dyadic cover | Finite-precision runtime/quantization-error or device-safety proof |
-| Provable peak-gain **enclosures** (not a single invented numeric peak) | General MIMO, arbitrary DNN graphs or automatic filter repair |
+| Provable peak-gain **enclosures**, plus single-biquad exact cosine peak intervals | General MIMO, arbitrary DNN graphs or automatic filter repair |
 | JSON/Markdown inspection, deterministic demos, CI-friendly status | Crouzeix theorem or OpenAI exact-DFT runtime integration |
 
 The Python SOS bound refiner may return a valid but wide interval, or no interval when resources are insufficient. For a failing strict gain limit, `rejected` does not imply unstable feedback; inspect the reason. The `input_digest` is **not** a digital signature. Arbitrary-precision checks belong offline, never in a real-time audio callback.
 
 **Project status:** research alpha; source installation only until a release is independently approved and published. The repository is currently private, so cloning requires access. This is independently maintained and AI-assisted, not an official OpenAI project or an externally audited safety tool. Source mathematics used by the executable predicate is classical; [OpenAI research is a separate conditional exploration](docs/research/README.md).
 
-[Getting started](docs/en/getting-started/USER_GUIDE.md) · [Inspection API](docs/product/inspection.md) · [Proof details](docs/research/proofs/biquad.md) · [Testing](docs/en/guides/TESTING.md) · [Roadmap and gates](docs/product/implementation-status.md) · [C++ API](docs/reference/cpp-api.md)
+[Exact peak-location proof](docs/research/proofs/peak-localization.md) · [Getting started](docs/en/getting-started/USER_GUIDE.md) · [Inspection API](docs/product/inspection.md) · [Proof details](docs/research/proofs/biquad.md) · [Testing](docs/en/guides/TESTING.md) · [Roadmap and gates](docs/product/implementation-status.md) · [C++ API](docs/reference/cpp-api.md)
+
+
+### Pinpoint a missed peak (without claiming floating-point frequency proof)
+
+```python
+from dexted_dsp import Biquad, localize_peak
+a = 2**-14
+f = Biquad.from_coefficients([a, 0, -a, 0, 1-a], precision='float32')
+region = localize_peak(f, isolation_bits=32, fs=48_000)
+print(region.cosine_intervals)    # (('0', '0'),): exact cos(omega) peak location
+print(region.frequency_hz_approx) # ((12000.0, 12000.0),): display only, NOT certified Hz bounds
+```
