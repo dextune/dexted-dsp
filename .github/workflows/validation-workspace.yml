@@ -1,0 +1,32 @@
+name: Validation workspace snapshot
+on:
+  push:
+    branches: [validation/industrial-v1-20261009]
+    paths: [.github/workflows/validation-workspace.yml]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: c3cceef6845d0febaf0a01cc2c8cd9847a62802a
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Export immutable baseline Git objects (no credentials)
+        run: |
+          git bundle create source.bundle HEAD
+          git rev-parse HEAD > baseline-commit.txt
+          sha256sum source.bundle > source.bundle.sha256
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: industrial-v1-validation-workspace
+          path: |
+            source.bundle
+            source.bundle.sha256
+            baseline-commit.txt
+          if-no-files-found: error
+          retention-days: 1
