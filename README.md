@@ -1,5 +1,35 @@
 # Dexted DSP
 
+**The frequency plot passes. The exact gain bound does not.**
+
+![Measured false-PASS detection: actual SciPy and python-control vs the same checks plus verified Dexted proof](benchmarks/competitive/figures/decision.svg)
+
+| **Missed specification violations** | **Independent mathematical agreement** | **Added median verification time** |
+|:---:|:---:|:---:|
+| **1 → 0 per baseline** | **9 / 9 cases** | **+1.028 ms SciPy / +0.925 ms control** |
+| One *shared constructed* high-Q filter, not two production incidents | SymPy exact-root oracle vs Dexted decision | Additional cost, **not** a speedup |
+
+**Start reproducing in 30 seconds (copy-paste; installation and benchmark execution take longer):**
+
+```bash
+git clone https://github.com/dextune/dexted-dsp.git && cd dexted-dsp
+python -m pip install . 'numpy==2.3.5' 'scipy==1.17.0' 'control==0.10.2' 'sympy==1.14.0'
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python benchmarks/competitive/run.py --out validation/my-competitive-run.json --trials 30 --memory-trials 30
+python tools/audit_competitive.py validation/my-competitive-run.json
+```
+
+<sub>**Measured**, not modeled: 9 predeclared **synthetic** float32 SOS cases, 1,024 inclusive frequencies, 30 wall-time and 30 Python-allocation observations per case/method, one 2-vCPU AMD EPYC GitHub Actions Linux host. Neither numerical sampler promises full-band certification. Dexted adds **ideal fixed-coefficient** strict gain proof; it does not accelerate numerical response evaluation or prove device runtime arithmetic. This private repository requires clone access.</sub>
+
+![Measured Before vs After time and additional proof-only median and p95](benchmarks/competitive/figures/runtime.svg)
+
+![Measured Python allocation peak, explicitly excluding native allocations](benchmarks/competitive/figures/memory.svg)
+
+**Measured p50 / p95 wall time, ms:** SciPy `0.230 / 0.387` → SciPy+Dexted `1.258 / 3.399`; python-control `0.217 / 0.266` → control+Dexted `1.142 / 3.277`. The same single hidden-peak synthetic case was falsely passed by both samplers, and rejected by both +Dexted workflows. The reported p50 costs are differences of pooled medians, **not** paired mean overhead. Traced memory omits native allocations and total process RSS.
+
+[Complete method and caveats](benchmarks/competitive/README.md) · [Raw untrimmed observations and host environment](benchmarks/competitive/results/run-20261008.json) · [Independent archive and oracle audit](tools/audit_competitive.py) · [Repeatable SVG generator](benchmarks/competitive/plot.py) · [CI](.github/workflows/competitive-benchmark.yml)
+
+---
+
 **Your frequency grid can miss a violating peak. Verify the whole band.**
 
 Proof-carrying offline IIR gain verification · Python 3.10+ · C++20 · MIT

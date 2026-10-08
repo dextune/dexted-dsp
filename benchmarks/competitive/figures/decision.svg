@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="740" height="382" viewBox="0 0 740 382" role="img" aria-labelledby="title desc">
+<title id="title">Measured false-PASS: numerical sample vs mathematical gate</title>
+<desc id="desc">Actual SciPy freqz_sos and python-control frequency_response on identical binary32 SOS coefficients and a 1024-point inclusive grid. After includes exact verified proof. All cases are synthetic.</desc>
+<rect width="740" height="382" rx="18" fill="#0b1425"/>
+<text x="32" y="43" text-anchor="start" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="13" font-weight="700" fill="#63ded2">THE MISSED-PEAK GAP</text>
+<text x="32" y="80" text-anchor="start" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="28" font-weight="750" fill="#f5f8ff">A sampled PASS isn't a proof.</text>
+<text x="32" y="108" text-anchor="start" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15" font-weight="400" fill="#a9bad2">9 synthetic filters | 2 exact FAIL | 1,024 grid frequencies</text>
+<rect x="28" y="136" width="684" height="212" rx="12" fill="#142238"/>
+<text x="46" y="176" text-anchor="start" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="16" font-weight="400" fill="#f5f8ff">SciPy / before</text>
+<rect x="262" y="157" width="364" height="23" rx="6" fill="#30445f"/>
+<rect x="262" y="157" width="364.00" height="23" rx="6" fill="#f5a56b"/>
+<text x="665" y="176" text-anchor="end" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="19" font-weight="750" fill="#f5a56b">1</text>
+<text x="46" y="225" text-anchor="start" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="16" font-weight="400" fill="#f5f8ff">SciPy + proof</text>
+<rect x="262" y="206" width="364" height="23" rx="6" fill="#30445f"/>
+<text x="665" y="225" text-anchor="end" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="19" font-weight="750" fill="#63ded2">0</text>
+<text x="46" y="274" text-anchor="start" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="16" font-weight="400" fill="#f5f8ff">control / before</text>
+<rect x="262" y="255" width="364" height="23" rx="6" fill="#30445f"/>
+<rect x="262" y="255" width="364.00" height="23" rx="6" fill="#f5a56b"/>
+<text x="665" y="274" text-anchor="end" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="19" font-weight="750" fill="#f5a56b">1</text>
+<text x="46" y="323" text-anchor="start" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="16" font-weight="400" fill="#f5f8ff">control + proof</text>
+<rect x="262" y="304" width="364" height="23" rx="6" fill="#30445f"/>
+<text x="665" y="323" text-anchor="end" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="19" font-weight="750" fill="#63ded2">0</text>
+<text x="30" y="375" text-anchor="start" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="13" font-weight="400" fill="#a9bad2">False-PASS count among exact FAILs • synthetic stress tests, not defect prevalence</text>
+</svg>

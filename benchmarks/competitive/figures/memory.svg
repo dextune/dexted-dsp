@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="740" height="350" viewBox="0 0 740 350" role="img" aria-labelledby="title desc">
+<title id="title">Measured Python allocation peak, median</title>
+<desc id="desc">tracemalloc instrumented Python allocations only, not RSS or native buffers. 30 repeats per case and operation, separate from wall-time measurement.</desc>
+<rect width="740" height="350" rx="18" fill="#0b1425"/>
+<text x="32" y="43" text-anchor="start" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="13" font-weight="700" fill="#63ded2">ALLOCATION FOOTPRINT</text>
+<text x="32" y="80" text-anchor="start" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="26" font-weight="750" fill="#f5f8ff">We expose memory cost too.</text>
+<text x="32" y="108" text-anchor="start" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15" font-weight="400" fill="#a9bad2">Median peak Python allocations (KiB), not total process RSS</text>
+<rect x="28" y="133" width="684" height="188" rx="12" fill="#142238"/>
+<text x="44" y="172" text-anchor="start" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15" font-weight="400" fill="#f5f8ff">SciPy</text>
+<rect x="235" y="158" width="370" height="20" rx="5" fill="#30445f"/>
+<rect x="235" y="158" width="275.65" height="20" rx="5" fill="#f5a56b"/>
+<text x="684" y="173" text-anchor="end" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="16" font-weight="700" fill="#f5a56b">91.22</text>
+<text x="44" y="216" text-anchor="start" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15" font-weight="400" fill="#f5f8ff">SciPy + Dexted</text>
+<rect x="235" y="202" width="370" height="20" rx="5" fill="#30445f"/>
+<rect x="235" y="202" width="275.65" height="20" rx="5" fill="#63ded2"/>
+<text x="684" y="217" text-anchor="end" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="16" font-weight="700" fill="#63ded2">91.22</text>
+<text x="44" y="260" text-anchor="start" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15" font-weight="400" fill="#f5f8ff">python-control</text>
+<rect x="235" y="246" width="370" height="20" rx="5" fill="#30445f"/>
+<rect x="235" y="246" width="370.00" height="20" rx="5" fill="#f5a56b"/>
+<text x="684" y="261" text-anchor="end" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="16" font-weight="700" fill="#f5a56b">122.45</text>
+<text x="44" y="304" text-anchor="start" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15" font-weight="400" fill="#f5f8ff">control + Dexted</text>
+<rect x="235" y="290" width="370" height="20" rx="5" fill="#30445f"/>
+<rect x="235" y="290" width="370.00" height="20" rx="5" fill="#63ded2"/>
+<text x="684" y="305" text-anchor="end" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="16" font-weight="700" fill="#63ded2">122.45</text>
+<text x="30" y="341" text-anchor="start" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="12" font-weight="400" fill="#a9bad2">Separate instrumented trials; native NumPy/C allocations excluded (see protocol)</text>
+</svg>
