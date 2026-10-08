@@ -1,0 +1,121 @@
+{
+  "historical_project": "CertifiedDSP",
+  "project": "Dexted DSP",
+  "reason": "Names, namespaces, CLI and certificate-schema branding only; no algebraic algorithm change. Historical timing files are unchanged.",
+  "replacements": [
+    [
+      "CERTIFIED_DSP",
+      "DEXTED_DSP"
+    ],
+    [
+      "certdsp_",
+      "dexted_dsp_"
+    ],
+    [
+      "certdsp::",
+      "dexted_dsp::"
+    ],
+    [
+      "certified_dsp",
+      "dexted_dsp"
+    ],
+    [
+      "certified-dsp",
+      "dexted-dsp"
+    ],
+    [
+      "CertifiedDSP",
+      "DextedDSP"
+    ],
+    [
+      "certdsp",
+      "dexted-dsp"
+    ]
+  ],
+  "files": [
+    {
+      "original_path": "benchmarks/kernels.cpp",
+      "original_sha256": "5da4a431705e06fb82092826d8e184a87090dcf9790e5968bc8ef711ee9f8251",
+      "archived_path": "benchmarks/archive/v0.1.0/benchmarks/kernels.cpp",
+      "current_path": "benchmarks/kernels.cpp",
+      "current_sha256": "bbbd8d497579af916b273b7426d74d84e5b5c2c61f7d6d3d07031a85eeab59d7"
+    },
+    {
+      "original_path": "benchmarks/run.py",
+      "original_sha256": "db59af521abc4272a69c983f4f150539bfad57c036a24af4c90af315174dc6e5",
+      "archived_path": "benchmarks/archive/v0.1.0/benchmarks/run.py",
+      "current_path": "benchmarks/run.py",
+      "current_sha256": "80ea203e0c5a5fe79a2296416a3c5569d036df6eb08c29f03646c70dfc106f42"
+    },
+    {
+      "original_path": "cpp/include/certified_dsp/biquad.hpp",
+      "original_sha256": "4b3add0257d92c1a981f0cb835fe3771db3bb028446d89934bb6dfa1eb48236b",
+      "archived_path": "benchmarks/archive/v0.1.0/cpp/include/certified_dsp/biquad.hpp",
+      "current_path": "cpp/include/dexted_dsp/biquad.hpp",
+      "current_sha256": "e5ef7031e331840b389bf36285c95c7616fda1b21304511b42afcf529c4297e1"
+    },
+    {
+      "original_path": "src/certified_dsp/__init__.py",
+      "original_sha256": "cbf49b5a459c06bcaab9422af580aa37e5847a2ae527b6035414c5ee737dade2",
+      "archived_path": "benchmarks/archive/v0.1.0/src/certified_dsp/__init__.py",
+      "current_path": "src/dexted_dsp/__init__.py",
+      "current_sha256": "cbf49b5a459c06bcaab9422af580aa37e5847a2ae527b6035414c5ee737dade2"
+    },
+    {
+      "original_path": "src/certified_dsp/__main__.py",
+      "original_sha256": "79ee6f134c5c5193377cf9b189cbdcc3e2095e49ba9cec310114441c15a917c4",
+      "archived_path": "benchmarks/archive/v0.1.0/src/certified_dsp/__main__.py",
+      "current_path": "src/dexted_dsp/__main__.py",
+      "current_sha256": "79ee6f134c5c5193377cf9b189cbdcc3e2095e49ba9cec310114441c15a917c4"
+    },
+    {
+      "original_path": "src/certified_dsp/biquad.py",
+      "original_sha256": "ee883e669a6b2176f823a8b30c5e1537ebb59c22acf810467477a4832cccb17f",
+      "archived_path": "benchmarks/archive/v0.1.0/src/certified_dsp/biquad.py",
+      "current_path": "src/dexted_dsp/biquad.py",
+      "current_sha256": "9f675cb2fd75cd1c8bffccdb65b1e84ca238c3b3686ca87ff15f36d8bb6a34d7"
+    },
+    {
+      "original_path": "src/certified_dsp/cascade.py",
+      "original_sha256": "67685aad2e59e7b78dc548cf3c1797b378ac171f7b4630cdfd859ad58bbc1e74",
+      "archived_path": "benchmarks/archive/v0.1.0/src/certified_dsp/cascade.py",
+      "current_path": "src/dexted_dsp/cascade.py",
+      "current_sha256": "f445527b0c23f6418dc5638f2872cfbd3e048bd45146cb87a956c2cd7d140145"
+    },
+    {
+      "original_path": "src/certified_dsp/cli.py",
+      "original_sha256": "7e686344c171fde3241585acf3e35ad28c71098c9371855f36441a86142bb1e2",
+      "archived_path": "benchmarks/archive/v0.1.0/src/certified_dsp/cli.py",
+      "current_path": "src/dexted_dsp/cli.py",
+      "current_sha256": "7e686344c171fde3241585acf3e35ad28c71098c9371855f36441a86142bb1e2"
+    },
+    {
+      "original_path": "src/certified_dsp/model.py",
+      "original_sha256": "cd80a4859758d027bd775deb8a0a7c02313335750d33062fe561afa0f7e37b1e",
+      "archived_path": "benchmarks/archive/v0.1.0/src/certified_dsp/model.py",
+      "current_path": "src/dexted_dsp/model.py",
+      "current_sha256": "cd80a4859758d027bd775deb8a0a7c02313335750d33062fe561afa0f7e37b1e"
+    },
+    {
+      "original_path": "src/certified_dsp/native.py",
+      "original_sha256": "35b4dd7fcdc8efb388aad2fc6a8c9e2332174dc3d1f56672f4b2301a2780c28c",
+      "archived_path": "benchmarks/archive/v0.1.0/src/certified_dsp/native.py",
+      "current_path": "src/dexted_dsp/native.py",
+      "current_sha256": "116ca020be560d9490c22c5d5c3d3362608bcad6e02be0ccf9165e7f8d2f0917"
+    },
+    {
+      "original_path": "src/certified_dsp/reference.py",
+      "original_sha256": "01dad86402add7f62ddb4464d373eb85973773c97810b2311ac47decf753d0f1",
+      "archived_path": "benchmarks/archive/v0.1.0/src/certified_dsp/reference.py",
+      "current_path": "src/dexted_dsp/reference.py",
+      "current_sha256": "01dad86402add7f62ddb4464d373eb85973773c97810b2311ac47decf753d0f1"
+    },
+    {
+      "original_path": "src/certified_dsp/verify.py",
+      "original_sha256": "49ea2a41bfd6d345ebf673134e529fa59389ba23c9eacc6cee3f5937b4219821",
+      "archived_path": "benchmarks/archive/v0.1.0/src/certified_dsp/verify.py",
+      "current_path": "src/dexted_dsp/verify.py",
+      "current_sha256": "458f4b146adc14b40cb6d3944c9f815ba827fe3b0d05286fe4ae0d9d4b349fc0"
+    }
+  ]
+}

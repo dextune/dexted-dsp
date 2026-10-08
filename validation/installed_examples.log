@@ -1,0 +1,4 @@
+certified
+Independent exact-rational recheck: True
+Per-section: ['gain_limit_not_met', 'gain_limit_not_met']
+Joint: certified

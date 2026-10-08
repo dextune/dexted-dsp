@@ -1,0 +1,23 @@
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+*.egg-info/
+build/
+_build/
+dist/
+*.so
+*.dll
+*.dylib
+*.o
+*.a
+.DS_Store
+
+.wheel-test/
+local-install/
+certificate.json
+
+# Generated figures/fixtures: SVGs and byte-checked restoration recipes are tracked.
+benchmarks/figures/*.png
+benchmarks/results/fixtures.npz
+validation/rebrand/regenerated-fixtures.npz

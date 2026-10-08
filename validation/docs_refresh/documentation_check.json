@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "languages": [
+    "en",
+    "ko",
+    "zh-CN",
+    "ja"
+  ],
+  "primary_documents": 28,
+  "checked_python_snippets": 16,
+  "latency_rows_checked": 32,
+  "csv_rows_checked": 16,
+  "benchmark_sha256": "0332cbc6a22ebf2da482a043b3f206ae175bcab5d71f640417c96c46c7ac99a0",
+  "note": "Document structure/data consistency only; not a translation review or mathematical proof."
+}

@@ -1,0 +1,23 @@
+
+test_dexted_dsp (unittest.loader._FailedTest.test_dexted_dsp) ... ERROR
+
+======================================================================
+ERROR: test_dexted_dsp (unittest.loader._FailedTest.test_dexted_dsp)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_dexted_dsp
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/unittest/loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "/usr/lib/python3.13/unittest/loader.py", line 339, in _get_module_from_name
+    __import__(name)
+    ~~~~~~~~~~^^^^^^
+  File "/mnt/data/dexted-dsp/tests/test_dexted_dsp.py", line 12, in <module>
+    from dexted_dsp import (Biquad, certify, certify_cascade, from_sos,
+                               verify_biquad, verify_cascade)
+ModuleNotFoundError: No module named 'dexted_dsp'
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (errors=1)

@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "benchmark_sha256": "0332cbc6a22ebf2da482a043b3f206ae175bcab5d71f640417c96c46c7ac99a0",
+  "source_files_checked": 12,
+  "fixture_rows": 4096,
+  "timing_trials": 9,
+  "fixture_sha256_verified": true,
+  "exact_recheck_rows": 4096,
+  "note": "Saved artifacts audited. Not a new timing run or independent external audit. Recheck uses two project implementations, not independent mathematics."
+}

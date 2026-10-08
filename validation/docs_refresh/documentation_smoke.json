@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "checks": 12,
+  "passed": [
+    "python_basic_and_rational_recheck",
+    "strict_equality_is_rejected",
+    "certificate_threshold_binding",
+    "cascade_compensation",
+    "tampered_cover_rejected",
+    "cli_safe",
+    "cli_verify",
+    "cli_gain_limit_failure",
+    "cli_unknown_is_exit_3",
+    "cli_retry_succeeds",
+    "cli_invalid_input_is_exit_2",
+    "cli_mismatched_input_rejected"
+  ]
+}

@@ -1,0 +1,12 @@
+-- Install configuration: "Release"
+-- Installing: /mnt/data/CertifiedDSP/build/stage/lib/libcertified_dsp.so.0.1.0
+-- Installing: /mnt/data/CertifiedDSP/build/stage/lib/libcertified_dsp.so.0
+-- Installing: /mnt/data/CertifiedDSP/build/stage/lib/libcertified_dsp.so
+-- Installing: /mnt/data/CertifiedDSP/build/stage/include
+-- Installing: /mnt/data/CertifiedDSP/build/stage/include/certified_dsp
+-- Installing: /mnt/data/CertifiedDSP/build/stage/include/certified_dsp/c_api.h
+-- Installing: /mnt/data/CertifiedDSP/build/stage/include/certified_dsp/biquad.hpp
+-- Installing: /mnt/data/CertifiedDSP/build/stage/lib/cmake/CertifiedDSP/CertifiedDSPTargets.cmake
+-- Installing: /mnt/data/CertifiedDSP/build/stage/lib/cmake/CertifiedDSP/CertifiedDSPTargets-release.cmake
+-- Installing: /mnt/data/CertifiedDSP/build/stage/lib/cmake/CertifiedDSP/CertifiedDSPConfig.cmake
+-- Installing: /mnt/data/CertifiedDSP/build/stage/lib/cmake/CertifiedDSP/CertifiedDSPConfigVersion.cmake

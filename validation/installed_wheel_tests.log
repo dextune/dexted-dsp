@@ -1,0 +1,40 @@
+test_certificate_input_binding (test_certified_dsp.BiquadTests.test_certificate_input_binding) ... ok
+test_constant_pass (test_certified_dsp.BiquadTests.test_constant_pass) ... ok
+test_denominator_failure_distinguished (test_certified_dsp.BiquadTests.test_denominator_failure_distinguished) ... ok
+test_explicit_float32_rounding (test_certified_dsp.BiquadTests.test_explicit_float32_rounding) ... ok
+test_extreme_values (test_certified_dsp.BiquadTests.test_extreme_values) ... ok
+test_forged_certified_flag (test_certified_dsp.BiquadTests.test_forged_certified_flag) ... ok
+test_gamma_variation (test_certified_dsp.BiquadTests.test_gamma_variation) ... ok
+test_hidden_peak (test_certified_dsp.BiquadTests.test_hidden_peak) ... ok
+test_invalid_coefficients (test_certified_dsp.BiquadTests.test_invalid_coefficients) ... ok
+test_invalid_gamma (test_certified_dsp.BiquadTests.test_invalid_gamma) ... ok
+test_invalid_shapes (test_certified_dsp.BiquadTests.test_invalid_shapes) ... ok
+test_json_witness (test_certified_dsp.BiquadTests.test_json_witness) ... ok
+test_one_pole_endpoint (test_certified_dsp.BiquadTests.test_one_pole_endpoint) ... ok
+test_pole_zero_cancellation_does_not_hide_unstable_section (test_certified_dsp.BiquadTests.test_pole_zero_cancellation_does_not_hide_unstable_section) ... ok
+test_random_binary32_bit_patterns (test_certified_dsp.BiquadTests.test_random_binary32_bit_patterns) ... ok
+test_seeded_fraction_agreement (test_certified_dsp.BiquadTests.test_seeded_fraction_agreement) ... ok
+test_sos_layout (test_certified_dsp.BiquadTests.test_sos_layout) ... ok
+test_strict_equality_rejected (test_certified_dsp.BiquadTests.test_strict_equality_rejected) ... ok
+test_cascade_roundtrip (test_certified_dsp.CLITests.test_cascade_roundtrip) ... ok
+test_check_verify_roundtrip (test_certified_dsp.CLITests.test_check_verify_roundtrip) ... ok
+test_fail_exit (test_certified_dsp.CLITests.test_fail_exit) ... ok
+test_invalid_input (test_certified_dsp.CLITests.test_invalid_input) ... ok
+test_no_input_overwrite (test_certified_dsp.CLITests.test_no_input_overwrite) ... ok
+test_version (test_certified_dsp.CLITests.test_version) ... ok
+test_budget_validation (test_certified_dsp.CascadeTests.test_budget_validation) ... ok
+test_compensation_certified (test_certified_dsp.CascadeTests.test_compensation_certified) ... ok
+test_equality_failed (test_certified_dsp.CascadeTests.test_equality_failed) ... ok
+test_false_cover_is_not_accepted (test_certified_dsp.CascadeTests.test_false_cover_is_not_accepted) ... ok
+test_negative_midpoint_witness (test_certified_dsp.CascadeTests.test_negative_midpoint_witness) ... ok
+test_polynomial_tangency (test_certified_dsp.CascadeTests.test_polynomial_tangency) ... ok
+test_proof_tampering (test_certified_dsp.CascadeTests.test_proof_tampering) ... ok
+test_section_stability (test_certified_dsp.CascadeTests.test_section_stability) ... ok
+test_seeded_positive_certificates (test_certified_dsp.CascadeTests.test_seeded_positive_certificates) ... ok
+test_single_constant (test_certified_dsp.CascadeTests.test_single_constant) ... ok
+test_unknown_is_not_pass (test_certified_dsp.CascadeTests.test_unknown_is_not_pass) ... ok
+
+----------------------------------------------------------------------
+Ran 35 tests in 0.300s
+
+OK

@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "source_archive": "certified_dsp-0.1.0.tar.gz",
+  "required_paths_checked": 35,
+  "all_required_paths_byte_match": true,
+  "archive_entries": 181,
+  "sdist_to_wheel_rebuild": "passed with installed backend",
+  "note": "No network build isolation or twine execution; no publication.",
+  "completed_summary_present": true,
+  "archive_snapshot_note": "ZIP has the final audit log; the sdist embeds the prior build-audit snapshot. Source, all primary documents and completed validation summary byte-match."
+}

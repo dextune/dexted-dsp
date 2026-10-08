@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=77.0.3"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dexted-dsp"
+version = "0.1.0"
+description = "Exact continuous-frequency gain checks for fixed real biquads and cascades"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE", "NOTICE.md"]
+authors = [{name = "DEXTUNE and Dexted DSP contributors"}]
+keywords = ["dsp", "biquad", "verification", "audio", "exact-arithmetic"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Programming Language :: Python :: 3",
+  "Topic :: Scientific/Engineering :: Mathematics",
+  "Topic :: Multimedia :: Sound/Audio",
+]
+dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/dextune/dexted-dsp"
+Repository = "https://github.com/dextune/dexted-dsp"
+Documentation = "https://github.com/dextune/dexted-dsp/blob/main/docs/README.md"
+Issues = "https://github.com/dextune/dexted-dsp/issues"
+
+[project.optional-dependencies]
+bench = ["numpy>=1.26", "scipy>=1.11", "matplotlib>=3.8"]
+dev = ["build>=1.2", "twine>=5", "pytest>=8"]
+
+[project.scripts]
+dexted-dsp = "dexted_dsp.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+dexted_dsp = ["py.typed"]

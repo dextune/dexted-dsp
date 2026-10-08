@@ -1,0 +1,5 @@
+# Exact versions recorded in the local Python 3.13 benchmark environment.
+# On other Python versions, install the compatible optional [bench] dependencies.
+numpy==2.3.5
+scipy==1.17.0
+matplotlib==3.10.8

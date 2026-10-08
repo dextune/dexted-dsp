@@ -1,0 +1,476 @@
+{
+  "protocol": {
+    "seed": 20261007,
+    "n_per_family": 1024,
+    "trials": 9,
+    "batch_repeats": 4,
+    "max_gain": 0.9999,
+    "grids": [
+      1024,
+      16384
+    ],
+    "source_hashes": {
+      "benchmarks/kernels.cpp": "5da4a431705e06fb82092826d8e184a87090dcf9790e5968bc8ef711ee9f8251",
+      "benchmarks/run.py": "db59af521abc4272a69c983f4f150539bfad57c036a24af4c90af315174dc6e5",
+      "cpp/include/certified_dsp/biquad.hpp": "4b3add0257d92c1a981f0cb835fe3771db3bb028446d89934bb6dfa1eb48236b",
+      "src/certified_dsp/__init__.py": "cbf49b5a459c06bcaab9422af580aa37e5847a2ae527b6035414c5ee737dade2",
+      "src/certified_dsp/__main__.py": "79ee6f134c5c5193377cf9b189cbdcc3e2095e49ba9cec310114441c15a917c4",
+      "src/certified_dsp/biquad.py": "ee883e669a6b2176f823a8b30c5e1537ebb59c22acf810467477a4832cccb17f",
+      "src/certified_dsp/cascade.py": "67685aad2e59e7b78dc548cf3c1797b378ac171f7b4630cdfd859ad58bbc1e74",
+      "src/certified_dsp/cli.py": "7e686344c171fde3241585acf3e35ad28c71098c9371855f36441a86142bb1e2",
+      "src/certified_dsp/model.py": "cd80a4859758d027bd775deb8a0a7c02313335750d33062fe561afa0f7e37b1e",
+      "src/certified_dsp/native.py": "35b4dd7fcdc8efb388aad2fc6a8c9e2332174dc3d1f56672f4b2301a2780c28c",
+      "src/certified_dsp/reference.py": "01dad86402add7f62ddb4464d373eb85973773c97810b2311ac47decf753d0f1",
+      "src/certified_dsp/verify.py": "49ea2a41bfd6d345ebf673134e529fa59389ba23c9eacc6cee3f5937b4219821"
+    },
+    "method_order_seed": 932851,
+    "compile_command": [
+      "g++",
+      "-O3",
+      "-std=c++20",
+      "-shared",
+      "-fPIC",
+      "-ffp-contract=off",
+      "-I",
+      "/mnt/data/CertifiedDSP/cpp/include",
+      "/mnt/data/CertifiedDSP/benchmarks/kernels.cpp",
+      "-o",
+      "/mnt/data/CertifiedDSP/build/bench/libbench.so"
+    ],
+    "notes": [
+      "No fast-math; FMA contraction off; all native kernels compiled together.",
+      "Grid cache warmed before each timed trial; preparation not timed.",
+      "All native methods include validity and denominator checks; grids may exit early.",
+      "Both exact methods are checked before timing; no generated model tuning.",
+      "Synthetic stress fixtures are NOT representative of real-world prevalence.",
+      "Float64 algebraic test is a non-certified numerical baseline, often much faster.",
+      "No python-control/SLICOT, ADAC end-to-end, audio-quality or video-quality benchmark."
+    ]
+  },
+  "fixtures_sha256": "5265cd9452b77d8b3ae78e7836b1823296e5345d448b14296bfbd49cc9e65ca2",
+  "families": {
+    "ordinary": {
+      "n": 1024,
+      "exact_pass": 611,
+      "correctness": {
+        "integer": {
+          "false_accepts": 0,
+          "false_rejects": 0,
+          "invalid_or_error": 0
+        },
+        "grid1024": {
+          "false_accepts": 0,
+          "false_rejects": 0,
+          "invalid_or_error": 0
+        },
+        "grid16384": {
+          "false_accepts": 0,
+          "false_rejects": 0,
+          "invalid_or_error": 0
+        },
+        "float64_algebraic": {
+          "false_accepts": 0,
+          "false_rejects": 0,
+          "invalid_or_error": 0
+        }
+      },
+      "median_us": {
+        "integer": 0.564106201171875,
+        "grid1024": 1.686391845703125,
+        "grid16384": 27.877728515625,
+        "float64_algebraic": 0.01113720703125
+      },
+      "raw_us_per_filter": {
+        "integer": [
+          0.564106201171875,
+          0.571573486328125,
+          0.5450791015625,
+          0.567632080078125,
+          0.62171337890625,
+          0.56266845703125,
+          0.541597412109375,
+          0.53876611328125,
+          0.6154052734375
+        ],
+        "grid1024": [
+          1.68317431640625,
+          1.570971923828125,
+          1.686391845703125,
+          1.78617578125,
+          1.9376669921875,
+          1.7709775390625,
+          1.6359658203125,
+          1.6366943359375,
+          1.847120361328125
+        ],
+        "grid16384": [
+          27.277416259765626,
+          26.4138583984375,
+          27.877728515625,
+          28.426025146484374,
+          27.3718017578125,
+          28.5179873046875,
+          27.370806640625,
+          29.01057666015625,
+          29.532371826171875
+        ],
+        "float64_algebraic": [
+          0.012056396484375,
+          0.011129638671875,
+          0.012078369140625,
+          0.012029541015625,
+          0.010687255859375,
+          0.01084375,
+          0.01113720703125,
+          0.0109462890625,
+          0.011814453125
+        ]
+      },
+      "paired_grid1024_over_integer": 3.037856865142338
+    },
+    "high_q": {
+      "n": 1024,
+      "exact_pass": 539,
+      "correctness": {
+        "integer": {
+          "false_accepts": 0,
+          "false_rejects": 0,
+          "invalid_or_error": 0
+        },
+        "grid1024": {
+          "false_accepts": 356,
+          "false_rejects": 0,
+          "invalid_or_error": 0
+        },
+        "grid16384": {
+          "false_accepts": 213,
+          "false_rejects": 0,
+          "invalid_or_error": 0
+        },
+        "float64_algebraic": {
+          "false_accepts": 2,
+          "false_rejects": 5,
+          "invalid_or_error": 0
+        }
+      },
+      "median_us": {
+        "integer": 0.599275390625,
+        "grid1024": 2.161357666015625,
+        "grid16384": 33.816509033203126,
+        "float64_algebraic": 0.012063720703125
+      },
+      "raw_us_per_filter": {
+        "integer": [
+          0.701592529296875,
+          0.5765341796875,
+          0.621268310546875,
+          0.599275390625,
+          0.57410888671875,
+          0.661078369140625,
+          0.719463134765625,
+          0.578052734375,
+          0.57029931640625
+        ],
+        "grid1024": [
+          2.0478740234375,
+          2.103872314453125,
+          2.0785078125,
+          2.028531494140625,
+          2.161357666015625,
+          2.31557470703125,
+          2.18321337890625,
+          4.190898681640625,
+          2.429156005859375
+        ],
+        "grid16384": [
+          33.7167568359375,
+          34.50035791015625,
+          32.8764755859375,
+          32.96945458984375,
+          32.70296435546875,
+          35.65941650390625,
+          34.206544189453126,
+          41.433221435546876,
+          33.816509033203126
+        ],
+        "float64_algebraic": [
+          0.01226416015625,
+          0.012063720703125,
+          0.011983154296875,
+          0.01251611328125,
+          0.011789794921875,
+          0.015794677734375,
+          0.011494140625,
+          0.012068603515625,
+          0.0111201171875
+        ]
+      },
+      "paired_grid1024_over_integer": 3.5027234517465797
+    },
+    "near_threshold": {
+      "n": 1024,
+      "exact_pass": 431,
+      "correctness": {
+        "integer": {
+          "false_accepts": 0,
+          "false_rejects": 0,
+          "invalid_or_error": 0
+        },
+        "grid1024": {
+          "false_accepts": 0,
+          "false_rejects": 0,
+          "invalid_or_error": 0
+        },
+        "grid16384": {
+          "false_accepts": 0,
+          "false_rejects": 0,
+          "invalid_or_error": 0
+        },
+        "float64_algebraic": {
+          "false_accepts": 0,
+          "false_rejects": 0,
+          "invalid_or_error": 0
+        }
+      },
+      "median_us": {
+        "integer": 0.377707275390625,
+        "grid1024": 0.932292724609375,
+        "grid16384": 16.152820068359375,
+        "float64_algebraic": 0.011085693359375
+      },
+      "raw_us_per_filter": {
+        "integer": [
+          0.363802490234375,
+          0.428116455078125,
+          0.377707275390625,
+          0.38846044921875,
+          0.3610615234375,
+          0.360093505859375,
+          0.395389892578125,
+          0.3889423828125,
+          0.366404052734375
+        ],
+        "grid1024": [
+          0.944013916015625,
+          0.9576328125,
+          0.98089501953125,
+          0.898321533203125,
+          0.89469287109375,
+          0.87641650390625,
+          0.932292724609375,
+          0.919857421875,
+          0.97604150390625
+        ],
+        "grid16384": [
+          17.181955322265626,
+          16.152820068359375,
+          16.401244384765626,
+          15.5466669921875,
+          15.149340576171875,
+          16.6743095703125,
+          16.246628662109377,
+          15.71496533203125,
+          14.86031201171875
+        ],
+        "float64_algebraic": [
+          0.015318115234375,
+          0.01178515625,
+          0.010205322265625,
+          0.011085693359375,
+          0.011046630859375,
+          0.01023974609375,
+          0.012056396484375,
+          0.015665283203125,
+          0.01094384765625
+        ]
+      },
+      "paired_grid1024_over_integer": 2.4338581219748834
+    },
+    "unstable": {
+      "n": 1024,
+      "exact_pass": 0,
+      "correctness": {
+        "integer": {
+          "false_accepts": 0,
+          "false_rejects": 0,
+          "invalid_or_error": 0
+        },
+        "grid1024": {
+          "false_accepts": 0,
+          "false_rejects": 0,
+          "invalid_or_error": 0
+        },
+        "grid16384": {
+          "false_accepts": 0,
+          "false_rejects": 0,
+          "invalid_or_error": 0
+        },
+        "float64_algebraic": {
+          "false_accepts": 0,
+          "false_rejects": 0,
+          "invalid_or_error": 0
+        }
+      },
+      "median_us": {
+        "integer": 0.008508544921875,
+        "grid1024": 0.006740966796875,
+        "grid16384": 0.007093017578125,
+        "float64_algebraic": 0.006716552734375
+      },
+      "raw_us_per_filter": {
+        "integer": [
+          0.00891455078125,
+          0.008481689453125,
+          0.00853076171875,
+          0.0085673828125,
+          0.008508544921875,
+          0.0087138671875,
+          0.008430419921875,
+          0.0083544921875,
+          0.008386474609375
+        ],
+        "grid1024": [
+          0.0069755859375,
+          0.007136962890625,
+          0.00666748046875,
+          0.006740966796875,
+          0.007166259765625,
+          0.0069267578125,
+          0.0065869140625,
+          0.00658935546875,
+          0.006572265625
+        ],
+        "grid16384": [
+          0.007366943359375,
+          0.007063720703125,
+          0.0079365234375,
+          0.00667236328125,
+          0.007044189453125,
+          0.010471923828125,
+          0.007093017578125,
+          0.006858154296875,
+          0.00780712890625
+        ],
+        "float64_algebraic": [
+          0.007384033203125,
+          0.006858154296875,
+          0.006501220703125,
+          0.00684619140625,
+          0.006716552734375,
+          0.00634228515625,
+          0.008799560546875,
+          0.00652099609375,
+          0.006484130859375
+        ]
+      },
+      "paired_grid1024_over_integer": 0.7868175082639919
+    }
+  },
+  "native_bit_patterns": {
+    "n": 2048,
+    "mismatches": 0
+  },
+  "python_high_q": {
+    "n": 128,
+    "raw_us_per_filter": {
+      "python_integer_api": [
+        7.4065078125,
+        7.6307421875,
+        7.81265625,
+        11.942828125,
+        10.2724609375,
+        7.877828125,
+        7.8110078125,
+        7.5032109375,
+        7.775484375
+      ],
+      "fraction_reference": [
+        77.398359375,
+        64.9965625,
+        63.96996875,
+        73.4946875,
+        62.2169765625,
+        59.8660078125,
+        59.2049453125,
+        59.2006484375,
+        66.1666484375
+      ],
+      "scipy_freqz1024": [
+        71.832703125,
+        68.3804765625,
+        72.8004609375,
+        68.319765625,
+        133.1431875,
+        68.3082734375,
+        79.2041484375,
+        69.7073671875,
+        83.7014375
+      ]
+    },
+    "median_us": {
+      "python_integer_api": 7.8110078125,
+      "fraction_reference": 63.96996875,
+      "scipy_freqz1024": 71.832703125
+    },
+    "note": "Python API/object overhead INCLUDED; separate from native batch kernel graph."
+  },
+  "cascade_demo": {
+    "sections": [
+      [
+        1.0,
+        -0.75,
+        0.0,
+        -0.125,
+        0.0
+      ],
+      [
+        0.75,
+        -0.09375,
+        0.0,
+        -0.75,
+        0.0
+      ]
+    ],
+    "individual_certified": [
+      false,
+      false
+    ],
+    "total_transfer_constant": 0.75,
+    "joint_certificate": {
+      "nodes": 1,
+      "max_depth": 0,
+      "cover": [
+        [
+          0,
+          0
+        ]
+      ],
+      "degree": 2,
+      "status": "certified",
+      "schema": "certified-dsp/cascade/v1",
+      "method": "integer-bernstein-subdivision",
+      "certified": true,
+      "strict": true,
+      "denominator_stable": true,
+      "max_gain_hex": "0x1.0000000000000p+0",
+      "sections_hex": [
+        [
+          "0x1.0000000000000p+0",
+          "-0x1.8000000000000p-1",
+          "0x0.0p+0",
+          "-0x1.0000000000000p-3",
+          "0x0.0p+0"
+        ],
+        [
+          "0x1.8000000000000p-1",
+          "-0x1.8000000000000p-4",
+          "0x0.0p+0",
+          "-0x1.8000000000000p-1",
+          "0x0.0p+0"
+        ]
+      ],
+      "scope": "fixed real LTI cascade; all section denominators stable; no runtime-roundoff guarantee"
+    },
+    "rational_recheck": true
+  }
+}

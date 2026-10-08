@@ -1,0 +1,8 @@
+Internal ctest changing into directory: /mnt/data/certified_dsp_multilingual/CertifiedDSP/build
+Test project /mnt/data/certified_dsp_multilingual/CertifiedDSP/build
+    Start 1: native_predicate
+1/1 Test #1: native_predicate .................   Passed    0.01 sec
+
+100% tests passed, 0 tests failed out of 1
+
+Total Test time (real) =   0.01 sec

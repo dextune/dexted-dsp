@@ -1,0 +1,19 @@
+{
+  "timestamp_utc": "2026-10-07T14:46:06.368296+00:00",
+  "platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+  "machine": "x86_64",
+  "cpu": "INTEL(R) XEON(R) PLATINUM 8573C",
+  "logical_cpus": 5,
+  "python": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+  "numpy": "2.3.5",
+  "scipy": "1.17.0",
+  "compiler": "g++ (Debian 14.2.0-19) 14.2.0",
+  "thread_settings": {
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": null
+  },
+  "timer": "time.perf_counter_ns",
+  "cpu_pinning": false,
+  "caveat": "Shared virtualized host; frequency scaling and load are not controlled."
+}

@@ -1,0 +1,48 @@
+{
+  "seed": 20261007,
+  "n_per_family": 1024,
+  "trials": 9,
+  "batch_repeats": 4,
+  "max_gain": 0.9999,
+  "grids": [
+    1024,
+    16384
+  ],
+  "source_hashes": {
+    "benchmarks/kernels.cpp": "5da4a431705e06fb82092826d8e184a87090dcf9790e5968bc8ef711ee9f8251",
+    "benchmarks/run.py": "db59af521abc4272a69c983f4f150539bfad57c036a24af4c90af315174dc6e5",
+    "cpp/include/certified_dsp/biquad.hpp": "4b3add0257d92c1a981f0cb835fe3771db3bb028446d89934bb6dfa1eb48236b",
+    "src/certified_dsp/__init__.py": "cbf49b5a459c06bcaab9422af580aa37e5847a2ae527b6035414c5ee737dade2",
+    "src/certified_dsp/__main__.py": "79ee6f134c5c5193377cf9b189cbdcc3e2095e49ba9cec310114441c15a917c4",
+    "src/certified_dsp/biquad.py": "ee883e669a6b2176f823a8b30c5e1537ebb59c22acf810467477a4832cccb17f",
+    "src/certified_dsp/cascade.py": "67685aad2e59e7b78dc548cf3c1797b378ac171f7b4630cdfd859ad58bbc1e74",
+    "src/certified_dsp/cli.py": "7e686344c171fde3241585acf3e35ad28c71098c9371855f36441a86142bb1e2",
+    "src/certified_dsp/model.py": "cd80a4859758d027bd775deb8a0a7c02313335750d33062fe561afa0f7e37b1e",
+    "src/certified_dsp/native.py": "35b4dd7fcdc8efb388aad2fc6a8c9e2332174dc3d1f56672f4b2301a2780c28c",
+    "src/certified_dsp/reference.py": "01dad86402add7f62ddb4464d373eb85973773c97810b2311ac47decf753d0f1",
+    "src/certified_dsp/verify.py": "49ea2a41bfd6d345ebf673134e529fa59389ba23c9eacc6cee3f5937b4219821"
+  },
+  "method_order_seed": 932851,
+  "compile_command": [
+    "g++",
+    "-O3",
+    "-std=c++20",
+    "-shared",
+    "-fPIC",
+    "-ffp-contract=off",
+    "-I",
+    "/mnt/data/CertifiedDSP/cpp/include",
+    "/mnt/data/CertifiedDSP/benchmarks/kernels.cpp",
+    "-o",
+    "/mnt/data/CertifiedDSP/build/bench/libbench.so"
+  ],
+  "notes": [
+    "No fast-math; FMA contraction off; all native kernels compiled together.",
+    "Grid cache warmed before each timed trial; preparation not timed.",
+    "All native methods include validity and denominator checks; grids may exit early.",
+    "Both exact methods are checked before timing; no generated model tuning.",
+    "Synthetic stress fixtures are NOT representative of real-world prevalence.",
+    "Float64 algebraic test is a non-certified numerical baseline, often much faster.",
+    "No python-control/SLICOT, ADAC end-to-end, audio-quality or video-quality benchmark."
+  ]
+}

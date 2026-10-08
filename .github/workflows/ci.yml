@@ -1,0 +1,38 @@
+name: CI
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  python:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        python: ['3.10', '3.13']
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python -m pip install '.[dev]'
+      - run: python -m unittest discover -s tests -v
+      - run: python examples/basic.py
+      - run: python examples/cascade.py
+      - run: dexted-dsp check examples/safe.json
+      - run: python tools/documentation_smoke.py
+      - run: python tools/check_documentation.py
+      - run: python tools/check_links.py
+      - run: python -m build
+      - run: python -m twine check dist/*
+  native:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - run: sudo apt-get update && sudo apt-get install -y libboost-dev cmake g++
+      - run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+      - run: cmake --build build --parallel 2
+      - run: ctest --test-dir build --output-on-failure

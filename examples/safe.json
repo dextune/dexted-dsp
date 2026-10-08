@@ -1,0 +1,12 @@
+{
+  "type": "biquad",
+  "precision": "float32",
+  "max_gain": 1.0,
+  "coefficients": [
+    0.25,
+    0,
+    0,
+    -0.5,
+    0
+  ]
+}

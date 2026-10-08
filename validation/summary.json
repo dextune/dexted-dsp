@@ -1,0 +1,22 @@
+{
+  "version": "0.1.0",
+  "status": "local release bundle validated; not published",
+  "python_core_test_methods": 35,
+  "installed_wheel_test_methods": 35,
+  "native_ctest": "passed",
+  "installed_cmake_consumer": "passed",
+  "asan_ubsan_native_tests": "passed for exercised cases",
+  "native_wrapper_random_cases": 256,
+  "native_wrapper_mismatches": 0,
+  "native_benchmark_fixtures": 4096,
+  "native_exact_vs_fraction_disagreements": 0,
+  "native_random_bit_rows": 2048,
+  "native_random_bit_disagreements": 0,
+  "benchmark_source_hashes_match_final_tree": true,
+  "wheel_install_isolated_venv": "passed",
+  "sdist_rebuild_offline_with_existing_backend": "passed",
+  "hosted_github_actions": "not run",
+  "independent_external_audit": "not performed",
+  "general_crouzeix_theorem_verification": "not performed; docs only",
+  "compiler_warning": "GCC14/Boost cpp_int inlining warning preserved; see benchmark_run.log"
+}

@@ -1,0 +1,57 @@
+{
+  "status": "local documentation revision validated; not published",
+  "runtime_version": "0.1.0",
+  "documentation_revision": 1,
+  "validated_on": "2026-10-07",
+  "languages": [
+    "en",
+    "ko",
+    "zh-CN",
+    "ja"
+  ],
+  "primary_documents": 28,
+  "english_readme_alias": "README.en.md",
+  "core_algorithms_changed": false,
+  "measured_source_files_unchanged": 12,
+  "archived_benchmark_sha256": "0332cbc6a22ebf2da482a043b3f206ae175bcab5d71f640417c96c46c7ac99a0",
+  "full_benchmark_retimed": false,
+  "separate_benchmark_smoke": {
+    "n_per_family": 32,
+    "families": 4,
+    "trials": 3,
+    "path": "benchmark_smoke/",
+    "status": "passed"
+  },
+  "saved_fixture_exact_recheck": {
+    "rows": 4096,
+    "integer_fraction_mismatches": 0
+  },
+  "python_core_test_methods": 35,
+  "documentation_scenarios": 12,
+  "native_ctest_entries_passed": 1,
+  "native_wrapper_cases": 256,
+  "native_wrapper_mismatches": 0,
+  "cmake_install": "passed",
+  "installed_cmake_consumer": "passed",
+  "wheel_install": "passed in a new environment with PYTHONPATH removed",
+  "installed_wheel_test_methods": 35,
+  "installed_wheel_documentation_scenarios": 12,
+  "wheel_readme_metadata_matches": true,
+  "source_distribution": "build and inspection recorded in distribution_audit.json",
+  "packaging_method": "installed setuptools 82.0.1 PEP517 backend; no build isolation/download",
+  "python_build_frontend": "not run; optional dependency download failed",
+  "twine_check": "not run; optional dependency download failed",
+  "local_markdown_links_checked": 420,
+  "local_markdown_missing_links": 0,
+  "python_documentation_snippets_parsed": 16,
+  "benchmark_table_rows_checked": 32,
+  "csv_rows_checked": 16,
+  "limitations": [
+    "No hosted GitHub Actions or publication performed.",
+    "No independent external mathematical, code or professional translation audit.",
+    "No OpenAI general theorem proof kernel run; conditional notes only.",
+    "No new full performance experiment or perceptual-quality evaluation.",
+    "GCC/Boost warning logs retained; tested cases do not prove all compiler behavior.",
+    "External URL availability and Markdown anchor targets were not checked by the local link script."
+  ]
+}

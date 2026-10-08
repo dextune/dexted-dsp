@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "wheel": "certified_dsp-0.1.0-py3-none-any.whl",
+  "sha256": "33359571fd74ffb16ed84b2dbcd4ecd81da8545370791d5465ff2e76df404d50",
+  "readme_metadata_matches_utf8": true,
+  "runtime_modules_match_source": true,
+  "native_binaries_bundled": false,
+  "version": "0.1.0",
+  "requires_python": ">=3.10",
+  "twine_check": "not run; download unavailable"
+}

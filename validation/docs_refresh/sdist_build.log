@@ -1,0 +1,195 @@
+running sdist
+running egg_info
+writing src/certified_dsp.egg-info/PKG-INFO
+writing dependency_links to src/certified_dsp.egg-info/dependency_links.txt
+writing entry points to src/certified_dsp.egg-info/entry_points.txt
+writing requirements to src/certified_dsp.egg-info/requires.txt
+writing top-level names to src/certified_dsp.egg-info/top_level.txt
+reading manifest file 'src/certified_dsp.egg-info/SOURCES.txt'
+reading manifest template 'MANIFEST.in'
+warning: no files found matching 'CMakeLists.txt' under directory 'cpp'
+adding license file 'LICENSE'
+adding license file 'NOTICE.md'
+writing manifest file 'src/certified_dsp.egg-info/SOURCES.txt'
+running check
+creating certified_dsp-0.1.0
+creating certified_dsp-0.1.0/.github/ISSUE_TEMPLATE
+creating certified_dsp-0.1.0/.github/workflows
+creating certified_dsp-0.1.0/benchmarks
+creating certified_dsp-0.1.0/benchmarks/figures
+creating certified_dsp-0.1.0/benchmarks/results
+creating certified_dsp-0.1.0/cpp/cmake
+creating certified_dsp-0.1.0/cpp/include/certified_dsp
+creating certified_dsp-0.1.0/cpp/src
+creating certified_dsp-0.1.0/cpp/tests
+creating certified_dsp-0.1.0/docs
+creating certified_dsp-0.1.0/docs/en
+creating certified_dsp-0.1.0/docs/ja
+creating certified_dsp-0.1.0/docs/ko
+creating certified_dsp-0.1.0/docs/math
+creating certified_dsp-0.1.0/docs/provenance
+creating certified_dsp-0.1.0/docs/zh-CN
+creating certified_dsp-0.1.0/examples
+creating certified_dsp-0.1.0/src/certified_dsp
+creating certified_dsp-0.1.0/src/certified_dsp.egg-info
+creating certified_dsp-0.1.0/tests
+creating certified_dsp-0.1.0/tools
+creating certified_dsp-0.1.0/validation
+creating certified_dsp-0.1.0/validation/docs_refresh
+creating certified_dsp-0.1.0/validation/docs_refresh/benchmark_smoke
+copying files to certified_dsp-0.1.0...
+copying CHANGELOG.md -> certified_dsp-0.1.0
+copying CITATION.cff -> certified_dsp-0.1.0
+copying CMakeLists.txt -> certified_dsp-0.1.0
+copying CONTRIBUTING.md -> certified_dsp-0.1.0
+copying LICENSE -> certified_dsp-0.1.0
+copying MANIFEST.in -> certified_dsp-0.1.0
+copying NOTICE.md -> certified_dsp-0.1.0
+copying README.en.md -> certified_dsp-0.1.0
+copying README.ja.md -> certified_dsp-0.1.0
+copying README.ko.md -> certified_dsp-0.1.0
+copying README.md -> certified_dsp-0.1.0
+copying README.zh-CN.md -> certified_dsp-0.1.0
+copying SECURITY.md -> certified_dsp-0.1.0
+copying pyproject.toml -> certified_dsp-0.1.0
+copying requirements-bench-tested.txt -> certified_dsp-0.1.0
+copying .github/ISSUE_TEMPLATE/bug_report.md -> certified_dsp-0.1.0/.github/ISSUE_TEMPLATE
+copying .github/workflows/ci.yml -> certified_dsp-0.1.0/.github/workflows
+copying benchmarks/README.md -> certified_dsp-0.1.0/benchmarks
+copying benchmarks/kernels.cpp -> certified_dsp-0.1.0/benchmarks
+copying benchmarks/plot.py -> certified_dsp-0.1.0/benchmarks
+copying benchmarks/run.py -> certified_dsp-0.1.0/benchmarks
+copying benchmarks/figures/hidden_peak.png -> certified_dsp-0.1.0/benchmarks/figures
+copying benchmarks/figures/hidden_peak.svg -> certified_dsp-0.1.0/benchmarks/figures
+copying benchmarks/figures/high_q_correctness.png -> certified_dsp-0.1.0/benchmarks/figures
+copying benchmarks/figures/high_q_correctness.svg -> certified_dsp-0.1.0/benchmarks/figures
+copying benchmarks/figures/native_latency.png -> certified_dsp-0.1.0/benchmarks/figures
+copying benchmarks/figures/native_latency.svg -> certified_dsp-0.1.0/benchmarks/figures
+copying benchmarks/figures/python_latency.png -> certified_dsp-0.1.0/benchmarks/figures
+copying benchmarks/figures/python_latency.svg -> certified_dsp-0.1.0/benchmarks/figures
+copying benchmarks/results/benchmark.json -> certified_dsp-0.1.0/benchmarks/results
+copying benchmarks/results/environment.json -> certified_dsp-0.1.0/benchmarks/results
+copying benchmarks/results/fixtures.npz -> certified_dsp-0.1.0/benchmarks/results
+copying benchmarks/results/protocol.json -> certified_dsp-0.1.0/benchmarks/results
+copying benchmarks/results/summary.csv -> certified_dsp-0.1.0/benchmarks/results
+copying cpp/cmake/CertifiedDSPConfig.cmake.in -> certified_dsp-0.1.0/cpp/cmake
+copying cpp/include/certified_dsp/biquad.hpp -> certified_dsp-0.1.0/cpp/include/certified_dsp
+copying cpp/include/certified_dsp/c_api.h -> certified_dsp-0.1.0/cpp/include/certified_dsp
+copying cpp/src/c_api.cpp -> certified_dsp-0.1.0/cpp/src
+copying cpp/tests/test_biquad.cpp -> certified_dsp-0.1.0/cpp/tests
+copying docs/API.md -> certified_dsp-0.1.0/docs
+copying docs/README.md -> certified_dsp-0.1.0/docs
+copying docs/REFERENCES.md -> certified_dsp-0.1.0/docs
+copying docs/RELEASING.md -> certified_dsp-0.1.0/docs
+copying docs/en/BENCHMARKS.md -> certified_dsp-0.1.0/docs/en
+copying docs/en/MATHEMATICS.md -> certified_dsp-0.1.0/docs/en
+copying docs/en/PROVENANCE.md -> certified_dsp-0.1.0/docs/en
+copying docs/en/RELEASING.md -> certified_dsp-0.1.0/docs/en
+copying docs/en/TESTING.md -> certified_dsp-0.1.0/docs/en
+copying docs/en/USER_GUIDE.md -> certified_dsp-0.1.0/docs/en
+copying docs/ja/BENCHMARKS.md -> certified_dsp-0.1.0/docs/ja
+copying docs/ja/MATHEMATICS.md -> certified_dsp-0.1.0/docs/ja
+copying docs/ja/PROVENANCE.md -> certified_dsp-0.1.0/docs/ja
+copying docs/ja/RELEASING.md -> certified_dsp-0.1.0/docs/ja
+copying docs/ja/TESTING.md -> certified_dsp-0.1.0/docs/ja
+copying docs/ja/USER_GUIDE.md -> certified_dsp-0.1.0/docs/ja
+copying docs/ko/BENCHMARKS.md -> certified_dsp-0.1.0/docs/ko
+copying docs/ko/MATHEMATICS.md -> certified_dsp-0.1.0/docs/ko
+copying docs/ko/PROVENANCE.md -> certified_dsp-0.1.0/docs/ko
+copying docs/ko/RELEASING.md -> certified_dsp-0.1.0/docs/ko
+copying docs/ko/TESTING.md -> certified_dsp-0.1.0/docs/ko
+copying docs/ko/USER_GUIDE.md -> certified_dsp-0.1.0/docs/ko
+copying docs/math/biquad.md -> certified_dsp-0.1.0/docs/math
+copying docs/math/cascade.md -> certified_dsp-0.1.0/docs/math
+copying docs/math/crouzeix.md -> certified_dsp-0.1.0/docs/math
+copying docs/provenance/sources.json -> certified_dsp-0.1.0/docs/provenance
+copying docs/zh-CN/BENCHMARKS.md -> certified_dsp-0.1.0/docs/zh-CN
+copying docs/zh-CN/MATHEMATICS.md -> certified_dsp-0.1.0/docs/zh-CN
+copying docs/zh-CN/PROVENANCE.md -> certified_dsp-0.1.0/docs/zh-CN
+copying docs/zh-CN/RELEASING.md -> certified_dsp-0.1.0/docs/zh-CN
+copying docs/zh-CN/TESTING.md -> certified_dsp-0.1.0/docs/zh-CN
+copying docs/zh-CN/USER_GUIDE.md -> certified_dsp-0.1.0/docs/zh-CN
+copying examples/basic.py -> certified_dsp-0.1.0/examples
+copying examples/budget_limited.json -> certified_dsp-0.1.0/examples
+copying examples/cascade.py -> certified_dsp-0.1.0/examples
+copying examples/compensating_cascade.json -> certified_dsp-0.1.0/examples
+copying examples/hidden_peak.json -> certified_dsp-0.1.0/examples
+copying examples/safe.json -> certified_dsp-0.1.0/examples
+copying examples/scipy_sos.py -> certified_dsp-0.1.0/examples
+copying src/certified_dsp/__init__.py -> certified_dsp-0.1.0/src/certified_dsp
+copying src/certified_dsp/__main__.py -> certified_dsp-0.1.0/src/certified_dsp
+copying src/certified_dsp/biquad.py -> certified_dsp-0.1.0/src/certified_dsp
+copying src/certified_dsp/cascade.py -> certified_dsp-0.1.0/src/certified_dsp
+copying src/certified_dsp/cli.py -> certified_dsp-0.1.0/src/certified_dsp
+copying src/certified_dsp/model.py -> certified_dsp-0.1.0/src/certified_dsp
+copying src/certified_dsp/native.py -> certified_dsp-0.1.0/src/certified_dsp
+copying src/certified_dsp/py.typed -> certified_dsp-0.1.0/src/certified_dsp
+copying src/certified_dsp/reference.py -> certified_dsp-0.1.0/src/certified_dsp
+copying src/certified_dsp/verify.py -> certified_dsp-0.1.0/src/certified_dsp
+copying src/certified_dsp.egg-info/PKG-INFO -> certified_dsp-0.1.0/src/certified_dsp.egg-info
+copying src/certified_dsp.egg-info/SOURCES.txt -> certified_dsp-0.1.0/src/certified_dsp.egg-info
+copying src/certified_dsp.egg-info/dependency_links.txt -> certified_dsp-0.1.0/src/certified_dsp.egg-info
+copying src/certified_dsp.egg-info/entry_points.txt -> certified_dsp-0.1.0/src/certified_dsp.egg-info
+copying src/certified_dsp.egg-info/requires.txt -> certified_dsp-0.1.0/src/certified_dsp.egg-info
+copying src/certified_dsp.egg-info/top_level.txt -> certified_dsp-0.1.0/src/certified_dsp.egg-info
+copying tests/test_certified_dsp.py -> certified_dsp-0.1.0/tests
+copying tools/audit_benchmark.py -> certified_dsp-0.1.0/tools
+copying tools/check_documentation.py -> certified_dsp-0.1.0/tools
+copying tools/check_links.py -> certified_dsp-0.1.0/tools
+copying tools/documentation_smoke.py -> certified_dsp-0.1.0/tools
+copying tools/native_smoke.py -> certified_dsp-0.1.0/tools
+copying validation/README.md -> certified_dsp-0.1.0/validation
+copying validation/benchmark_before_input_validation.json -> certified_dsp-0.1.0/validation
+copying validation/benchmark_before_input_validation.log -> certified_dsp-0.1.0/validation
+copying validation/benchmark_before_review.json -> certified_dsp-0.1.0/validation
+copying validation/benchmark_before_review.log -> certified_dsp-0.1.0/validation
+copying validation/benchmark_run.log -> certified_dsp-0.1.0/validation
+copying validation/cli_safe.log -> certified_dsp-0.1.0/validation
+copying validation/cli_verify.log -> certified_dsp-0.1.0/validation
+copying validation/cmake_build.log -> certified_dsp-0.1.0/validation
+copying validation/cmake_configure.log -> certified_dsp-0.1.0/validation
+copying validation/cmake_consumer.log -> certified_dsp-0.1.0/validation
+copying validation/cmake_install.log -> certified_dsp-0.1.0/validation
+copying validation/ctest.log -> certified_dsp-0.1.0/validation
+copying validation/installed_examples.log -> certified_dsp-0.1.0/validation
+copying validation/installed_wheel_tests.log -> certified_dsp-0.1.0/validation
+copying validation/links.log -> certified_dsp-0.1.0/validation
+copying validation/native_wrapper.log -> certified_dsp-0.1.0/validation
+copying validation/package_build.log -> certified_dsp-0.1.0/validation
+copying validation/python_tests.log -> certified_dsp-0.1.0/validation
+copying validation/safe_certificate.json -> certified_dsp-0.1.0/validation
+copying validation/sanitizers.log -> certified_dsp-0.1.0/validation
+copying validation/sdist_rebuild.log -> certified_dsp-0.1.0/validation
+copying validation/summary.json -> certified_dsp-0.1.0/validation
+copying validation/wheel_install.log -> certified_dsp-0.1.0/validation
+copying validation/docs_refresh/benchmark_audit.json -> certified_dsp-0.1.0/validation/docs_refresh
+copying validation/docs_refresh/benchmark_smoke.log -> certified_dsp-0.1.0/validation/docs_refresh
+copying validation/docs_refresh/build_tool_download.log -> certified_dsp-0.1.0/validation/docs_refresh
+copying validation/docs_refresh/cmake_build.log -> certified_dsp-0.1.0/validation/docs_refresh
+copying validation/docs_refresh/cmake_configure.log -> certified_dsp-0.1.0/validation/docs_refresh
+copying validation/docs_refresh/cmake_consumer.log -> certified_dsp-0.1.0/validation/docs_refresh
+copying validation/docs_refresh/cmake_install.log -> certified_dsp-0.1.0/validation/docs_refresh
+copying validation/docs_refresh/ctest.log -> certified_dsp-0.1.0/validation/docs_refresh
+copying validation/docs_refresh/distribution_audit.json -> certified_dsp-0.1.0/validation/docs_refresh
+copying validation/docs_refresh/documentation_check.json -> certified_dsp-0.1.0/validation/docs_refresh
+copying validation/docs_refresh/documentation_smoke.json -> certified_dsp-0.1.0/validation/docs_refresh
+copying validation/docs_refresh/links.log -> certified_dsp-0.1.0/validation/docs_refresh
+copying validation/docs_refresh/native_wrapper.json -> certified_dsp-0.1.0/validation/docs_refresh
+copying validation/docs_refresh/python_tests.log -> certified_dsp-0.1.0/validation/docs_refresh
+copying validation/docs_refresh/sdist_build.log -> certified_dsp-0.1.0/validation/docs_refresh
+copying validation/docs_refresh/sdist_wheel_rebuild.log -> certified_dsp-0.1.0/validation/docs_refresh
+copying validation/docs_refresh/summary.json -> certified_dsp-0.1.0/validation/docs_refresh
+copying validation/docs_refresh/wheel_build.log -> certified_dsp-0.1.0/validation/docs_refresh
+copying validation/docs_refresh/wheel_documentation_smoke.json -> certified_dsp-0.1.0/validation/docs_refresh
+copying validation/docs_refresh/wheel_install.log -> certified_dsp-0.1.0/validation/docs_refresh
+copying validation/docs_refresh/wheel_metadata.json -> certified_dsp-0.1.0/validation/docs_refresh
+copying validation/docs_refresh/wheel_tests.log -> certified_dsp-0.1.0/validation/docs_refresh
+copying validation/docs_refresh/benchmark_smoke/benchmark.json -> certified_dsp-0.1.0/validation/docs_refresh/benchmark_smoke
+copying validation/docs_refresh/benchmark_smoke/environment.json -> certified_dsp-0.1.0/validation/docs_refresh/benchmark_smoke
+copying validation/docs_refresh/benchmark_smoke/fixtures.npz -> certified_dsp-0.1.0/validation/docs_refresh/benchmark_smoke
+copying validation/docs_refresh/benchmark_smoke/protocol.json -> certified_dsp-0.1.0/validation/docs_refresh/benchmark_smoke
+copying src/certified_dsp.egg-info/SOURCES.txt -> certified_dsp-0.1.0/src/certified_dsp.egg-info
+Writing certified_dsp-0.1.0/setup.cfg
+Creating tar archive
+removing 'certified_dsp-0.1.0' (and everything under it)
+certified_dsp-0.1.0.tar.gz

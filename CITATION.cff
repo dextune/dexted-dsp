@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "Please cite this software version and the original mathematical sources when applicable."
+title: "Dexted DSP: exact continuous-frequency filter verification"
+type: software
+authors:
+  - name: "DEXTUNE and Dexted DSP contributors"
+version: 0.1.0
+license: MIT
+repository-code: "https://github.com/dextune/dexted-dsp"
+url: "https://github.com/dextune/dexted-dsp"
+abstract: "Research-alpha Python and C++20 library for exact fixed real biquad and cascade gain certificates."

@@ -1,0 +1,76 @@
+{
+  "schema": "dexted-dsp/research-provenance/v1",
+  "checked_on": "2026-10-07",
+  "documentation_revision": 1,
+  "runtime_version": "0.1.0",
+  "openai_repository": "https://github.com/openai/math",
+  "pinned_commit": "adc7f1241b42e322a6451854ab7e4b4c146bf78a",
+  "sources": [
+    {
+      "id": "OAI-README",
+      "title": "OpenAI math repository README",
+      "url": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/README.md",
+      "git_blob_sha": "8ac0cb7dbf1f38ad3b7480310d4e1d9482f0cfe8",
+      "used_for": "Collection provenance and varying verification status. Not a runtime dependency."
+    },
+    {
+      "id": "OAI-325",
+      "title": "A direct proof of the complete Crouzeix inequality",
+      "date": "2026-09-26",
+      "result_family": "325",
+      "url": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/preprints/A-direct-proof-of-the-complete-Crouzeix-inequality-September-26-2026/build/main.tex",
+      "git_blob_sha": "5976502d77febf477933f36f6205c6e1aa6370ae",
+      "location": "Section 1, theorem labelled thm:main; definitions of W(A) and P[A].",
+      "used_for": "Conditional mathematical extension in docs/math/crouzeix.md only. No production code or benchmark depends on it."
+    },
+    {
+      "id": "OAI-DFT",
+      "title": "An explicit power saving for the exact discrete Fourier transform",
+      "date": "2026-09-25",
+      "url": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/preprints/An-explicit-power-saving-for-the-exact-discrete-Fourier-transform-September-25-2026/build/sections/introduction.tex",
+      "git_blob_sha": "22171e11e7c43a367b823725514c7f424527217d",
+      "location": "Arithmetic model, main result and caveat after cor:decimal.",
+      "used_for": "Exploratory scoping; not an implemented FFT speedup."
+    },
+    {
+      "id": "CP-2017",
+      "title": "The numerical range as a spectral set",
+      "authors": [
+        "Michel Crouzeix",
+        "César Palencia"
+      ],
+      "url": "https://arxiv.org/abs/1702.00668",
+      "used_for": "Established complete (1+sqrt(2)) comparison bound."
+    },
+    {
+      "id": "SCIPY-FREQZ",
+      "title": "SciPy signal.freqz documentation",
+      "url": "https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.freqz.html",
+      "used_for": "Meaning of sampled frequency-response baseline; recorded benchmark used SciPy 1.17.0, not necessarily the current documentation version."
+    },
+    {
+      "id": "PYPA",
+      "title": "Packaging Python Projects",
+      "url": "https://packaging.python.org/en/latest/tutorials/packaging-projects/",
+      "used_for": "Source layout, wheel/sdist and local installation instructions."
+    }
+  ],
+  "lineage": [
+    {
+      "artifact": "av_certified_research_v2.zip",
+      "sha256": "763dddc1fd01fac7fbadef1e42ead9f6e7e7137f2cf4f040b84546f50c58dcb3",
+      "bundled_again": false
+    },
+    {
+      "artifact": "CertifiedDSP-v0.1.0-github.zip",
+      "sha256": "ce1692badc85bf16168331f7660ad1748ff78f943d29d87b94f5b0ebde1c3bf0",
+      "bundled_again": false
+    }
+  ],
+  "limitations": [
+    "No OpenAI or ADAC source code is vendored.",
+    "No OpenAI endorsement, employment or affiliation is claimed.",
+    "No independent proof of the general constant-two source theorem was checked.",
+    "No claim of a new elementary Jury/Bernstein theorem or exhaustive novelty review."
+  ]
+}
