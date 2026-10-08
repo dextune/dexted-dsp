@@ -1,0 +1,21 @@
+test_absolute_counter_not_short_clip_loop (test_longrun.LongrunTests.test_absolute_counter_not_short_clip_loop) ... ok
+test_distinct_seed_changes_values (test_longrun.LongrunTests.test_distinct_seed_changes_values) ... ok
+test_duplicate_ids_rejected (test_longrun.LongrunTests.test_duplicate_ids_rejected) ... ok
+test_duplicate_seeds_rejected (test_longrun.LongrunTests.test_duplicate_seeds_rejected) ... ok
+test_duration_boolean_rejected (test_longrun.LongrunTests.test_duration_boolean_rejected) ... ok
+test_fake_industrial_source_rejected (test_longrun.LongrunTests.test_fake_industrial_source_rejected) ... ok
+test_generator_independent_of_block_partition (test_longrun.LongrunTests.test_generator_independent_of_block_partition) ... ok
+test_inventory_exact (test_longrun.LongrunTests.test_inventory_exact) ... ok
+test_outside_frame_range_rejected (test_longrun.LongrunTests.test_outside_frame_range_rejected) ... ok
+test_path_traversal_id_rejected (test_longrun.LongrunTests.test_path_traversal_id_rejected) ... ok
+test_pilot_really_three_hours (test_longrun.LongrunTests.test_pilot_really_three_hours) ... ok
+test_reset_state_negative_control_is_detectable (test_longrun.LongrunTests.test_reset_state_negative_control_is_detectable) ... ok
+test_short_loop_label_rejected (test_longrun.LongrunTests.test_short_loop_label_rejected) ... ok
+test_smoke_is_explicitly_short (test_longrun.LongrunTests.test_smoke_is_explicitly_short) ... ok
+test_tail_is_zero_but_not_entire_record (test_longrun.LongrunTests.test_tail_is_zero_but_not_entire_record) ... ok
+test_unknown_subset_rejected (test_longrun.LongrunTests.test_unknown_subset_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 0.008s
+
+OK

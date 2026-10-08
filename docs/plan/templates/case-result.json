@@ -1,0 +1,22 @@
+{
+  "schema": "dexted-dsp/industrial-case-result-template/v1",
+  "template_not_executed": true,
+  "case_id": null,
+  "source_commit": null,
+  "input_sha256": null,
+  "source_kind": null,
+  "precision": null,
+  "gain_limit_hex": null,
+  "oracle_status": "NOT_RUN",
+  "mathematical_status": "NOT_RUN",
+  "execution_status": "NOT_RUN",
+  "verification_status": "NOT_RUN",
+  "deployment_allowed": false,
+  "reason": null,
+  "resource_profile": null,
+  "raw_time_ms": [],
+  "raw_rss_bytes": [],
+  "proof_artifact_sha256": null,
+  "failure_artifact_sha256": null,
+  "original_failure_preserved": true
+}

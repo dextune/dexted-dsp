@@ -1,0 +1,375 @@
+{
+  "schema": "dexted-dsp/industrial-long-signals/v1",
+  "status": "defined_not_industrially_qualified",
+  "generator": "tooling/longrun.py",
+  "signal_identity": "schema + seed + absolute index + pinned NumPy/libm environment",
+  "warning": "Synthetic, not field recordings; virtual signal duration is not wall-clock soak duration.",
+  "records": [
+    {
+      "id": "A01",
+      "source_kind": "synthetic",
+      "kind": "sweep",
+      "duration_seconds": 1800,
+      "sample_rate_hz": 48000,
+      "channels": 2,
+      "dtype": "float32",
+      "seed": 20261008,
+      "profiles": [
+        "qualification",
+        "pilot"
+      ],
+      "loop_short_clip": false,
+      "purpose": "audio-export integration"
+    },
+    {
+      "id": "A02",
+      "source_kind": "synthetic",
+      "kind": "multitone",
+      "duration_seconds": 1800,
+      "sample_rate_hz": 48000,
+      "channels": 2,
+      "dtype": "float32",
+      "seed": 20262017,
+      "profiles": [
+        "qualification",
+        "pilot"
+      ],
+      "loop_short_clip": false,
+      "purpose": "audio-export integration"
+    },
+    {
+      "id": "A03",
+      "source_kind": "synthetic",
+      "kind": "wideband",
+      "duration_seconds": 1800,
+      "sample_rate_hz": 48000,
+      "channels": 2,
+      "dtype": "float32",
+      "seed": 20263026,
+      "profiles": [
+        "qualification",
+        "pilot"
+      ],
+      "loop_short_clip": false,
+      "purpose": "audio-export integration"
+    },
+    {
+      "id": "A04",
+      "source_kind": "synthetic",
+      "kind": "transients",
+      "duration_seconds": 1800,
+      "sample_rate_hz": 48000,
+      "channels": 2,
+      "dtype": "float32",
+      "seed": 20264035,
+      "profiles": [
+        "qualification",
+        "pilot"
+      ],
+      "loop_short_clip": false,
+      "purpose": "audio-export integration"
+    },
+    {
+      "id": "A05",
+      "source_kind": "synthetic",
+      "kind": "silence_recovery",
+      "duration_seconds": 1800,
+      "sample_rate_hz": 48000,
+      "channels": 2,
+      "dtype": "float32",
+      "seed": 20265044,
+      "profiles": [
+        "qualification",
+        "pilot"
+      ],
+      "loop_short_clip": false,
+      "purpose": "audio-export integration"
+    },
+    {
+      "id": "A06",
+      "source_kind": "synthetic",
+      "kind": "drift",
+      "duration_seconds": 1800,
+      "sample_rate_hz": 48000,
+      "channels": 2,
+      "dtype": "float32",
+      "seed": 20266053,
+      "profiles": [
+        "qualification",
+        "pilot"
+      ],
+      "loop_short_clip": false,
+      "purpose": "audio-export integration"
+    },
+    {
+      "id": "A07",
+      "source_kind": "synthetic",
+      "kind": "sweep",
+      "duration_seconds": 1800,
+      "sample_rate_hz": 48000,
+      "channels": 2,
+      "dtype": "float32",
+      "seed": 20267062,
+      "profiles": [
+        "qualification"
+      ],
+      "loop_short_clip": false,
+      "purpose": "audio-export integration"
+    },
+    {
+      "id": "A08",
+      "source_kind": "synthetic",
+      "kind": "multitone",
+      "duration_seconds": 1800,
+      "sample_rate_hz": 48000,
+      "channels": 2,
+      "dtype": "float32",
+      "seed": 20268071,
+      "profiles": [
+        "qualification"
+      ],
+      "loop_short_clip": false,
+      "purpose": "audio-export integration"
+    },
+    {
+      "id": "A09",
+      "source_kind": "synthetic",
+      "kind": "wideband",
+      "duration_seconds": 1800,
+      "sample_rate_hz": 48000,
+      "channels": 2,
+      "dtype": "float32",
+      "seed": 20269080,
+      "profiles": [
+        "qualification"
+      ],
+      "loop_short_clip": false,
+      "purpose": "audio-export integration"
+    },
+    {
+      "id": "A10",
+      "source_kind": "synthetic",
+      "kind": "transients",
+      "duration_seconds": 1800,
+      "sample_rate_hz": 48000,
+      "channels": 2,
+      "dtype": "float32",
+      "seed": 20270089,
+      "profiles": [
+        "qualification"
+      ],
+      "loop_short_clip": false,
+      "purpose": "audio-export integration"
+    },
+    {
+      "id": "A11",
+      "source_kind": "synthetic",
+      "kind": "silence_recovery",
+      "duration_seconds": 1800,
+      "sample_rate_hz": 48000,
+      "channels": 2,
+      "dtype": "float32",
+      "seed": 20271098,
+      "profiles": [
+        "qualification"
+      ],
+      "loop_short_clip": false,
+      "purpose": "audio-export integration"
+    },
+    {
+      "id": "A12",
+      "source_kind": "synthetic",
+      "kind": "drift",
+      "duration_seconds": 1800,
+      "sample_rate_hz": 48000,
+      "channels": 2,
+      "dtype": "float32",
+      "seed": 20272107,
+      "profiles": [
+        "qualification"
+      ],
+      "loop_short_clip": false,
+      "purpose": "audio-export integration"
+    },
+    {
+      "id": "B01",
+      "source_kind": "synthetic",
+      "kind": "sweep",
+      "duration_seconds": 3600,
+      "sample_rate_hz": 96000,
+      "channels": 2,
+      "dtype": "float32",
+      "seed": 20273116,
+      "profiles": [
+        "qualification"
+      ],
+      "loop_short_clip": false,
+      "purpose": "high-rate offline pipeline"
+    },
+    {
+      "id": "B02",
+      "source_kind": "synthetic",
+      "kind": "multitone",
+      "duration_seconds": 3600,
+      "sample_rate_hz": 96000,
+      "channels": 2,
+      "dtype": "float32",
+      "seed": 20274125,
+      "profiles": [
+        "qualification"
+      ],
+      "loop_short_clip": false,
+      "purpose": "high-rate offline pipeline"
+    },
+    {
+      "id": "B03",
+      "source_kind": "synthetic",
+      "kind": "wideband",
+      "duration_seconds": 3600,
+      "sample_rate_hz": 96000,
+      "channels": 2,
+      "dtype": "float32",
+      "seed": 20275134,
+      "profiles": [
+        "qualification"
+      ],
+      "loop_short_clip": false,
+      "purpose": "high-rate offline pipeline"
+    },
+    {
+      "id": "B04",
+      "source_kind": "synthetic",
+      "kind": "transients",
+      "duration_seconds": 3600,
+      "sample_rate_hz": 96000,
+      "channels": 2,
+      "dtype": "float32",
+      "seed": 20276143,
+      "profiles": [
+        "qualification"
+      ],
+      "loop_short_clip": false,
+      "purpose": "high-rate offline pipeline"
+    },
+    {
+      "id": "B05",
+      "source_kind": "synthetic",
+      "kind": "silence_recovery",
+      "duration_seconds": 3600,
+      "sample_rate_hz": 96000,
+      "channels": 2,
+      "dtype": "float32",
+      "seed": 20277152,
+      "profiles": [
+        "qualification"
+      ],
+      "loop_short_clip": false,
+      "purpose": "high-rate offline pipeline"
+    },
+    {
+      "id": "B06",
+      "source_kind": "synthetic",
+      "kind": "drift",
+      "duration_seconds": 3600,
+      "sample_rate_hz": 96000,
+      "channels": 2,
+      "dtype": "float32",
+      "seed": 20278161,
+      "profiles": [
+        "qualification"
+      ],
+      "loop_short_clip": false,
+      "purpose": "high-rate offline pipeline"
+    },
+    {
+      "id": "C01",
+      "source_kind": "synthetic",
+      "kind": "sweep",
+      "duration_seconds": 14400,
+      "sample_rate_hz": 1000,
+      "channels": 8,
+      "dtype": "float32",
+      "seed": 20279170,
+      "profiles": [
+        "qualification"
+      ],
+      "loop_short_clip": false,
+      "purpose": "multichannel sensor drift"
+    },
+    {
+      "id": "C02",
+      "source_kind": "synthetic",
+      "kind": "multitone",
+      "duration_seconds": 14400,
+      "sample_rate_hz": 1000,
+      "channels": 8,
+      "dtype": "float32",
+      "seed": 20280179,
+      "profiles": [
+        "qualification"
+      ],
+      "loop_short_clip": false,
+      "purpose": "multichannel sensor drift"
+    },
+    {
+      "id": "C03",
+      "source_kind": "synthetic",
+      "kind": "wideband",
+      "duration_seconds": 14400,
+      "sample_rate_hz": 1000,
+      "channels": 8,
+      "dtype": "float32",
+      "seed": 20281188,
+      "profiles": [
+        "qualification"
+      ],
+      "loop_short_clip": false,
+      "purpose": "multichannel sensor drift"
+    },
+    {
+      "id": "C04",
+      "source_kind": "synthetic",
+      "kind": "transients",
+      "duration_seconds": 14400,
+      "sample_rate_hz": 1000,
+      "channels": 8,
+      "dtype": "float32",
+      "seed": 20282197,
+      "profiles": [
+        "qualification"
+      ],
+      "loop_short_clip": false,
+      "purpose": "multichannel sensor drift"
+    },
+    {
+      "id": "D01",
+      "source_kind": "synthetic",
+      "kind": "sweep",
+      "duration_seconds": 86400,
+      "sample_rate_hz": 48000,
+      "channels": 2,
+      "dtype": "float32",
+      "seed": 20283206,
+      "profiles": [
+        "qualification"
+      ],
+      "loop_short_clip": false,
+      "purpose": "long virtual input continuity"
+    },
+    {
+      "id": "D02",
+      "source_kind": "synthetic",
+      "kind": "multitone",
+      "duration_seconds": 86400,
+      "sample_rate_hz": 48000,
+      "channels": 2,
+      "dtype": "float32",
+      "seed": 20284215,
+      "profiles": [
+        "qualification"
+      ],
+      "loop_short_clip": false,
+      "purpose": "long virtual input continuity"
+    }
+  ]
+}

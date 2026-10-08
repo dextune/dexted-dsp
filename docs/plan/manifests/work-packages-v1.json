@@ -1,0 +1,639 @@
+{
+  "schema": "dexted-dsp/industrial-work-packages/v1",
+  "status": "PLANNED",
+  "baseline_weeks": 24,
+  "capacity_fte": 3.5,
+  "gross_person_days": 420,
+  "effective_person_days": 294,
+  "estimated_person_days": 252,
+  "items": [
+    {
+      "id": "S01",
+      "priority": "P0",
+      "owner_role": "PM/수학",
+      "title": "범위·고객 계약 고정",
+      "estimated_person_days": 3,
+      "depends_on": [],
+      "deliverable": "지원 모델·정밀도·산업용 의미·비목표 승인",
+      "definition_of_done": "01 문서와 goal manifest의 버전·승인자 기록",
+      "status": "PLANNED"
+    },
+    {
+      "id": "S02",
+      "priority": "P0",
+      "owner_role": "QA",
+      "title": "현재 증거·차이점 동결",
+      "estimated_person_days": 2,
+      "depends_on": [
+        "S01"
+      ],
+      "deliverable": "현재 source/benchmark/CI hash inventory",
+      "definition_of_done": "기존 9/25/1200/64 case의 의미를 혼동하지 않은 baseline",
+      "status": "PLANNED"
+    },
+    {
+      "id": "S03",
+      "priority": "P0",
+      "owner_role": "PM/데이터",
+      "title": "파트너·자료 권한 모집",
+      "estimated_person_days": 5,
+      "depends_on": [
+        "S01"
+      ],
+      "deliverable": "3개 실제 프로젝트의 데이터·일정 합의",
+      "definition_of_done": "샘플 제공/보관/재현 권한과 담당자 확보",
+      "status": "PLANNED"
+    },
+    {
+      "id": "M01",
+      "priority": "P0",
+      "owner_role": "수학",
+      "title": "증명 의무 추적표",
+      "estimated_person_days": 5,
+      "depends_on": [
+        "S02"
+      ],
+      "deliverable": "M-01~M-10 명제·코드·시험 연결",
+      "definition_of_done": "작성자 외 검토자가 범위와 가정 확인",
+      "status": "PLANNED"
+    },
+    {
+      "id": "M02",
+      "priority": "P0",
+      "owner_role": "수학",
+      "title": "독립 오라클 강화",
+      "estimated_person_days": 6,
+      "depends_on": [
+        "M01"
+      ],
+      "deliverable": "별도 polynomial expansion·exact root classifier",
+      "definition_of_done": "shipping helper 재사용 없음, analytic cases 일치",
+      "status": "PLANNED"
+    },
+    {
+      "id": "M03",
+      "priority": "P0",
+      "owner_role": "코어/QA",
+      "title": "경계·legacy golden corpus",
+      "estimated_person_days": 4,
+      "depends_on": [
+        "M01"
+      ],
+      "deliverable": "unity·ULP·unstable·v1/v2 regression fixture",
+      "definition_of_done": "old artifact immutable, boundary expected truth 확정",
+      "status": "PLANNED"
+    },
+    {
+      "id": "M04",
+      "priority": "P0",
+      "owner_role": "코어",
+      "title": "자원·입력 상한",
+      "estimated_person_days": 6,
+      "depends_on": [
+        "M03"
+      ],
+      "deliverable": "bounded parser·iterable·worker budget policy",
+      "definition_of_done": "무한 iterable/거대 proof/timeout이 프로세스를 보호",
+      "status": "PLANNED"
+    },
+    {
+      "id": "M05",
+      "priority": "P1",
+      "owner_role": "수학/코어",
+      "title": "정확한 거절 witness",
+      "estimated_person_days": 7,
+      "depends_on": [
+        "M02",
+        "M03"
+      ],
+      "deliverable": "dyadic gain witness·section stability reason",
+      "definition_of_done": "가능한 경우 독립 검증; 불가능하면 명확한 reason",
+      "status": "PLANNED"
+    },
+    {
+      "id": "M06",
+      "priority": "P1",
+      "owner_role": "코어",
+      "title": "검증된 fast path 최적화",
+      "estimated_person_days": 8,
+      "depends_on": [
+        "M02",
+        "M04"
+      ],
+      "deliverable": "scale 축약·cache·predicate/bounds 분리",
+      "definition_of_done": "모든 긍정 fast path가 동일 verifier/oracle 통과",
+      "status": "PLANNED"
+    },
+    {
+      "id": "A01",
+      "priority": "P0",
+      "owner_role": "코어",
+      "title": "상태·오류 공개 계약",
+      "estimated_person_days": 5,
+      "depends_on": [
+        "S01",
+        "M03"
+      ],
+      "deliverable": "verdict/reason/execution/unknown 모델",
+      "definition_of_done": "기존 exit code 보존, truthiness로 pass 금지",
+      "status": "PLANNED"
+    },
+    {
+      "id": "A02",
+      "priority": "P0",
+      "owner_role": "통합",
+      "title": "실제 export adapter",
+      "estimated_person_days": 6,
+      "depends_on": [
+        "A01",
+        "S03"
+      ],
+      "deliverable": "배포 비트·precision·정규화 lineage",
+      "definition_of_done": "변형 후 재인증, 제품 payload 재해시",
+      "status": "PLANNED"
+    },
+    {
+      "id": "A03",
+      "priority": "P0",
+      "owner_role": "코어",
+      "title": "인증서 소비자 경계",
+      "estimated_person_days": 7,
+      "depends_on": [
+        "M04",
+        "A01"
+      ],
+      "deliverable": "schema·integer/cover 상한·mismatch 검증",
+      "definition_of_done": "모든 필수 tamper negative control 거절",
+      "status": "PLANNED"
+    },
+    {
+      "id": "A04",
+      "priority": "P0",
+      "owner_role": "통합",
+      "title": "원자적 배포 게이트",
+      "estimated_person_days": 6,
+      "depends_on": [
+        "A02",
+        "A03"
+      ],
+      "deliverable": "artifact freeze·atomic output·stale proof 차단",
+      "definition_of_done": "TOCTOU/kill/diskfull에서 false deployment pass 0",
+      "status": "PLANNED"
+    },
+    {
+      "id": "A05",
+      "priority": "P0",
+      "owner_role": "코어",
+      "title": "격리·취소·배치 실행",
+      "estimated_person_days": 6,
+      "depends_on": [
+        "M04",
+        "A01"
+      ],
+      "deliverable": "bounded worker·job ID·partial 결과",
+      "definition_of_done": "작업 중단 후 다음 작업 정상, 이전 실패 보존",
+      "status": "PLANNED"
+    },
+    {
+      "id": "A06",
+      "priority": "P1",
+      "owner_role": "native",
+      "title": "native 계약 안정화",
+      "estimated_person_days": 8,
+      "depends_on": [
+        "A01",
+        "M03"
+      ],
+      "deliverable": "ABI·error·thread·allocation 표",
+      "definition_of_done": "C 경계 예외 0, f32 Python 판정과 일치",
+      "status": "PLANNED"
+    },
+    {
+      "id": "D01",
+      "priority": "P0",
+      "owner_role": "데이터/수학",
+      "title": "10만 계수 corpus 생성",
+      "estimated_person_days": 7,
+      "depends_on": [
+        "M02",
+        "S02"
+      ],
+      "deliverable": "5개 strata quota·seed·rawhex",
+      "definition_of_done": "invalid/unknown 분모 분리, 모든 ID 보존",
+      "status": "PLANNED"
+    },
+    {
+      "id": "D02",
+      "priority": "P0",
+      "owner_role": "데이터",
+      "title": "계보·holdout 관리",
+      "estimated_person_days": 4,
+      "depends_on": [
+        "S03",
+        "D01"
+      ],
+      "deliverable": "product/session group split·dedup",
+      "definition_of_done": "동일 parent 변형의 split 누수 0",
+      "status": "PLANNED"
+    },
+    {
+      "id": "D03",
+      "priority": "P0",
+      "owner_role": "데이터/PM",
+      "title": "실제 계수 3,000건 확보",
+      "estimated_person_days": 10,
+      "depends_on": [
+        "S03",
+        "D02"
+      ],
+      "deliverable": "rights-approved immutable exports",
+      "definition_of_done": "3 partner, 1,000 holdout 실제 확보; 미달은 BLOCKED",
+      "status": "PLANNED"
+    },
+    {
+      "id": "D04",
+      "priority": "P0",
+      "owner_role": "QA/데이터",
+      "title": "24건 장시간 corpus 강화",
+      "estimated_person_days": 5,
+      "depends_on": [
+        "S01"
+      ],
+      "deliverable": "76h manifest·peak dwell·event schedule",
+      "definition_of_done": "짧은 loop 아님, frame-count·hash·seed 검증",
+      "status": "PLANNED"
+    },
+    {
+      "id": "D05",
+      "priority": "P0",
+      "owner_role": "데이터",
+      "title": "실자료 장시간 20건",
+      "estimated_person_days": 8,
+      "depends_on": [
+        "S03",
+        "D02"
+      ],
+      "deliverable": "continuous/derived 구분과 원본권한",
+      "definition_of_done": "개별 최소길이·source lineage·privacy 확인",
+      "status": "PLANNED"
+    },
+    {
+      "id": "D06",
+      "priority": "P0",
+      "owner_role": "QA",
+      "title": "입력·결과 영구 증거",
+      "estimated_person_days": 4,
+      "depends_on": [
+        "D01",
+        "D04"
+      ],
+      "deliverable": "content-addressed storage·retention",
+      "definition_of_done": "다른 host가 동일 raw input을 확인 가능",
+      "status": "PLANNED"
+    },
+    {
+      "id": "T01",
+      "priority": "P0",
+      "owner_role": "QA/수학",
+      "title": "대규모 core/oracle 교차검증",
+      "estimated_person_days": 7,
+      "depends_on": [
+        "D01",
+        "M02",
+        "A03"
+      ],
+      "deliverable": "전량 resolved/unresolved 상태와 proof",
+      "definition_of_done": "unsafe certification 0, 미완료 행 삭제 0",
+      "status": "PLANNED"
+    },
+    {
+      "id": "T02",
+      "priority": "P0",
+      "owner_role": "QA",
+      "title": "consumer·parser mutation/fuzz",
+      "estimated_person_days": 6,
+      "depends_on": [
+        "A03",
+        "M04"
+      ],
+      "deliverable": "attack fixture·nightly fuzz report",
+      "definition_of_done": "의도적 위조 모두 탐지, crash/OOM 경계 보호",
+      "status": "PLANNED"
+    },
+    {
+      "id": "T03",
+      "priority": "P0",
+      "owner_role": "QA/통합",
+      "title": "실제 엔진 streaming adapter",
+      "estimated_person_days": 7,
+      "depends_on": [
+        "A02",
+        "D04"
+      ],
+      "deliverable": "float32/f64·block-state 비교",
+      "definition_of_done": "state reset/채널 공유/frame 누락 negative control 탐지",
+      "status": "PLANNED"
+    },
+    {
+      "id": "T04",
+      "priority": "P0",
+      "owner_role": "QA/수학",
+      "title": "공진·tail·고정밀 window",
+      "estimated_person_days": 7,
+      "depends_on": [
+        "T03",
+        "M02"
+      ],
+      "deliverable": "high-Q dwell·initial-state·tail bound",
+      "definition_of_done": "충분한 settling 해석, pointwise peak 오해 없음",
+      "status": "PLANNED"
+    },
+    {
+      "id": "T05",
+      "priority": "P0",
+      "owner_role": "QA/native",
+      "title": "OS·컴파일러 차등 검증",
+      "estimated_person_days": 5,
+      "depends_on": [
+        "A06",
+        "T01"
+      ],
+      "deliverable": "3 host-family 설치·native report",
+      "definition_of_done": "지원 조합 정확성 동일, unsupported 명시",
+      "status": "PLANNED"
+    },
+    {
+      "id": "T06",
+      "priority": "P0",
+      "owner_role": "QA/통합",
+      "title": "실패·복구·TOCTOU 주입",
+      "estimated_person_days": 6,
+      "depends_on": [
+        "A04",
+        "A05"
+      ],
+      "deliverable": "C-003~C-008 증거",
+      "definition_of_done": "incomplete artifact가 pass되는 경로 0",
+      "status": "PLANNED"
+    },
+    {
+      "id": "T07",
+      "priority": "P0",
+      "owner_role": "QA/release",
+      "title": "24h·72h wall-clock soak",
+      "estimated_person_days": 8,
+      "depends_on": [
+        "T03",
+        "T06"
+      ],
+      "deliverable": "실제 monotonic duration·RSS trend",
+      "definition_of_done": "가상 material duration과 분리, 중단원인 해결",
+      "status": "PLANNED"
+    },
+    {
+      "id": "B01",
+      "priority": "P0",
+      "owner_role": "QA",
+      "title": "benchmark 상태 손실 제거",
+      "estimated_person_days": 4,
+      "depends_on": [
+        "A01",
+        "A05"
+      ],
+      "deliverable": "JSONL per-case result와 UNKNOWN 보존",
+      "definition_of_done": "assert abort 후 성공 행만 남는 구조 제거",
+      "status": "PLANNED"
+    },
+    {
+      "id": "B02",
+      "priority": "P0",
+      "owner_role": "수학/QA",
+      "title": "공정한 SciPy/control 비교",
+      "estimated_person_days": 6,
+      "depends_on": [
+        "B01",
+        "D01"
+      ],
+      "deliverable": "SOS 표현·단위·adaptive baseline",
+      "definition_of_done": "정밀도·grid·변환비용 명시, conditioning 대조",
+      "status": "PLANNED"
+    },
+    {
+      "id": "B03",
+      "priority": "P0",
+      "owner_role": "QA",
+      "title": "격리 RSS/native 계측",
+      "estimated_person_days": 5,
+      "depends_on": [
+        "A05",
+        "B01"
+      ],
+      "deliverable": "heap/RSS/retained/native 분리",
+      "definition_of_done": "다른 method의 high-water 귀속 오류 0",
+      "status": "PLANNED"
+    },
+    {
+      "id": "B04",
+      "priority": "P0",
+      "owner_role": "QA",
+      "title": "계층 통계·원시 감사",
+      "estimated_person_days": 4,
+      "depends_on": [
+        "B02",
+        "B03"
+      ],
+      "deliverable": "paired delta·family quantiles·cluster CI",
+      "definition_of_done": "반복 횟수와 독립 사례 수 혼동 0",
+      "status": "PLANNED"
+    },
+    {
+      "id": "B05",
+      "priority": "P0",
+      "owner_role": "외부/QA",
+      "title": "외부 장비 정확성 재현",
+      "estimated_person_days": 6,
+      "depends_on": [
+        "D06",
+        "T05",
+        "B04"
+      ],
+      "deliverable": "외부 조직 source/input verdict 재현",
+      "definition_of_done": "작성자의 또 다른 CI runner를 외부 감사로 부르지 않음",
+      "status": "PLANNED"
+    },
+    {
+      "id": "B06",
+      "priority": "P1",
+      "owner_role": "UX/QA",
+      "title": "근거 기반 README·시각화",
+      "estimated_person_days": 4,
+      "depends_on": [
+        "B04"
+      ],
+      "deliverable": "비용·unknown·모바일 포함 charts",
+      "definition_of_done": "raw 재생성 일치, 형식 아닌 blind comprehension 통과",
+      "status": "PLANNED"
+    },
+    {
+      "id": "R01",
+      "priority": "P0",
+      "owner_role": "release",
+      "title": "clean package·consumer",
+      "estimated_person_days": 6,
+      "depends_on": [
+        "A03",
+        "A06"
+      ],
+      "deliverable": "wheel/sdist/native install·license metadata",
+      "definition_of_done": "소스경로 없이 예제 실행, 데이터 payload 미포함",
+      "status": "PLANNED"
+    },
+    {
+      "id": "R02",
+      "priority": "P0",
+      "owner_role": "release",
+      "title": "공급망·SBOM·출처",
+      "estimated_person_days": 5,
+      "depends_on": [
+        "R01"
+      ],
+      "deliverable": "pinned build·hash·attestation/SBOM",
+      "definition_of_done": "source/binary 연결 검증; 인증 level 과장 없음",
+      "status": "PLANNED"
+    },
+    {
+      "id": "R03",
+      "priority": "P0",
+      "owner_role": "QA/release",
+      "title": "단계별 CI와 보존",
+      "estimated_person_days": 4,
+      "depends_on": [
+        "T02",
+        "B01",
+        "R01"
+      ],
+      "deliverable": "PR/nightly/weekly/release lane·artifact policy",
+      "definition_of_done": "느린 시험 skip이 full-pass로 계산되지 않음",
+      "status": "PLANNED"
+    },
+    {
+      "id": "R04",
+      "priority": "P0",
+      "owner_role": "PM/release",
+      "title": "사고·rollback·지원 계약",
+      "estimated_person_days": 3,
+      "depends_on": [
+        "S01",
+        "A04"
+      ],
+      "deliverable": "incident playbook·영향 버전 추적",
+      "definition_of_done": "false-certification 가상 incident로 rollback 연습",
+      "status": "PLANNED"
+    },
+    {
+      "id": "R05",
+      "priority": "P0",
+      "owner_role": "외부/수학",
+      "title": "외부 수학·구현 검토",
+      "estimated_person_days": 8,
+      "depends_on": [
+        "M01",
+        "M02",
+        "T01"
+      ],
+      "deliverable": "독립 검토 범위·지적·수정·서명",
+      "definition_of_done": "단순 테스트 확인이 아니라 명제/구현 의무 review",
+      "status": "PLANNED"
+    },
+    {
+      "id": "U01",
+      "priority": "P1",
+      "owner_role": "UX/통합",
+      "title": "설치·진단·제품 guide",
+      "estimated_person_days": 4,
+      "depends_on": [
+        "A02",
+        "A04"
+      ],
+      "deliverable": "실계수 설명·UNKNOWN·단위·예제",
+      "definition_of_done": "사용자가 자기 계수로 실패 이유를 찾을 수 있음",
+      "status": "PLANNED"
+    },
+    {
+      "id": "U02",
+      "priority": "P0",
+      "owner_role": "UX/PM",
+      "title": "외부 사용자 10명 시험",
+      "estimated_person_days": 5,
+      "depends_on": [
+        "U01",
+        "B06"
+      ],
+      "deliverable": "관찰 기록·성공률·막힌 단계",
+      "definition_of_done": "9/10 15분 목표; 실패 후 새로운 참가자로 재평가",
+      "status": "PLANNED"
+    },
+    {
+      "id": "P01",
+      "priority": "P0",
+      "owner_role": "파트너/QA",
+      "title": "3 프로젝트 shadow 도입",
+      "estimated_person_days": 8,
+      "depends_on": [
+        "D03",
+        "D05",
+        "A04",
+        "T06"
+      ],
+      "deliverable": "기존 gate와 병행, 실제 결함·비용 수집",
+      "definition_of_done": "고객 승인 없는 자동배포 영향 없음",
+      "status": "PLANNED"
+    },
+    {
+      "id": "P02",
+      "priority": "P0",
+      "owner_role": "파트너/PM",
+      "title": "canary·도입 수용성 평가",
+      "estimated_person_days": 5,
+      "depends_on": [
+        "P01",
+        "T07"
+      ],
+      "deliverable": "false-block/triage/rollback 결과",
+      "definition_of_done": "사용자 책임자가 범위·비용·재현성 승인",
+      "status": "PLANNED"
+    },
+    {
+      "id": "G01",
+      "priority": "P0",
+      "owner_role": "QA",
+      "title": "요구사항·증거 묶음 감사",
+      "estimated_person_days": 4,
+      "depends_on": [
+        "B05",
+        "R02",
+        "R05",
+        "P02",
+        "U02"
+      ],
+      "deliverable": "IND/M/A/B/C IDs → artifact trace",
+      "definition_of_done": "미실행·미달·외부 대기 항목 모두 표시",
+      "status": "PLANNED"
+    },
+    {
+      "id": "G02",
+      "priority": "P0",
+      "owner_role": "PM/수학/release",
+      "title": "최종 G7 출시 승인",
+      "estimated_person_days": 3,
+      "depends_on": [
+        "G01",
+        "R03",
+        "R04"
+      ],
+      "deliverable": "모든 필수 gate sign-off·release notes",
+      "definition_of_done": "평균점수로 critical gap을 덮지 않고 owner가 승인",
+      "status": "PLANNED"
+    }
+  ]
+}

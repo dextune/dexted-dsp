@@ -1,0 +1,70 @@
+{
+  "schema": "dexted-dsp/industrial-coefficient-corpus-plan/v1",
+  "status": "PLANNED",
+  "synthetic_total": 100000,
+  "synthetic_valid_target": 90000,
+  "synthetic_invalid_target": 10000,
+  "strata": [
+    {
+      "id": "C-ORD",
+      "target_count": 40000,
+      "oracle_required": true,
+      "status": "PLANNED"
+    },
+    {
+      "id": "C-HQ",
+      "target_count": 20000,
+      "oracle_required": true,
+      "status": "PLANNED"
+    },
+    {
+      "id": "C-BOUND",
+      "target_count": 20000,
+      "oracle_required": true,
+      "status": "PLANNED"
+    },
+    {
+      "id": "C-ADV",
+      "target_count": 10000,
+      "oracle_required": true,
+      "status": "PLANNED"
+    },
+    {
+      "id": "C-INVALID",
+      "target_count": 10000,
+      "oracle_required": false,
+      "status": "PLANNED"
+    }
+  ],
+  "valid_precisions": [
+    "float32",
+    "float64"
+  ],
+  "section_bins": [
+    1,
+    2,
+    4,
+    8,
+    16,
+    32
+  ],
+  "real_export_target": 3000,
+  "real_holdout_minimum": 1000,
+  "real_projects_minimum": 3,
+  "real_data_acquired": false,
+  "split": {
+    "unit": "product/design-template/seed-lineage, never individual near-duplicate row",
+    "development": 0.6,
+    "validation": 0.2,
+    "holdout": 0.2,
+    "real_holdout_minimum_overrides_fraction": true
+  },
+  "truth_states": [
+    "PASS",
+    "FAIL",
+    "INVALID",
+    "ORACLE_UNRESOLVED",
+    "NOT_RUN"
+  ],
+  "note": "Targets only. Existing 9/25/1200 synthetic datasets are distinct baseline evidence, not a newly completed 100000-case run."
+}

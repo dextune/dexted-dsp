@@ -1,0 +1,156 @@
+{
+  "schema": "dexted-dsp/industrial-goals/v1",
+  "status": "PROPOSED_NOT_ACHIEVED",
+  "threshold_policy": "G0 must approve population, host, budgets and denominators before evaluation. Never relax after viewing unfavorable outcomes.",
+  "goals": [
+    {
+      "id": "IND-01",
+      "name": "false certification",
+      "targets": {
+        "maximum_observed_false_certifications": 0
+      },
+      "gate": "G2",
+      "status": "PLANNED",
+      "evidence": [],
+      "approved_by": null
+    },
+    {
+      "id": "IND-02",
+      "name": "fail-closed deployment",
+      "targets": {
+        "maximum_unknown_or_error_deployment_passes": 0
+      },
+      "gate": "G1",
+      "status": "PLANNED",
+      "evidence": [],
+      "approved_by": null
+    },
+    {
+      "id": "IND-03",
+      "name": "real coefficient coverage",
+      "targets": {
+        "real_exports_min": 3000,
+        "independent_projects_min": 3,
+        "real_holdout_min": 1000
+      },
+      "gate": "G3",
+      "status": "PLANNED",
+      "evidence": [],
+      "approved_by": null
+    },
+    {
+      "id": "IND-04",
+      "name": "ordinary decision coverage",
+      "targets": {
+        "unknown_fraction_max": 0.001,
+        "eligible_max_sections": 16
+      },
+      "gate": "G2",
+      "status": "PLANNED",
+      "evidence": [],
+      "approved_by": null
+    },
+    {
+      "id": "IND-05",
+      "name": "prepared decision plus verification latency",
+      "targets": {
+        "biquad_p95_ms_max": 5,
+        "sos8_p95_ms_max": 250,
+        "sos8_p99_ms_max": 1000
+      },
+      "gate": "G4",
+      "status": "PLANNED",
+      "evidence": [],
+      "approved_by": null
+    },
+    {
+      "id": "IND-06",
+      "name": "resource bounds",
+      "targets": {
+        "core_worker_rss_mib_max": 256,
+        "default_job_seconds_max": 5,
+        "proof_bytes_max": 4194304
+      },
+      "gate": "G4",
+      "status": "PLANNED",
+      "evidence": [],
+      "approved_by": null
+    },
+    {
+      "id": "IND-07",
+      "name": "long signal corpus",
+      "targets": {
+        "synthetic_records_min": 24,
+        "synthetic_record_hours_min": 76,
+        "real_long_records_min": 20,
+        "real_each_seconds_min": 1800
+      },
+      "gate": "G4",
+      "status": "PLANNED",
+      "evidence": [],
+      "approved_by": null
+    },
+    {
+      "id": "IND-08",
+      "name": "wall-clock endurance",
+      "targets": {
+        "soak_24h_runs_min": 3,
+        "soak_72h_runs_min": 1,
+        "idle_rss_growth_mib_threshold": 32,
+        "idle_rss_growth_fraction_threshold": 0.05
+      },
+      "gate": "G4",
+      "status": "PLANNED",
+      "evidence": [],
+      "approved_by": null
+    },
+    {
+      "id": "IND-09",
+      "name": "independent reproduction",
+      "targets": {
+        "host_families_min": 3,
+        "external_organizations_min": 1
+      },
+      "gate": "G6",
+      "status": "PLANNED",
+      "evidence": [],
+      "approved_by": null
+    },
+    {
+      "id": "IND-10",
+      "name": "release provenance and installation",
+      "targets": {
+        "required_supported_platform_checks_pass_fraction": 1.0
+      },
+      "gate": "G5",
+      "status": "PLANNED",
+      "evidence": [],
+      "approved_by": null
+    },
+    {
+      "id": "IND-11",
+      "name": "external developer usability",
+      "targets": {
+        "participants_min": 10,
+        "successful_first_use_min": 9,
+        "task_minutes_max": 15
+      },
+      "gate": "G6",
+      "status": "PLANNED",
+      "evidence": [],
+      "approved_by": null
+    },
+    {
+      "id": "IND-12",
+      "name": "operational ownership",
+      "targets": {
+        "unresolved_p0_max": 0,
+        "owner_signoff_required": true
+      },
+      "gate": "G7",
+      "status": "PLANNED",
+      "evidence": [],
+      "approved_by": null
+    }
+  ]
+}

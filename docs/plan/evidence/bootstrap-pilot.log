@@ -1,0 +1,7 @@
+{"id": "A01", "status": "passed", "seconds_of_data": 1800, "seconds_of_execution": 15.65}
+{"id": "A02", "status": "passed", "seconds_of_data": 1800, "seconds_of_execution": 21.926}
+{"id": "A03", "status": "passed", "seconds_of_data": 1800, "seconds_of_execution": 15.366}
+{"id": "A04", "status": "passed", "seconds_of_data": 1800, "seconds_of_execution": 12.203}
+{"id": "A05", "status": "passed", "seconds_of_data": 1800, "seconds_of_execution": 14.728}
+{"id": "A06", "status": "passed", "seconds_of_data": 1800, "seconds_of_execution": 15.428}
+{"status": "passed", "profile": "pilot", "record_count": 6, "record_hours": 3.0, "scalar_samples": 1036800000, "dexted_core_executed": false}

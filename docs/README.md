@@ -44,3 +44,9 @@ Reference command: run `python tools/check_links.py`, `python tools/check_docume
 - [Three-band EQ design → binary32 export → certified SOS proof](product/eq-workflow.md)
 - [Reproducible 1,200-case **synthetic** W3C EQ catalog and exact oracle](../benchmarks/suites/EQ_CATALOG_PROTOCOL.md)
 - [Mathematics reviewer request and proof obligations](research/review/INDEPENDENT_REVIEW_PACKET.md)
+
+## Industrial qualification plan / 산업용 전환 계획
+
+[상세 계획: GOAL·개발·검증·출시](plan/README.md) — 12개 정량 목표, 45개 작업 패키지, 8개 필수 승인 게이트와 장시간 자료·실제 고객 자료 확보 기준입니다. 목표는 달성 실적과 구분합니다.
+
+[장시간 24건·76시간 데이터 구성](plan/04_DATASET_AND_LONGRUN.md) · [실행 가능한 생성·검사 런북](plan/10_EXECUTION_RUNBOOK.md) · [6건×30분 참조 처리기 실행 증거](plan/evidence/README.md). 합성 참조 처리기 검증은 산업용 인증이나 실제 현장 데이터 검증을 대신하지 않습니다.

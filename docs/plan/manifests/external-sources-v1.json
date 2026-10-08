@@ -1,0 +1,59 @@
+{
+  "schema": "dexted-dsp/industrial-source-register/v1",
+  "reviewed_on": "2026-10-08",
+  "records": [
+    {
+      "id": "PUBLIC-MUSAN",
+      "source_uri": "https://www.openslr.org/17/",
+      "source_kind": "real_audio_candidate",
+      "license_reported_by_source": "CC BY 4.0",
+      "acquisition_status": "NOT_ACQUIRED",
+      "local_path": null,
+      "original_sha256": null,
+      "permission_review": "PENDING",
+      "redistribution_approved": false,
+      "continuous_capture": null,
+      "use": "derived composite audio sessions; not industrial coefficient exports"
+    },
+    {
+      "id": "PUBLIC-LIBRISPEECH",
+      "source_uri": "https://www.openslr.org/12/",
+      "source_kind": "real_audio_candidate",
+      "license_reported_by_source": "CC BY 4.0",
+      "acquisition_status": "NOT_ACQUIRED",
+      "local_path": null,
+      "original_sha256": null,
+      "permission_review": "PENDING",
+      "redistribution_approved": false,
+      "continuous_capture": false,
+      "use": "segmented speech may be assembled with complete source/offset lineage"
+    },
+    {
+      "id": "PARTNER-EXPORTS",
+      "source_uri": null,
+      "source_kind": "industrial_coefficients_candidate",
+      "acquisition_status": "NOT_ACQUIRED",
+      "target_records": 3000,
+      "minimum_independent_projects": 3,
+      "holdout_minimum": 1000,
+      "local_path": null,
+      "original_sha256": null,
+      "permission_review": "PENDING",
+      "redistribution_approved": false
+    },
+    {
+      "id": "PARTNER-LONG-SESSIONS",
+      "source_uri": null,
+      "source_kind": "industrial_long_signals_candidate",
+      "acquisition_status": "NOT_ACQUIRED",
+      "target_records": 14,
+      "audio_records_at_least_30_minutes": 8,
+      "sensor_records_at_least_4_hours": 6,
+      "local_path": null,
+      "original_sha256": null,
+      "permission_review": "PENDING",
+      "redistribution_approved": false
+    }
+  ],
+  "policy": "Null paths/hashes are unavailable evidence, never an approved fixture; source listing is not acquisition or a license grant."
+}
