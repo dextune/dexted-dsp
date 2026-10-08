@@ -1,36 +1,39 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="740" height="452" viewBox="0 0 740 452" role="img" aria-labelledby="title desc">
-<title id="title">Before/after per-filter runtime, p50 and p95</title>
-<desc id="desc">GitHub Actions one shared Linux host; logarithmic axis, milliseconds. SciPy and control compare exactly matched before/after operations; Dexted proof and verifier add cost. No sampling speedup claim.</desc>
-<rect width="740" height="452" rx="18" fill="#0b1425"/>
-<text x="32" y="43" text-anchor="start" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="13" font-weight="700" fill="#63ded2">THE VERIFICATION COST</text>
-<text x="32" y="80" text-anchor="start" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="26" font-weight="750" fill="#f5f8ff">Proof costs time. Here's the bill.</text>
-<text x="32" y="108" text-anchor="start" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15" font-weight="400" fill="#a9bad2">Wall time / filter, median + p95 in ms | shared Linux CI host</text>
-<rect x="28" y="132" width="684" height="286" rx="12" fill="#142238"/>
-<path d="M 242.00 152 V 370" stroke="#30445f" stroke-dasharray="3 5"/>
-<text x="242.0" y="395" text-anchor="middle" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="13" font-weight="400" fill="#a9bad2">10^-1</text>
-<path d="M 409.50 152 V 370" stroke="#30445f" stroke-dasharray="3 5"/>
-<text x="409.5" y="395" text-anchor="middle" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="13" font-weight="400" fill="#a9bad2">10^0</text>
-<path d="M 577.00 152 V 370" stroke="#30445f" stroke-dasharray="3 5"/>
-<text x="577.0" y="395" text-anchor="middle" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="13" font-weight="400" fill="#a9bad2">10^1</text>
-<text x="45" y="182" text-anchor="start" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15" font-weight="400" fill="#f5f8ff">SciPy</text>
-<rect x="242" y="168" width="60.59" height="16" rx="4" fill="#f5a56b"/>
-<text x="685" y="182" text-anchor="end" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="16" font-weight="700" fill="#f5a56b">0.230</text>
-<text x="685" y="197" text-anchor="end" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="10" font-weight="400" fill="#a9bad2">p95 0.387</text>
-<text x="45" y="224" text-anchor="start" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15" font-weight="400" fill="#f5f8ff">SciPy + Dexted</text>
-<rect x="242" y="210" width="184.18" height="16" rx="4" fill="#63ded2"/>
-<text x="685" y="224" text-anchor="end" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="16" font-weight="700" fill="#63ded2">1.258</text>
-<text x="685" y="239" text-anchor="end" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="10" font-weight="400" fill="#a9bad2">p95 3.399</text>
-<text x="45" y="266" text-anchor="start" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15" font-weight="400" fill="#f5f8ff">python-control</text>
-<rect x="242" y="252" width="56.45" height="16" rx="4" fill="#f5a56b"/>
-<text x="685" y="266" text-anchor="end" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="16" font-weight="700" fill="#f5a56b">0.217</text>
-<text x="685" y="281" text-anchor="end" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="10" font-weight="400" fill="#a9bad2">p95 0.266</text>
-<text x="45" y="308" text-anchor="start" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15" font-weight="400" fill="#f5f8ff">control + Dexted</text>
-<rect x="242" y="294" width="177.14" height="16" rx="4" fill="#63ded2"/>
-<text x="685" y="308" text-anchor="end" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="16" font-weight="700" fill="#63ded2">1.142</text>
-<text x="685" y="323" text-anchor="end" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="10" font-weight="400" fill="#a9bad2">p95 3.277</text>
-<text x="45" y="350" text-anchor="start" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15" font-weight="400" fill="#f5f8ff">Dexted proof only</text>
-<rect x="242" y="336" width="159.59" height="16" rx="4" fill="#63ded2"/>
-<text x="685" y="350" text-anchor="end" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="16" font-weight="700" fill="#63ded2">0.897</text>
-<text x="685" y="365" text-anchor="end" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="10" font-weight="400" fill="#a9bad2">p95 3.034</text>
-<text x="30" y="443" text-anchor="start" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="12" font-weight="400" fill="#a9bad2">Log10 scale | the total After workflow includes the same sampler + certified proof check</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="740" height="474" viewBox="0 0 740 474" role="img" aria-labelledby="title desc">
+<title id="title">The actual latency cost of verified certification</title>
+<desc id="desc">Linear zero-origin scale showing per-case-method wall-time p50 in milliseconds, with p95 in text. Same SciPy/control frequency samples before and after, proof added only after. Shared Linux CI runner and synthetic filters, not a DSP speedup.</desc>
+<rect width="740" height="474" rx="18" fill="#0b1425"/>
+<text x="30" y="43" text-anchor="start" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" fill="#63ded2">LATENCY TRADE-OFF</text>
+<text x="30" y="82" text-anchor="start" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="28" font-weight="750" fill="#f5f8ff">Stronger checking takes longer.</text>
+<text x="30" y="110" text-anchor="start" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15" font-weight="400" fill="#a9bad2">Wall-clock median / filter (ms), linear scale from zero</text>
+<rect x="27" y="133" width="685" height="290" rx="12" fill="#142238"/>
+<path d="M 242.0 152 V 397" stroke="#30445f" stroke-dasharray="3 6"/>
+<text x="242.0" y="416" text-anchor="middle" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="13" font-weight="400" fill="#a9bad2">0.00</text>
+<path d="M 356.7 152 V 397" stroke="#30445f" stroke-dasharray="3 6"/>
+<text x="356.7" y="416" text-anchor="middle" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="13" font-weight="400" fill="#a9bad2">0.50</text>
+<path d="M 471.3 152 V 397" stroke="#30445f" stroke-dasharray="3 6"/>
+<text x="471.3" y="416" text-anchor="middle" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="13" font-weight="400" fill="#a9bad2">1.00</text>
+<path d="M 586.0 152 V 397" stroke="#30445f" stroke-dasharray="3 6"/>
+<text x="586.0" y="416" text-anchor="middle" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="13" font-weight="400" fill="#a9bad2">1.50</text>
+<text x="41" y="185" text-anchor="start" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15" font-weight="600" fill="#f5f8ff">SciPy / before</text>
+<rect x="242" y="170" width="52.74" height="19" rx="4" fill="#f5a56b"/>
+<text x="685" y="186" text-anchor="end" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="16" font-weight="700" fill="#f5a56b">0.230 ms</text>
+<text x="685" y="202" text-anchor="end" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="10" font-weight="400" fill="#a9bad2">p95 0.387 ms</text>
+<text x="41" y="232" text-anchor="start" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15" font-weight="600" fill="#f5f8ff">SciPy + proof</text>
+<rect x="242" y="217" width="288.42" height="19" rx="4" fill="#63ded2"/>
+<text x="685" y="233" text-anchor="end" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="16" font-weight="700" fill="#63ded2">1.258 ms</text>
+<text x="685" y="249" text-anchor="end" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="10" font-weight="400" fill="#a9bad2">p95 3.399 ms</text>
+<text x="41" y="279" text-anchor="start" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15" font-weight="600" fill="#f5f8ff">control / before</text>
+<rect x="242" y="264" width="49.83" height="19" rx="4" fill="#f5a56b"/>
+<text x="685" y="280" text-anchor="end" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="16" font-weight="700" fill="#f5a56b">0.217 ms</text>
+<text x="685" y="296" text-anchor="end" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="10" font-weight="400" fill="#a9bad2">p95 0.266 ms</text>
+<text x="41" y="326" text-anchor="start" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15" font-weight="600" fill="#f5f8ff">control + proof</text>
+<rect x="242" y="311" width="261.84" height="19" rx="4" fill="#63ded2"/>
+<text x="685" y="327" text-anchor="end" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="16" font-weight="700" fill="#63ded2">1.142 ms</text>
+<text x="685" y="343" text-anchor="end" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="10" font-weight="400" fill="#a9bad2">p95 3.277 ms</text>
+<text x="41" y="373" text-anchor="start" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15" font-weight="600" fill="#f5f8ff">Dexted proof only</text>
+<rect x="242" y="358" width="205.70" height="19" rx="4" fill="#63ded2"/>
+<text x="685" y="374" text-anchor="end" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="16" font-weight="700" fill="#63ded2">0.897 ms</text>
+<text x="685" y="390" text-anchor="end" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="10" font-weight="400" fill="#a9bad2">p95 3.034 ms</text>
+<text x="30" y="449" text-anchor="start" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="14" font-weight="650" fill="#63ded2">Added median: SciPy +1.028 ms  |  control +0.924 ms</text>
+<text x="30" y="467" text-anchor="start" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="11" font-weight="400" fill="#a9bad2">Differences of pooled medians, not paired overhead  •  p95 labeled separately</text>
 </svg>
