@@ -1,0 +1,46 @@
+name: Competitive reproducibility (SciPy + python-control)
+on:
+  push:
+    paths:
+      - '.github/workflows/competitive-benchmark.yml'
+      - 'benchmarks/competitive/**'
+      - 'benchmarks/suites/fixtures/designed_sos_pilot_v1.json'
+      - 'src/dexted_dsp/**'
+      - 'tools/sympy_oracle_audit.py'
+      - 'tools/audit_competitive.py'
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  compare:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+      PYTHONHASHSEED: '0'
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
+        with:
+          python-version: '3.13'
+      - name: Install actual competitor releases and independent oracle
+        run: python -m pip install . 'numpy==2.3.5' 'scipy==1.17.0' 'control==0.10.2' 'sympy==1.14.0'
+      - name: Run 30 time + 30 allocation trials and root-count crosscheck
+        run: python benchmarks/competitive/run.py --out validation/competitive_ci.json --trials 30 --memory-trials 30 --emit
+      - name: Independently audit raw benchmark
+        run: python tools/audit_competitive.py validation/competitive_ci.json
+      - name: Audit published evidence when present
+        run: |
+          if test -f benchmarks/competitive/results/run-20261008.json; then
+            python tools/audit_competitive.py benchmarks/competitive/results/run-20261008.json --archived
+          fi
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        if: always()
+        with:
+          name: competitive-evidence
+          path: validation/competitive_ci.json
+          if-no-files-found: warn
+          retention-days: 30
