@@ -25,6 +25,8 @@ jobs:
       - run: dexted-dsp check examples/safe.json
       - run: dexted-dsp demo hidden-peak
       - run: python tools/audit_hook.py
+      - run: python tools/audit_competitive.py benchmarks/competitive/results/run-20261008.json --archived
+      - run: python benchmarks/competitive/plot.py --input benchmarks/competitive/results/run-20261008.json --out benchmarks/competitive/figures --check
       - run: python tools/documentation_smoke.py
       - run: python tools/check_repository_layout.py
       - run: python tools/check_documentation.py
