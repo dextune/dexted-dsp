@@ -1,0 +1,41 @@
+{
+  "status": "passed",
+  "scope": "planning consistency + synthetic bootstrap evidence only",
+  "principal_documents": 12,
+  "markdown_documents": 29,
+  "goal_count": 12,
+  "work_packages": 45,
+  "estimated_person_days": 252,
+  "synthetic_inventory": {
+    "records": 24,
+    "record_hours": 76.0,
+    "channel_hours": 248.0,
+    "scalar_samples": 23270400000,
+    "uncompressed_float32_bytes": 93081600000,
+    "storage_gib": 86.68899536132812
+  },
+  "bootstrap_records_executed": 6,
+  "bootstrap_record_hours": 3,
+  "python_files_parsed": 3,
+  "local_links_checked": 110,
+  "repository_links_unavailable_in_zip": [
+    "../../benchmarks/competitive/README.md",
+    "../../benchmarks/competitive/results/run-20261008.json",
+    "../../benchmarks/competitive/run.py",
+    "../../reference/cpp-api.md",
+    "../../research/proofs/biquad.md",
+    "../../research/proofs/cascade.md",
+    "../../src/dexted_dsp/cascade.py",
+    "../../src/dexted_dsp/model.py",
+    "../product/implementation-status.md",
+    "../product/inspection.md",
+    "../research/proofs/biquad.md",
+    "../research/proofs/cascade.md"
+  ],
+  "not_claimed": [
+    "industrial qualification",
+    "actual Dexted core longrun",
+    "external review",
+    "wall-clock soak"
+  ]
+}

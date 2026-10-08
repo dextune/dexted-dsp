@@ -1,0 +1,21 @@
+test_analytic_coefficient_tamper (test_core_spec.CoreSpecTests.test_analytic_coefficient_tamper) ... ok
+test_analytic_threshold_tamper (test_core_spec.CoreSpecTests.test_analytic_threshold_tamper) ... ok
+test_complete_contracts (test_core_spec.CoreSpecTests.test_complete_contracts) ... ok
+test_cycle (test_core_spec.CoreSpecTests.test_cycle) ... ok
+test_duration_multiplication_error (test_core_spec.CoreSpecTests.test_duration_multiplication_error) ... ok
+test_fabricated_core_run (test_core_spec.CoreSpecTests.test_fabricated_core_run) ... ok
+test_false_analytic_execution (test_core_spec.CoreSpecTests.test_false_analytic_execution) ... ok
+test_false_approval (test_core_spec.CoreSpecTests.test_false_approval) ... ok
+test_invented_parent (test_core_spec.CoreSpecTests.test_invented_parent) ... ok
+test_latency_target_drift (test_core_spec.CoreSpecTests.test_latency_target_drift) ... ok
+test_missing_independent_runtime (test_core_spec.CoreSpecTests.test_missing_independent_runtime) ... ok
+test_missing_long_record (test_core_spec.CoreSpecTests.test_missing_long_record) ... ok
+test_missing_requirement (test_core_spec.CoreSpecTests.test_missing_requirement) ... ok
+test_optional_scope_promotion (test_core_spec.CoreSpecTests.test_optional_scope_promotion) ... ok
+test_resource_target_drift (test_core_spec.CoreSpecTests.test_resource_target_drift) ... ok
+test_unknown_test (test_core_spec.CoreSpecTests.test_unknown_test) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 0.069s
+
+OK

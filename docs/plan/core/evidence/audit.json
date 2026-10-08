@@ -1,0 +1,23 @@
+{
+  "status": "passed",
+  "scope": "documentation_and_contracts_only",
+  "baseline_commit": "9f6df34d45f418995dedf18e3b328524dd18ec6b",
+  "core_documents": 12,
+  "requirements": 18,
+  "invariants": 12,
+  "specified_core_tests": 42,
+  "work_packages": 24,
+  "required_work_packages": 21,
+  "future_work_packages": 3,
+  "analytic_specification_cases": 10,
+  "planned_record_filter_runs": 192,
+  "planned_filter_hours": 608,
+  "local_links_checked": 46,
+  "repository_links_unavailable_in_zip": [
+    "../../reference/cpp-api.md",
+    "../../research/proofs/biquad.md",
+    "../../research/proofs/cascade.md"
+  ],
+  "actual_core_tests_executed": 0,
+  "industrial_qualified": false
+}

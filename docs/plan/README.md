@@ -47,3 +47,7 @@
 ## 완료 상태 표기 규칙
 
 `PLANNED` → `IMPLEMENTED` → `EXECUTED` → `EXTERNALLY_REPRODUCED` → `APPROVED`를 구별합니다. 검증 실패·권한 미확보·아직 실행하지 않은 검사는 별도 상태로 남깁니다. 이 계획의 주요 산업용 목표는 기본적으로 `PLANNED`입니다. 이번 도구의 실행 결과는 [별도 증거](evidence/README.md)에만 기록합니다.
+
+## 코어 엔지니어링 구현 명세 보강
+
+[core/README.md](core/README.md)에서 실제 파일·함수 변경, 수학 불변조건, 인증서·FFI·자원 예산, 24×8 장시간 연결, 42개 테스트와 24개 세부 작업을 확인합니다. 신규 API와 목표는 구현 제안이며 산업용 검증 완료가 아닙니다.
