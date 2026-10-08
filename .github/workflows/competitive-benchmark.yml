@@ -53,7 +53,7 @@ jobs:
       - name: Render directly from frozen 30-repeat evidence
         run: |
           python benchmarks/competitive/plot.py --input benchmarks/competitive/results/run-20261008.json --out validation/competitive_figures
-          if test -f benchmarks/competitive/figures/decision-mobile.svg; then
+          if test -f benchmarks/competitive/figures/peak-gap.svg; then
             python benchmarks/competitive/plot.py --input benchmarks/competitive/results/run-20261008.json --out benchmarks/competitive/figures --check
           fi
       - name: Emit precise SVG bytes for evidence publication
@@ -61,7 +61,7 @@ jobs:
           python - <<'PY'
           from pathlib import Path
           import base64
-          for key in ("decision", "runtime", "memory", "decision-mobile", "runtime-mobile", "memory-mobile"):
+          for key in ("decision", "runtime", "memory", "decision-mobile", "runtime-mobile", "memory-mobile", "peak-gap", "peak-gap-mobile"):
               raw=(Path("validation/competitive_figures")/(key+".svg")).read_bytes()
               print("FIGURE_BASE64_"+key.upper().replace("-","_")+"="+base64.b64encode(raw).decode("ascii"))
           PY

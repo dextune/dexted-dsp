@@ -11,7 +11,7 @@ ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/"tools"))
 sys.path.insert(0,str(ROOT/"benchmarks/competitive"))
 from audit_competitive import audit
-from plot import generate
+from plot import generate, hidden_peak_values
 
 ARCHIVE=ROOT/"benchmarks/competitive/results/run-20261008.json"
 
@@ -33,10 +33,17 @@ class CompetitiveEvidenceTests(unittest.TestCase):
 
     def test_svg_is_exactly_from_raw_data(self):
         figs=generate(self.data)
-        self.assertEqual(set(figs),{"decision.svg","runtime.svg","memory.svg","decision-mobile.svg","runtime-mobile.svg","memory-mobile.svg"})
+        self.assertEqual(set(figs),{"decision.svg","runtime.svg","memory.svg","decision-mobile.svg","runtime-mobile.svg","memory-mobile.svg","peak-gap.svg","peak-gap-mobile.svg"})
         for name,content in figs.items():
             self.assertIn('aria-labelledby="title desc"',content)
             self.assertEqual((ROOT/"benchmarks/competitive/figures"/name).read_text(encoding="utf-8"),content)
+
+    def test_peak_gap_uses_frozen_coefficients_and_exact_algebra(self):
+        vals=hidden_peak_values(self.data)
+        self.assertAlmostEqual(vals["sampled"],0.0397432122,delta=1e-8)
+        self.assertEqual(vals["exact"],2.0)
+        self.assertEqual(vals["threshold"],1.0)
+        self.assertTrue(vals["sampled"] < 1 < vals["exact"])
 
     def assert_rejected_mutation(self,mutator):
         change=copy.deepcopy(self.data)

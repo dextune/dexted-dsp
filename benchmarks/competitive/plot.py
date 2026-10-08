@@ -2,6 +2,7 @@
 """Deterministic, zero-dependency, GitHub-safe SVGs from *archived* raw observations."""
 from __future__ import annotations
 import argparse
+from fractions import Fraction
 import json
 import math
 from pathlib import Path
@@ -166,11 +167,122 @@ def mobile(data, measure):
     return "\n".join(s)+"\n"
 
 
+
+def hidden_peak_values(data):
+    """Recompute the predeclared hidden peak from archived *represented* SOS.
+
+    The exact whole-band maximum 2 is special to this constructed filter:
+    H(z)=alpha*(1-z^-2)/(1+(1-alpha)*z^-2), 0<alpha<1.
+    |H|²=4*alpha²*(1-cos²(w))/(alpha²+4*(1-alpha)*cos²(w)) <=4;
+    equality occurs at w=pi/2. Hence maximum 2 is analytical, NOT a
+    higher-density sample or a claim about runtime floating-point arithmetic.
+    """
+    chosen = [c for c in data["cases"] if c["id"] == "hidden-peak-adversarial"]
+    if len(chosen) != 1:
+        raise ValueError("missing exact hidden-peak archived case")
+    case = chosen[0]
+    if case["sections"] != 1 or case["oracle_verdict"] != "gain_limit_not_met":
+        raise ValueError("wrong archived oracle or section count")
+    for backend in ("scipy", "control"):
+        if case["decisions"][backend+"_before"] is not True or case["decisions"][backend+"_after"] is not False:
+            raise ValueError("archived Before/After does not exhibit a missed peak")
+    b0,b1,b2,a0,a1,a2 = map(Fraction,case["sos"][0])
+    alpha = b0
+    if not (0 < alpha < 1 and b1 == 0 and b2 == -alpha and
+            a0 == 1 and a1 == 0 and a2 == 1-alpha and Fraction(case["gain_limit"]) == 1):
+        raise ValueError("not the predeclared dyadic hidden-peak filter")
+    sampled = 0.0
+    for k in range(1024):
+        w = math.pi*k/1023
+        z2 = complex(math.cos(2*w), -math.sin(2*w))
+        measured = abs(float(alpha)*(1-z2))/abs(1+float(1-alpha)*z2)
+        sampled = max(sampled,measured)
+    maximum = abs((b0-b2)/(a0-a2))  # exact rational at pi/2, global max by bound above
+    if maximum != 2 or not (0.03974 < sampled < 0.03975):
+        raise AssertionError("numerical/analytic hook drift")
+    return {"sampled":sampled,"exact":float(maximum),"threshold":float(case["gain_limit"])}
+
+
+def peak_gap(data, mobile=False):
+    """Prominent, linear-scale evidence with the spec limit drawn on BOTH rows."""
+    v = hidden_peak_values(data)
+    sampled, maximum, limit = v["sampled"],v["exact"],v["threshold"]
+    if mobile:
+        s = [
+            '<svg xmlns="http://www.w3.org/2000/svg" width="390" height="606" viewBox="0 0 390 606" role="img" aria-labelledby="title desc">',
+            '<title id="title">A frequency grid passes a violating filter</title>',
+            '<desc id="desc">A synthetic high-Q filter: a 1024-point grid observes only '+f'{sampled:.5f}'+
+            ', so a strict limit of 1 looks met. Algebra proves the actual global peak is exactly 2, so Dexted rejects it. Same represented coefficients, linear scale. Sampling does not promise certification.</desc>',
+            f'<rect width="390" height="606" rx="16" fill="{BG}"/>',
+            text(22,39,"SAME FILTER  /  DIFFERENT RESULT",13,CYAN,700),
+            text(22,75,"A hidden 50x gap",27,FOREGROUND,750),
+            text(22,102,"Gain limit: strictly below 1.0",16,MUTED),
+        ]
+        for idx,(tag,caption,value,judgment,color) in enumerate((
+            ("BEFORE","1,024-point sampled estimate",sampled,"FALSE PASS",ORANGE),
+            ("AFTER","Exact whole-band maximum",maximum,"VIOLATION FOUND",CYAN),
+        )):
+            y=128+idx*199
+            s.extend([
+                f'<rect x="18" y="{y}" width="354" height="185" rx="12" fill="{SURFACE}"/>',
+                text(34,y+30,tag,14,color,700),
+                text(34,y+53,caption,15,MUTED),
+                text(34,y+105,f"{value:.5f}" if idx==0 else "2.00000",37,FOREGROUND,750),
+                text(352,y+102,judgment,11,color,750,"end"),
+                f'<rect x="34" y="{y+128}" width="319" height="21" rx="6" fill="{LINE}"/>',
+                f'<rect x="34" y="{y+128}" width="{319*value/maximum:.3f}" height="21" rx="6" fill="{color}"/>',
+                f'<path d="M {34+319*limit/maximum:.1f} {y+119} v 41" stroke="#f2d07a" stroke-width="2" stroke-dasharray="3 4"/>',
+                text(34,y+170,"0",13,MUTED),
+                text(34+319*limit/maximum,y+170,"limit 1.0",13,"#f2d07a",600,"middle"),
+                text(353,y+170,"2",13,MUTED,400,"end"),
+            ])
+        s.extend([
+            text(22,552,"Numeric sampler is not a certifier.",15,MUTED),
+            text(22,576,"Constructed synthetic fixture; not a field error rate.",12,MUTED),
+            "</svg>",
+        ])
+    else:
+        s=canvas(463,"One synthetic filter, two incompatible verdicts",
+                 f"Same binary32 SOS coefficients. 1024-point inclusive frequency grid sees {sampled:.5f}, below strict gain limit 1, returning false PASS. The exact algebraic whole-band gain is 2 and Dexted rejects the filter. Two horizontal bars share a linear 0 to 2 axis and threshold line.")
+        s.extend([
+            text(28,42,"THE MISSING PEAK",14,CYAN,700),
+            text(28,83,"The grid says PASS. The proof says FAIL.",27,FOREGROUND,750),
+            text(28,112,"One constructed float32 high-Q filter | same coefficients | limit < 1.0",15,MUTED),
+            f'<rect x="24" y="134" width="692" height="125" rx="12" fill="{SURFACE}"/>',
+            f'<rect x="24" y="268" width="692" height="125" rx="12" fill="{SURFACE}"/>',
+        ])
+        for idx,(tag,caption,value,judgment,color) in enumerate((
+            ("BEFORE / SAMPLED","1,024-point grid estimate",sampled,"FALSE PASS",ORANGE),
+            ("AFTER / PROVED","Exact global maximum",maximum,"VIOLATION FOUND",CYAN),
+        )):
+            y=134+idx*134
+            sx,sw=360,320
+            s.extend([
+                text(42,y+32,tag,14,color,700),
+                text(42,y+56,caption,15,MUTED),
+                text(42,y+103,f"{value:.5f}" if idx==0 else "2.00000",36,FOREGROUND,750),
+                text(690,y+29,judgment,15,color,700,"end"),
+                f'<rect x="{sx}" y="{y+68}" width="{sw}" height="26" rx="6" fill="{LINE}"/>',
+                f'<rect x="{sx}" y="{y+68}" width="{sw*value/maximum:.3f}" height="26" rx="6" fill="{color}"/>',
+                f'<path d="M {sx+sw*limit/maximum:.1f} {y+54} v 56" stroke="#f2d07a" stroke-width="2" stroke-dasharray="4 4"/>',
+            ])
+        s.extend([
+            text(360,414,"0",13,MUTED),
+            text(520,414,"gain limit 1.0",13,"#f2d07a",600,"middle"),
+            text(680,414,"2",13,MUTED,400,"end"),
+            text(28,445,"Linear gain scale  |  one sampled false PASS  |  full-band mathematical violation",13,MUTED),
+            "</svg>",
+        ])
+    return "\n".join(s)+"\n"
+
+
 def generate(data):
     return {"decision.svg":decision(data),"runtime.svg":runtime(data),"memory.svg":memory(data),
             "decision-mobile.svg":mobile(data,"decision"),
             "runtime-mobile.svg":mobile(data,"runtime"),
-            "memory-mobile.svg":mobile(data,"memory")}
+            "memory-mobile.svg":mobile(data,"memory"),
+            "peak-gap.svg":peak_gap(data),
+            "peak-gap-mobile.svg":peak_gap(data,mobile=True)}
 
 
 def main():
