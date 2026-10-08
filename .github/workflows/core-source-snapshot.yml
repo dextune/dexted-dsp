@@ -1,0 +1,22 @@
+name: Core source snapshot
+on:
+  push:
+    branches: [core-validation-20261008]
+permissions:
+  contents: read
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: be225818a649028716df1e44ca3669f333e38114
+          persist-credentials: false
+      - name: Export pinned baseline
+        run: git archive --format=tar --output=baseline.tar HEAD
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: core-baseline-be225818
+          path: baseline.tar
+          retention-days: 1
+          if-no-files-found: error
