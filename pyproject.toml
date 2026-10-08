@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "dexted-dsp"
 version = "0.1.0"
-description = "Exact continuous-frequency gain checks for fixed real biquads and cascades"
+description = "Proof-carrying offline IIR/SOS gain verification with exact peak enclosures"
 readme = "README.md"
 requires-python = ">=3.10"
 license = "MIT"

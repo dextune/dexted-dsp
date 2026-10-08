@@ -199,3 +199,7 @@ ctest --test-dir build -C Release --output-on-failure
 **소스 체크아웃 데이터:** NPZ는 Git에 저장하지 않고 필요할 때 재생성합니다. 고정된 벤치마크 의존성을 설치하고 `python tools/restore_fixtures.py`를 실행하십시오. 원본 SHA-256과 일치해야 하며 측정값은 바뀌지 않습니다.
 
 <!-- benchmark-sha256: 0332cbc6a22ebf2da482a043b3f206ae175bcab5d71f640417c96c46c7ac99a0 -->
+
+## 신규 소스 기능 (미출시)
+
+[주파수 샘플링이 피크를 놓치는 데모](../../examples/hidden_peak/README.md) · [SOS 검사 및 엄밀한 최대 이득 구간 API](../product/inspection.md) · [미완료 검증·배포 조건](../product/implementation-status.md). 기존 벤치마크는 v0.1.0 기록이며 신규 코드 성능 측정이 아닙니다.

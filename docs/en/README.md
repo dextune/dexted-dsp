@@ -199,3 +199,7 @@ A certificate describes the ideal fixed linear system with the supplied deployed
 **Source checkout data:** the NPZ is generated on demand, not stored in Git. Install the pinned benchmark requirements and run `python tools/restore_fixtures.py`. Reconstruction must match the original SHA-256; no measurement is replaced.
 
 <!-- benchmark-sha256: 0332cbc6a22ebf2da482a043b3f206ae175bcab5d71f640417c96c46c7ac99a0 -->
+
+## What's new in source (unreleased)
+
+[Try the exact-grid hidden-peak demo](../../examples/hidden_peak/README.md), [inspect SciPy SOS and bound peak gain](../product/inspection.md), or view [current implementation gates](../product/implementation-status.md). New API benchmarks have **not** been run; existing tables are historical v0.1.0 measurements.

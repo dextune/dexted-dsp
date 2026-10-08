@@ -199,3 +199,7 @@ ctest --test-dir build -C Release --output-on-failure
 **ソースチェックアウトのデータ：** NPZ は Git に保存せず必要時に再構築します。固定したベンチマーク依存関係を入れ、`python tools/restore_fixtures.py` を実行してください。元の SHA-256 との一致が必須で、測定値は置き換えません。
 
 <!-- benchmark-sha256: 0332cbc6a22ebf2da482a043b3f206ae175bcab5d71f640417c96c46c7ac99a0 -->
+
+## 新しいソース機能（未リリース）
+
+[隠れたピークの再現デモ](../../examples/hidden_peak/README.md) · [SOS検証と厳密なピーク利得区間](../product/inspection.md) · [未完了の公開検証項目](../product/implementation-status.md)。既存のベンチマークは過去のv0.1.0結果です。

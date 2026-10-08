@@ -199,3 +199,7 @@ ctest --test-dir build -C Release --output-on-failure
 **源码检出数据：** NPZ 不存入 Git，而是按需重建。安装锁定的基准依赖后运行 `python tools/restore_fixtures.py`。重建必须匹配原始 SHA-256，不会替换测量值。
 
 <!-- benchmark-sha256: 0332cbc6a22ebf2da482a043b3f206ae175bcab5d71f640417c96c46c7ac99a0 -->
+
+## 新增源码功能（尚未发布）
+
+[采样遗漏峰值的复现实例](../../examples/hidden_peak/README.md) · [SOS检验及可证明的峰值增益区间](../product/inspection.md) · [仍未通过的外部验证门槛](../product/implementation-status.md)。现有性能表仅对应历史v0.1.0测试。

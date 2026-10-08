@@ -19,3 +19,7 @@ dexted-dsp check examples/hidden_peak.json
 For automated deployment gates, accept **only zero**. A failed sufficient-condition certificate does not prove that every surrounding device or application is unstable.
 
 [Full CLI contract](API.md) · [Test guide](../en/guides/TESTING.md)
+
+## New commands
+
+`dexted-dsp demo hidden-peak` demonstrates an exact global peak missed by a sampled grid. `dexted-dsp inspect examples/safe.json --output proof.json --report report.md` produces bound/reason/proof envelope. Existing `verify` rechecks both v1 core and new inspection proofs. `unknown` exits 3. [Developer contract](../product/inspection.md).

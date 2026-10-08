@@ -17,6 +17,9 @@ if(BUILD_TESTING)
     add_executable(dexted_dsp_native_tests cpp/tests/test_biquad.cpp)
     target_link_libraries(dexted_dsp_native_tests PRIVATE dexted_dsp)
     add_test(NAME native_predicate COMMAND dexted_dsp_native_tests)
+    add_executable(dexted_dsp_cascade_tests cpp/tests/test_cascade.cpp)
+    target_link_libraries(dexted_dsp_cascade_tests PRIVATE dexted_dsp)
+    add_test(NAME native_cascade COMMAND dexted_dsp_cascade_tests)
 endif()
 install(TARGETS dexted_dsp EXPORT DextedDSPTargets
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}

@@ -99,3 +99,7 @@ binaries. It refuses coefficients that would require implicit float32 conversion
 Arbitrary-precision code can allocate significant memory for adversarial values.
 Certificate checks are not a hardened network sandbox. No sound is played and no
 hardware is controlled. `CERTIFIED` applies only to the documented mathematical model.
+
+## High-level inspection and peak intervals (unreleased)
+
+See [the detailed inspection contract](../product/inspection.md). New functions `inspect_biquad`, `inspect_sos`, `inspect_cascade`, `verify_inspection`, `bound_peak_gain`, `bound_sos_peak_gain` preserve existing `certify`/`verify_biquad`/v1 semantics. `GainBounds.lower_ratio` and `.upper_ratio` are proven rational enclosures; `frequency_region_hz` is currently null. New `dexted-dsp inspect ... --report report.md` and `demo hidden-peak` commands are available in source. New native `dexted_dsp_cascade_f32` has error-aware integer returns and **does not** serialize a proof object.

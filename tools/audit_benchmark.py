@@ -20,7 +20,7 @@ ROOT = Path(__file__).resolve().parents[1]
 def sha(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
-def audit(results: Path, recheck: bool = False) -> dict:
+def audit(results: Path, recheck: bool = False, strict_current: bool = False) -> dict:
     data = json.loads(results.read_text(encoding='utf-8'))
     protocol = data['protocol']
     mapping_path = ROOT/'benchmarks/results/rebrand-map.json'
@@ -32,19 +32,27 @@ def audit(results: Path, recheck: bool = False) -> dict:
         source = ROOT/item['archived_path'] if item and h == item['original_sha256'] else ROOT/p
         if not source.is_file() or sha(source) != h:
             mismatched.append(p)
+    # The historic benchmark's archived sources must remain byte-identical.
+    # A changed checkout is expected after new features, but its timings must
+    # NEVER be represented as the archived v0.1.0 measurements.
+    current_drift = []
     if mapping:
         for item in mapping['files']:
             old = ROOT/item['archived_path']
             current = ROOT/item['current_path']
-            if sha(old) != item['original_sha256'] or sha(current) != item['current_sha256']:
-                mismatched.append(item['current_path'])
+            if not old.is_file() or sha(old) != item['original_sha256']:
+                mismatched.append(item['archived_path'])
+                continue
             transformed = old.read_text(encoding='utf-8')
             for before,after in mapping['replacements']:
                 transformed = transformed.replace(before,after)
-            if transformed != current.read_text(encoding='utf-8'):
-                mismatched.append('non-branding change: '+item['current_path'])
+            if (not current.is_file() or sha(current) != item['current_sha256']
+                    or transformed != current.read_text(encoding='utf-8')):
+                current_drift.append(item['current_path'])
     if mismatched:
-        raise ValueError('Source hash mismatch: ' + ', '.join(mismatched))
+        raise ValueError('ARCHIVED source hash mismatch: ' + ', '.join(mismatched))
+    if strict_current and current_drift:
+        raise ValueError('Current checkout differs from archived snapshot: ' + ', '.join(current_drift))
     fixture_path = results.parent/'fixtures.npz'
     if not fixture_path.is_file() and results == (ROOT/'benchmarks/results/benchmark.json').resolve():
         runpy.run_path(str(ROOT/'tools/restore_fixtures.py'))['restore']()
@@ -78,7 +86,8 @@ def audit(results: Path, recheck: bool = False) -> dict:
               'source_files_checked':len(protocol['source_hashes']),
               'fixture_rows':count,'timing_trials':trial_count,
               'fixture_sha256_verified':True,'exact_recheck_rows':0,
-              'note':'Saved artifacts audited. Not a new timing run or independent external audit.'}
+              'current_source_changed_since_v0_1':current_drift,
+              'note':'Historical archive verified; changed checkout code is NOT benchmarked by these archived timings.'}
     if recheck:
         try:
             import numpy as np
@@ -108,9 +117,10 @@ def main() -> int:
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--results',type=Path,default=ROOT/'benchmarks/results/benchmark.json')
     p.add_argument('--recheck-fixtures',action='store_true')
+    p.add_argument('--require-current-snapshot',action='store_true',help='fail if current source differs from archived benchmark revision')
     args=p.parse_args()
     try:
-        print(json.dumps(audit(args.results.resolve(),args.recheck_fixtures),indent=2))
+        print(json.dumps(audit(args.results.resolve(),args.recheck_fixtures,args.require_current_snapshot),indent=2))
         return 0
     except (ValueError,KeyError,OSError,TypeError) as exc:
         print(json.dumps({'status':'failed','error':str(exc)}),file=sys.stderr)

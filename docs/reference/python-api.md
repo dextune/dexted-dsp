@@ -16,3 +16,7 @@ assert r.certified and verify_biquad(r.as_dict(), b, max_gain=1.0)
 - The API does **not** return an exact peak-gain value or audio signal; the `max_gain` argument is a user-supplied threshold.
 
 [Full API semantics](API.md) · [Usage guide](../en/getting-started/USER_GUIDE.md) · [Tests](../en/guides/TESTING.md)
+
+## New offline user-facing inspection
+
+[Precise API semantics, strict thresholds, gain enclosures, certificate verification and examples](../product/inspection.md).

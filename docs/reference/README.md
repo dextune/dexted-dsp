@@ -10,3 +10,7 @@ The complete source-of-truth interface and input semantics are in [API.md](API.m
 | Certificate fields and trust boundary | [Certificate format](certificate-format.md) |
 
 Examples can be run from the repository root. API parameters and status strings are identical in all four language guides.
+
+## Inspection and bound APIs
+
+[High-level Python inspection, gain enclosures and C++ SOS predicate](../product/inspection.md) · [Mathematical enclosure proof](../research/proofs/peak-enclosure.md)

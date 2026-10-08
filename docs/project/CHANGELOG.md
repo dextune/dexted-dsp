@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased — 9.5-plan implementation
+
+See [the source implementation changelog](HOOK_CHANGELOG.md). Historical v0.1.0 benchmarks remain frozen and do not measure this unreleased code revision.
+
 ## 0.1.0 — Dexted DSP source import
 
 - Adopt Dexted DSP as the maintained project name at `dextune/dexted-dsp`.

@@ -1,70 +1,62 @@
-<div align="center">
-
 # Dexted DSP
 
-**Exact-frequency verification for digital filters**
+**Your frequency grid can miss a violating peak. Verify the whole band.**
 
-[![CI](https://github.com/dextune/dexted-dsp/actions/workflows/ci.yml/badge.svg)](https://github.com/dextune/dexted-dsp/actions/workflows/ci.yml)
-[![Python](https://img.shields.io/badge/Python-3.10%2B-blue)](pyproject.toml)
-[![C++20](https://img.shields.io/badge/C%2B%2B-20-blue)](CMakeLists.txt)
-[![License MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
-[![Status](https://img.shields.io/badge/status-research%20alpha-orange)](docs/project/CHANGELOG.md)
+Proof-carrying offline IIR gain verification · Python 3.10+ · C++20 · MIT
 
-[**English**](docs/en/README.md) · [**한국어**](docs/ko/README.md) · [**简体中文**](docs/zh-CN/README.md) · [**日本語**](docs/ja/README.md)
+[![CI](https://github.com/dextune/dexted-dsp/actions/workflows/ci.yml/badge.svg)](https://github.com/dextune/dexted-dsp/actions/workflows/ci.yml) · [Docs](docs/README.md) · [Python/C++ API](docs/reference/README.md) · [Raw evidence](benchmarks/results/benchmark.json) · [한국어](docs/ko/README.md) · [日本語](docs/ja/README.md) · [简体中文](docs/zh-CN/README.md)
 
-[Documentation](docs/README.md) · [Python/C++ API](docs/reference/API.md) · [Benchmarks](docs/en/benchmarks/BENCHMARKS.md) · [Mathematics](docs/research/README.md)
+## The problem: sampling can return a false PASS
 
-</div>
+![A constructed high-Q biquad has a peak between sampled frequencies; a frequency grid is not a proof](benchmarks/figures/hidden_peak.svg)
 
----
-
-**Dexted DSP** checks fixed, real digital biquad filters over the **entire frequency interval**, instead of relying on a finite frequency grid. Python also supports certified serial cascades with independently rechecked certificates. A C++20 implementation, command-line interface, tests, and reproducible benchmark data are included.
-
-> **Scope:** Offline mathematical verification of fixed-coefficient models, **not** an audio processor, complete neural-network verifier, real-time audio callback tool, or device-safety certification. OpenAI's Crouzeix manuscript is referenced only for a **conditional research extension** and is not used by the measured runtime. This is an independently maintained, AI-assisted project, not an official OpenAI product.
-
-## Get started
+For the included **synthetic adversarial** biquad, a 1,024-point inclusive frequency grid measures a largest gain of about **0.03974**, and would pass a gain-1 check. The **mathematically proven global maximum is exactly 2.0**. Dexted DSP rejects the filter using exact arithmetic over the entire frequency band, not a larger grid.
 
 ```bash
 git clone https://github.com/dextune/dexted-dsp.git
 cd dexted-dsp
 python -m pip install .
-python examples/basic.py
-python -m unittest discover -s tests -v
+dexted-dsp demo hidden-peak  # reproducible, no SciPy/NumPy required
 ```
+
+In the archived **synthetic high-Q stress family** (1,024 filters, 485 exact failures), an inclusive 1,024-point grid falsely accepted **356 / 485**, a 16,384-point grid **213 / 485**, and the exact integer predicate **0 / 485**. This is *not* a production failure rate or a claim that sampling tools promise mathematical certification. See the [full benchmark methodology](docs/en/benchmarks/BENCHMARKS.md), [raw results](benchmarks/results/benchmark.json) and [limitations](docs/research/README.md).
+
+## Use it on your own deployed filters
+
+Dexted DSP certifies the **final represented coefficients**, including explicit float32 rounding. It checks strict Schur stability and a requested strict peak gain limit for fixed real biquads and Python SOS cascades.
 
 ```python
-from dexted_dsp import Biquad, certify, verify_biquad
+from scipy.signal import butter  # optional; Dexted DSP itself has no runtime dependencies
+from dexted_dsp import inspect_sos, verify_inspection
 
-f = Biquad.from_coefficients([0.25, 0.0, 0.0, -0.5, 0.0], precision="float32")
-proof = certify(f, max_gain=1.0)
-assert proof.certified
-assert verify_biquad(proof.as_dict(), f, max_gain=1.0)
-print(proof.status)  # certified
+sos = butter(8, 0.2, output="sos")
+result = inspect_sos(sos, precision="float32", fs=48_000, max_gain=1.01)
+print(result.status, result.reason)     # certified certified
+print(result.gain_bounds.as_dict())     # provable rational enclosure, when available
+result.save("filter-proof.json")
+assert verify_inspection(result.as_dict(), sos, precision="float32", fs=48_000, max_gain=1.01)
 ```
+
+Or use a JSON input for a fail-closed deployment gate:
 
 ```bash
-dexted-dsp check examples/safe.json --output certificate.json
-dexted-dsp verify examples/safe.json certificate.json
+dexted-dsp inspect examples/safe.json --output proof.json --report report.md
+dexted-dsp verify examples/safe.json proof.json
 ```
 
-## Benchmarks and evidence
+Only exit code `0` passes a deployment gate. Rejections return `1`, invalid inputs `2`, resource-limited `unknown` returns `3`. The existing `check` and `verify` commands and v1 certificates remain supported.
 
-![C++ certificate check latency](benchmarks/figures/native_latency.svg)
+## What you get — and what you do not
 
-Published charts compare a specialized exact integer predicate against sampled grids and a floating-point analytic baseline. The saved synthetic filter set covers **4,096 test filters**; runtime comparisons apply to **offline certification**, not audio throughput. In some cases the exact checker is slower. The source revision, raw timing data, counts of false accept/reject decisions, limitations, and instructions to reproduce the measurements are provided in the [benchmark report](docs/en/benchmarks/BENCHMARKS.md) and [raw benchmark JSON](benchmarks/results/benchmark.json). No sound/image quality advantage is claimed.
-
-## Documentation
-
-| Topic | Documentation |
+| Available today | Outside the certified model |
 |---|---|
-| Installation, examples, CLI | [Getting started](docs/en/getting-started/USER_GUIDE.md) |
-| Python, native C++ and certificate API | [API reference](docs/reference/README.md) |
-| Proofs, assumptions, external sources | [Research notes](docs/research/README.md) |
-| Benchmarks, datasets, measurements | [Benchmark report](docs/en/benchmarks/BENCHMARKS.md) |
-| Tests and reproducibility | [Testing guide](docs/en/guides/TESTING.md) |
-| Contributions, security, releases | [Project guide](docs/project/README.md) |
-| Chinese, Japanese, Korean, English | [All languages](docs/README.md) |
+| Exact, whole-band biquad stability + strict gain decision (Python & C++20) | Audio processing/throughput acceleration or perceptual improvement |
+| Python SOS certificate with independently rationally rechecked dyadic cover | Finite-precision runtime/quantization-error or device-safety proof |
+| Provable peak-gain **enclosures** (not a single invented numeric peak) | General MIMO, arbitrary DNN graphs or automatic filter repair |
+| JSON/Markdown inspection, deterministic demos, CI-friendly status | Crouzeix theorem or OpenAI exact-DFT runtime integration |
 
-The full project explanation, mathematical derivations, complete benchmark tables, and methodology are in **[docs/](docs/README.md)**. Original measurement artifacts are preserved; file reorganization does not create new benchmark results.
+The Python SOS bound refiner may return a valid but wide interval, or no interval when resources are insufficient. For a failing strict gain limit, `rejected` does not imply unstable feedback; inspect the reason. The `input_digest` is **not** a digital signature. Arbitrary-precision checks belong offline, never in a real-time audio callback.
 
-**License:** [MIT](LICENSE) · **Project stage:** research alpha · **Hosting:** [dextune/dexted-dsp](https://github.com/dextune/dexted-dsp)
+**Project status:** research alpha; source installation only until a release is independently approved and published. The repository is currently private, so cloning requires access. This is independently maintained and AI-assisted, not an official OpenAI project or an externally audited safety tool. Source mathematics used by the executable predicate is classical; [OpenAI research is a separate conditional exploration](docs/research/README.md).
+
+[Getting started](docs/en/getting-started/USER_GUIDE.md) · [Inspection API](docs/product/inspection.md) · [Proof details](docs/research/proofs/biquad.md) · [Testing](docs/en/guides/TESTING.md) · [Roadmap and gates](docs/product/implementation-status.md) · [C++ API](docs/reference/cpp-api.md)

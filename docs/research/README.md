@@ -16,3 +16,8 @@ The executable **exact-frequency** filter predicate and cascade verification are
 - [한국어 연구 출처](../ko/development/PROVENANCE.md)
 
 The research notes do not constitute a proof-assistant or independent safety audit. The runtime benchmark uses neither a faster FFT from OpenAI nor the general Crouzeix result.
+
+## New bounded-gain mathematics and future research
+
+- [Exact rational peak-gain enclosures](proofs/peak-enclosure.md) — implemented offline for fixed real filters
+- [Pinned OpenAI matrix-theorem applicability research](design-notes/openai-math-adapter.md) — hypothesis only, not runtime

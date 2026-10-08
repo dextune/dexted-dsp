@@ -9,3 +9,7 @@
 - [License](../../LICENSE) · [Notices](../legal/NOTICE.md) · [Citation](../../CITATION.cff)
 
 Project status: **research alpha**. Historical logs and benchmark source hashes remain unchanged by documentation restructuring.
+
+## Current implementation track
+
+[Unreleased implementation changes](HOOK_CHANGELOG.md) · [9.5-plan delivery gates](../product/implementation-status.md)

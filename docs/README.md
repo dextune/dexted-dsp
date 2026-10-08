@@ -24,3 +24,10 @@ All detailed documentation lives under `docs/`. The [GitHub README](../README.md
 The runnable exact biquad/cascade predicates use classical mathematical methods. The external [OpenAI math research](research/openai-math/REFERENCES.md) provides an **assumed** Crouzeix theorem for a separate research note; it is not integrated into the published runtime or its benchmarks. Do not represent tests or mathematical notes as third-party certification.
 
 Reference command: run `python tools/check_links.py`, `python tools/check_documentation.py`, and `python -m unittest discover -s tests -v` from the repository root. Benchmark source hashes are not modified by this documentation-only move.
+
+## New hands-on entry points
+
+- [Inspection API, exact gain bounds and proof schema](product/inspection.md)
+- [Implementation gates and what remains unverified](product/implementation-status.md)
+- [Reproducible hidden-peak demo](../examples/hidden_peak/README.md)
+- [Release-gate example](../examples/release_gate/README.md)
