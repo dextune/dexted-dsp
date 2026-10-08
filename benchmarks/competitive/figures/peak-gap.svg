@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="740" height="463" viewBox="0 0 740 463" role="img" aria-labelledby="title desc">
+<title id="title">One synthetic filter, two incompatible verdicts</title>
+<desc id="desc">Same binary32 SOS coefficients. 1024-point inclusive frequency grid sees 0.03974, below strict gain limit 1, returning false PASS. The exact algebraic whole-band gain is 2 and Dexted rejects the filter. Two horizontal bars share a linear 0 to 2 axis and threshold line.</desc>
+<rect width="740" height="463" rx="18" fill="#0b1425"/>
+<text x="28" y="42" text-anchor="start" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" fill="#63ded2">THE MISSING PEAK</text>
+<text x="28" y="83" text-anchor="start" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="27" font-weight="750" fill="#f5f8ff">The grid says PASS. The proof says FAIL.</text>
+<text x="28" y="112" text-anchor="start" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15" font-weight="400" fill="#a9bad2">One constructed float32 high-Q filter | same coefficients | limit &lt; 1.0</text>
+<rect x="24" y="134" width="692" height="125" rx="12" fill="#142238"/>
+<rect x="24" y="268" width="692" height="125" rx="12" fill="#142238"/>
+<text x="42" y="166" text-anchor="start" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" fill="#f5a56b">BEFORE / SAMPLED</text>
+<text x="42" y="190" text-anchor="start" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15" font-weight="400" fill="#a9bad2">1,024-point grid estimate</text>
+<text x="42" y="237" text-anchor="start" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="36" font-weight="750" fill="#f5f8ff">0.03974</text>
+<text x="690" y="163" text-anchor="end" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15" font-weight="700" fill="#f5a56b">FALSE PASS</text>
+<rect x="360" y="202" width="320" height="26" rx="6" fill="#30445f"/>
+<rect x="360" y="202" width="6.359" height="26" rx="6" fill="#f5a56b"/>
+<path d="M 520.0 188 v 56" stroke="#f2d07a" stroke-width="2" stroke-dasharray="4 4"/>
+<text x="42" y="300" text-anchor="start" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" fill="#63ded2">AFTER / PROVED</text>
+<text x="42" y="324" text-anchor="start" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15" font-weight="400" fill="#a9bad2">Exact global maximum</text>
+<text x="42" y="371" text-anchor="start" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="36" font-weight="750" fill="#f5f8ff">2.00000</text>
+<text x="690" y="297" text-anchor="end" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15" font-weight="700" fill="#63ded2">VIOLATION FOUND</text>
+<rect x="360" y="336" width="320" height="26" rx="6" fill="#30445f"/>
+<rect x="360" y="336" width="320.000" height="26" rx="6" fill="#63ded2"/>
+<path d="M 520.0 322 v 56" stroke="#f2d07a" stroke-width="2" stroke-dasharray="4 4"/>
+<text x="360" y="414" text-anchor="start" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="13" font-weight="400" fill="#a9bad2">0</text>
+<text x="520" y="414" text-anchor="middle" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="13" font-weight="600" fill="#f2d07a">gain limit 1.0</text>
+<text x="680" y="414" text-anchor="end" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="13" font-weight="400" fill="#a9bad2">2</text>
+<text x="28" y="445" text-anchor="start" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="13" font-weight="400" fill="#a9bad2">Linear gain scale  |  one sampled false PASS  |  full-band mathematical violation</text>
+</svg>

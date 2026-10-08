@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="606" viewBox="0 0 390 606" role="img" aria-labelledby="title desc">
+<title id="title">A frequency grid passes a violating filter</title>
+<desc id="desc">A synthetic high-Q filter: a 1024-point grid observes only 0.03974, so a strict limit of 1 looks met. Algebra proves the actual global peak is exactly 2, so Dexted rejects it. Same represented coefficients, linear scale. Sampling does not promise certification.</desc>
+<rect width="390" height="606" rx="16" fill="#0b1425"/>
+<text x="22" y="39" text-anchor="start" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="13" font-weight="700" fill="#63ded2">SAME FILTER  /  DIFFERENT RESULT</text>
+<text x="22" y="75" text-anchor="start" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="27" font-weight="750" fill="#f5f8ff">A hidden 50x gap</text>
+<text x="22" y="102" text-anchor="start" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="16" font-weight="400" fill="#a9bad2">Gain limit: strictly below 1.0</text>
+<rect x="18" y="128" width="354" height="185" rx="12" fill="#142238"/>
+<text x="34" y="158" text-anchor="start" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" fill="#f5a56b">BEFORE</text>
+<text x="34" y="181" text-anchor="start" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15" font-weight="400" fill="#a9bad2">1,024-point sampled estimate</text>
+<text x="34" y="233" text-anchor="start" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="37" font-weight="750" fill="#f5f8ff">0.03974</text>
+<text x="352" y="230" text-anchor="end" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="11" font-weight="750" fill="#f5a56b">FALSE PASS</text>
+<rect x="34" y="256" width="319" height="21" rx="6" fill="#30445f"/>
+<rect x="34" y="256" width="6.339" height="21" rx="6" fill="#f5a56b"/>
+<path d="M 193.5 247 v 41" stroke="#f2d07a" stroke-width="2" stroke-dasharray="3 4"/>
+<text x="34" y="298" text-anchor="start" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="13" font-weight="400" fill="#a9bad2">0</text>
+<text x="193.5" y="298" text-anchor="middle" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="13" font-weight="600" fill="#f2d07a">limit 1.0</text>
+<text x="353" y="298" text-anchor="end" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="13" font-weight="400" fill="#a9bad2">2</text>
+<rect x="18" y="327" width="354" height="185" rx="12" fill="#142238"/>
+<text x="34" y="357" text-anchor="start" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" fill="#63ded2">AFTER</text>
+<text x="34" y="380" text-anchor="start" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15" font-weight="400" fill="#a9bad2">Exact whole-band maximum</text>
+<text x="34" y="432" text-anchor="start" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="37" font-weight="750" fill="#f5f8ff">2.00000</text>
+<text x="352" y="429" text-anchor="end" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="11" font-weight="750" fill="#63ded2">VIOLATION FOUND</text>
+<rect x="34" y="455" width="319" height="21" rx="6" fill="#30445f"/>
+<rect x="34" y="455" width="319.000" height="21" rx="6" fill="#63ded2"/>
+<path d="M 193.5 446 v 41" stroke="#f2d07a" stroke-width="2" stroke-dasharray="3 4"/>
+<text x="34" y="497" text-anchor="start" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="13" font-weight="400" fill="#a9bad2">0</text>
+<text x="193.5" y="497" text-anchor="middle" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="13" font-weight="600" fill="#f2d07a">limit 1.0</text>
+<text x="353" y="497" text-anchor="end" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="13" font-weight="400" fill="#a9bad2">2</text>
+<text x="22" y="552" text-anchor="start" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15" font-weight="400" fill="#a9bad2">Numeric sampler is not a certifier.</text>
+<text x="22" y="576" text-anchor="start" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="12" font-weight="400" fill="#a9bad2">Constructed synthetic fixture; not a field error rate.</text>
+</svg>
