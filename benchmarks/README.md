@@ -1,6 +1,6 @@
 # Benchmark reports / 벤치마크 / 基准测试 / ベンチマーク
 
-[English](../docs/en/BENCHMARKS.md) · [한국어](../docs/ko/BENCHMARKS.md) · [简体中文](../docs/zh-CN/BENCHMARKS.md) · [日本語](../docs/ja/BENCHMARKS.md)
+[English](../docs/en/benchmarks/BENCHMARKS.md) · [한국어](../docs/ko/benchmarks/BENCHMARKS.md) · [简体中文](../docs/zh-CN/benchmarks/BENCHMARKS.md) · [日本語](../docs/ja/benchmarks/BENCHMARKS.md)
 
 The four reports include distributions, exact comparator implementations, all repeat
 statistics, excluded costs, input precision, confusion counts, host caveats and full
@@ -8,11 +8,11 @@ reproduction commands. Numbers refer to the unchanged original v0.1.0 run.
 
 [Raw result JSON](results/benchmark.json) · [CSV summary](results/summary.csv) ·
 [Exact binary32 fixtures](../tools/restore_fixtures.py) · [Recorded protocol](results/protocol.json) ·
-[Environment](results/environment.json) · [Original run log](../validation/benchmark_run.log)
+[Environment](results/environment.json) · [Original run log](../validation/runs/v0.1.0/benchmark_run.log)
 
 ```bash
 python -m pip install '.[bench]'
-python -m pip install -r requirements-bench-tested.txt
+python -m pip install -r benchmarks/requirements-bench-tested.txt
 python tools/restore_fixtures.py
 python tools/audit_benchmark.py --recheck-fixtures
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python benchmarks/run.py --out validation/my-run

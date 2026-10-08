@@ -1,17 +1,13 @@
-# Local validation evidence
+# Validation evidence (historical)
 
-`summary.json` records the executed checks and unexecuted claims separately.
-`installed_wheel_tests.log` is from a fresh venv, offline wheel installation,
-then `python -I -m unittest` against the installed package (not PYTHONPATH=src).
-`native_wrapper.log` tests 256 calls through the actually built shared library.
-`cmake_consumer.log` is from a separate CMake project using an installed package.
-`sdist_rebuild.log` records an offline wheel build from the included source archive,
-using the existing build backend on the host.
+These records document earlier **local** checks and must not be confused with GitHub Actions or independent mathematical certification. Existing log/JSON contents are preserved byte-for-byte across this reorganization.
 
-`benchmark_run.log` corresponds to `benchmarks/results/benchmark.json` and its
-final source hashes. Earlier review runs are retained rather than silently removed.
-GCC/Boost optimizer warnings are visible in the logs. `sanitizers.log` covers only
-the exercised native tests; a successful sanitizer run is not a general memory-safety proof.
+| Dataset | Location | What it covers |
+|---|---|---|
+| Initial v0.1.0 records | [runs/v0.1.0/](runs/v0.1.0/) | Original Python/C++ checks, generated wheel, CMake integration, benchmark run, sanitizer and earlier comparison logs |
+| Documentation refresh | [docs_refresh/](docs_refresh/) | Four-language consistency, packaging and re-run documentation checks |
+| Rebranding review | [rebrand/](rebrand/) | Dexted DSP renaming, package rebuild and regression records |
 
-These are local automated checks, not a hosted GitHub CI run, external review,
-proof-assistant certification or a perceptual-quality evaluation.
+Key original run: [benchmark_run.log](runs/v0.1.0/benchmark_run.log) · [original summary](runs/v0.1.0/summary.json) · [documentation summary](docs_refresh/summary.json) · [rebrand tests](rebrand/core-tests-final.log).
+
+**Do not overwrite the original benchmark artifacts.** New measurements should be written into a new, clearly dated directory and identified as a separate experiment. The authoritative frozen timing table is [benchmarks/results/benchmark.json](../benchmarks/results/benchmark.json).

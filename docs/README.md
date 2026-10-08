@@ -1,32 +1,26 @@
-# Documentation / 문서 / 文档 / ドキュメント
+# Dexted DSP — documentation hub
 
-The executable library uses classical fixed-filter mathematics. The OpenAI Crouzeix
-reference is explicitly conditional and is not used in measured runtime code.
+All detailed documentation lives under `docs/`. The [GitHub README](../README.md) is a short landing page; this index is the canonical navigation entry.
 
-| Language | Project README | Provenance / OpenAI | Benchmarks | Usage | Testing | Mathematics |
-|---|---|---|---|---|---|---|
-| English | [README](../README.md) | [Sources and process](en/PROVENANCE.md) | [Methodology](en/BENCHMARKS.md) | [User guide](en/USER_GUIDE.md) | [Test guide](en/TESTING.md) | [Derivations](en/MATHEMATICS.md) |
-| 한국어 | [README](../README.ko.md) | [출처와 연구 과정](ko/PROVENANCE.md) | [비교·측정 방법](ko/BENCHMARKS.md) | [사용 가이드](ko/USER_GUIDE.md) | [테스트 가이드](ko/TESTING.md) | [수학적 유도](ko/MATHEMATICS.md) |
-| 简体中文 | [README](../README.zh-CN.md) | [来源与研究过程](zh-CN/PROVENANCE.md) | [基准测试](zh-CN/BENCHMARKS.md) | [使用指南](zh-CN/USER_GUIDE.md) | [测试指南](zh-CN/TESTING.md) | [数学推导](zh-CN/MATHEMATICS.md) |
-| 日本語 | [README](../README.ja.md) | [出典と研究過程](ja/PROVENANCE.md) | [ベンチマーク](ja/BENCHMARKS.md) | [利用ガイド](ja/USER_GUIDE.md) | [テストガイド](ja/TESTING.md) | [数学的導出](ja/MATHEMATICS.md) |
+## Choose your language
 
-Machine-readable evidence: [sources and pinned revisions](provenance/sources.json),
-[raw timings](../benchmarks/results/benchmark.json),
-[CSV summary](../benchmarks/results/summary.csv),
-[documentation-refresh validation](../validation/docs_refresh/summary.json).
+| Language | Full overview | Getting started | Testing | Benchmarks | Mathematics | Provenance | Releases |
+|---|---|---|---|---|---|---|---|
+| English | [Overview](en/README.md) | [Guide](en/getting-started/USER_GUIDE.md) | [Guide](en/guides/TESTING.md) | [Details](en/benchmarks/BENCHMARKS.md) | [Derivations](en/mathematics/MATHEMATICS.md) | [Sources](en/development/PROVENANCE.md) | [Guide](en/development/RELEASING.md) |
+| 한국어 | [개요](ko/README.md) | [설치·사용](ko/getting-started/USER_GUIDE.md) | [테스트](ko/guides/TESTING.md) | [벤치마크](ko/benchmarks/BENCHMARKS.md) | [수학](ko/mathematics/MATHEMATICS.md) | [출처](ko/development/PROVENANCE.md) | [배포](ko/development/RELEASING.md) |
+| 简体中文 | [概览](zh-CN/README.md) | [使用](zh-CN/getting-started/USER_GUIDE.md) | [测试](zh-CN/guides/TESTING.md) | [基准测试](zh-CN/benchmarks/BENCHMARKS.md) | [数学](zh-CN/mathematics/MATHEMATICS.md) | [来源](zh-CN/development/PROVENANCE.md) | [发布](zh-CN/development/RELEASING.md) |
+| 日本語 | [概要](ja/README.md) | [使い方](ja/getting-started/USER_GUIDE.md) | [テスト](ja/guides/TESTING.md) | [性能評価](ja/benchmarks/BENCHMARKS.md) | [数学](ja/mathematics/MATHEMATICS.md) | [出典](ja/development/PROVENANCE.md) | [リリース](ja/development/RELEASING.md) |
 
-## Translation policy / 번역 원칙 / 翻译原则 / 翻訳方針
+## Shared canonical references
 
-- Commands, API symbols, status strings, paths and result values are identical across languages.
-- 명령·API·상태 문자열·경로·측정값은 번역하지 않으며 언어별 수치를 변경하지 않습니다.
-- 命令、API、状态字符串、路径和测量数据保持一致，不按语言改写结果。
-- コマンド、API、状態文字列、パス、測定値は全言語で一致させます。
+- [API reference and C++/Python contract](reference/README.md)
+- [Formal derivations, proof limitations, OpenAI reference](research/README.md)
+- [Architecture, changelog, legal notice and contributing](project/README.md)
+- [Benchmark raw evidence and source snapshots](../benchmarks/README.md)
+- [Validation logs and immutable historical evidence](../validation/README.md)
 
-No independent professional-language review is claimed. Figure labels are shared in
-English; each benchmark guide explains the legends and caveats in its own language.
-The low-level [API reference](API.md) is shared. New contributors should update all
-four primary language sets when changing behavior or published numbers.
+### Provenance and verification boundary
 
-## Release guides / 공개 가이드 / 发布指南 / 公開ガイド
+The runnable exact biquad/cascade predicates use classical mathematical methods. The external [OpenAI math research](research/openai-math/REFERENCES.md) provides an **assumed** Crouzeix theorem for a separate research note; it is not integrated into the published runtime or its benchmarks. Do not represent tests or mathematical notes as third-party certification.
 
-[English](en/RELEASING.md) · [한국어](ko/RELEASING.md) · [简体中文](zh-CN/RELEASING.md) · [日本語](ja/RELEASING.md)
+Reference command: run `python tools/check_links.py`, `python tools/check_documentation.py`, and `python -m unittest discover -s tests -v` from the repository root. Benchmark source hashes are not modified by this documentation-only move.

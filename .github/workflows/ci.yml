@@ -24,6 +24,7 @@ jobs:
       - run: python examples/cascade.py
       - run: dexted-dsp check examples/safe.json
       - run: python tools/documentation_smoke.py
+      - run: python tools/check_repository_layout.py
       - run: python tools/check_documentation.py
       - run: python tools/check_links.py
       - run: python -m build

@@ -1,13 +1,13 @@
-include README*.md LICENSE NOTICE.md CHANGELOG.md CITATION.cff
+include README.md LICENSE CITATION.cff .gitattributes .gitignore
 recursive-include docs *.md *.json
-recursive-include cpp *.hpp *.h *.cpp CMakeLists.txt *.cmake.in
+recursive-include cpp *.hpp *.h *.cpp *.cmake.in
 include CMakeLists.txt
 recursive-include tests *.py
 recursive-include examples *.json *.py
-recursive-include benchmarks *.py *.cpp *.hpp *.h *.json *.md *.csv
-recursive-include benchmarks/figures *.png *.svg
-recursive-include benchmarks/results *.npz
-include CONTRIBUTING.md SECURITY.md requirements-bench-tested.txt
+recursive-include benchmarks *.py *.cpp *.hpp *.json *.md *.csv
+recursive-include benchmarks/figures *.svg
+include benchmarks/requirements-bench-tested.txt
+include .github/CONTRIBUTING.md .github/SECURITY.md
 recursive-include tools *.py
 recursive-include validation *.log *.json *.md *.npz
 recursive-include .github *.yml *.md

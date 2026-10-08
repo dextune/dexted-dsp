@@ -9,7 +9,7 @@ description = "Exact continuous-frequency gain checks for fixed real biquads and
 readme = "README.md"
 requires-python = ">=3.10"
 license = "MIT"
-license-files = ["LICENSE", "NOTICE.md"]
+license-files = ["LICENSE", "docs/legal/NOTICE.md"]
 authors = [{name = "DEXTUNE and Dexted DSP contributors"}]
 keywords = ["dsp", "biquad", "verification", "audio", "exact-arithmetic"]
 classifiers = [

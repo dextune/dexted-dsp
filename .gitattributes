@@ -5,3 +5,5 @@
 *.png binary
 *.whl binary
 *.gz binary
+# Historic benchmark CSV is retained byte-for-byte (CRLF included).
+benchmarks/results/summary.csv -text -eol

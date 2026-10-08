@@ -14,7 +14,8 @@ import re
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
-LOCALES = {"en":"README.md", "ko":"README.ko.md", "zh-CN":"README.zh-CN.md", "ja":"README.ja.md"}
+LOCALES = ("en", "ko", "zh-CN", "ja")
+SECTIONS = {"BENCHMARKS":"benchmarks", "MATHEMATICS":"mathematics", "PROVENANCE":"development", "RELEASING":"development", "TESTING":"guides", "USER_GUIDE":"getting-started"}
 KINDS = ("PROVENANCE", "BENCHMARKS", "USER_GUIDE", "TESTING", "MATHEMATICS", "RELEASING")
 METHODS = ("integer", "grid1024", "grid16384", "float64_algebraic")
 
@@ -28,8 +29,8 @@ def check() -> dict:
     snippets = 0
     documents = 0
     numeric_rows = 0
-    for locale, readme in LOCALES.items():
-        files = [ROOT/readme] + [ROOT/f"docs/{locale}/{kind}.md" for kind in KINDS]
+    for locale in LOCALES:
+        files = [ROOT/f"docs/{locale}/README.md"] + [ROOT/f"docs/{locale}/{SECTIONS[kind]}/{kind}.md" for kind in KINDS]
         for file in files:
             if not file.is_file():
                 failures.append(f"Missing {file.relative_to(ROOT)}")
@@ -59,8 +60,9 @@ def check() -> dict:
                     failures.append(f"Snippet syntax {file.relative_to(ROOT)}: {exc}")
             if "adc7f1241b42e322a6451854ab7e4b4c146bf78a" not in text:
                 failures.append(f"Missing pinned reference: {file.relative_to(ROOT)}")
-    if (ROOT/"README.md").read_bytes() != (ROOT/"README.en.md").read_bytes():
-        failures.append("English package README differs from default README")
+    # README.md is deliberately a short landing page. Full documentation lives under docs/.
+    if not (ROOT/"README.md").is_file():
+        failures.append("Missing GitHub landing README")
     with (ROOT/"benchmarks/results/summary.csv").open(encoding="utf-8", newline="") as f:
         rows = list(csv.DictReader(f))
     if len(rows) != len(data["families"])*len(METHODS):
