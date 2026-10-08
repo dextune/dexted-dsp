@@ -53,7 +53,7 @@ jobs:
       - name: Render directly from frozen 30-repeat evidence
         run: |
           python benchmarks/competitive/plot.py --input benchmarks/competitive/results/run-20261008.json --out validation/competitive_figures
-          if test -f benchmarks/competitive/figures/decision.svg; then
+          if test -f benchmarks/competitive/figures/decision-mobile.svg; then
             python benchmarks/competitive/plot.py --input benchmarks/competitive/results/run-20261008.json --out benchmarks/competitive/figures --check
           fi
       - name: Emit precise SVG bytes for evidence publication
