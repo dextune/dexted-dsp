@@ -66,39 +66,46 @@ def decision(data):
 
 
 def runtime(data):
+    """Paired linear p50 bars: zero-origin scale, never a deceptive speedup."""
     summary = data["summary"]
     methods = ("scipy_before", "scipy_after", "control_before",
                "control_after", "dexted_certification_only")
-    labels = ("SciPy", "SciPy + Dexted", "python-control", "control + Dexted", "Dexted proof only")
-    observed = [summary[m]["p50_ms"] for m in methods]
-    # Logarithmic bar distance makes sub-millisecond and multi-ms samples both readable.
-    minimum = min(v for v in observed if v > 0)
-    maximum = max(observed)
-    lo = math.floor(math.log10(minimum))
-    hi = math.ceil(math.log10(maximum))
-    if hi <= lo: hi=lo+1
-    s = canvas(452, "Before/after per-filter runtime, p50 and p95",
-               "GitHub Actions one shared Linux host; logarithmic axis, milliseconds. SciPy and control compare exactly matched before/after operations; Dexted proof and verifier add cost. No sampling speedup claim.")
-    s += [text(32, 43, "THE VERIFICATION COST", 13, CYAN, 700),
-          text(32, 80, "Proof costs time. Here's the bill.", 26, FOREGROUND, 750),
-          text(32, 108, "Wall time / filter, median + p95 in ms | shared Linux CI host", 15, MUTED),
-          f'<rect x="28" y="132" width="684" height="286" rx="12" fill="{SURFACE}"/>']
-    gx, gw = 242, 335
-    for x in range(lo, hi+1):
-        xpos = gx + gw*(x-lo)/(hi-lo)
-        s.append(f'<path d="M {xpos:.2f} 152 V 370" stroke="{LINE}" stroke-dasharray="3 5"/>')
-        s.append(text(round(xpos,2), 395, f"10^{x}", 13, MUTED, anchor="middle"))
-    for i, (method, label) in enumerate(zip(methods,labels)):
-        y = 175+i*42
-        median = summary[method]["p50_ms"]
-        p95 = summary[method]["p95_ms"]
-        color = CYAN if "after" in method or "only" in method else ORANGE
-        w = max(3, (math.log10(max(median,10**lo))-lo)/(hi-lo)*gw)
-        s.append(text(45, y+7, label, 15, FOREGROUND))
-        s.append(f'<rect x="{gx}" y="{y-7}" width="{w:.2f}" height="16" rx="4" fill="{color}"/>')
-        s.append(text(685, y+7, number(median), 16, color, 700, "end"))
-        s.append(text(685, y+22, f"p95 {number(p95)}", 10, MUTED, anchor="end"))
-    s.append(text(30, 443, "Log10 scale | the total After workflow includes the same sampler + certified proof check", 12, MUTED))
+    names = ("SciPy / before", "SciPy + proof", "control / before",
+             "control + proof", "Dexted proof only")
+    scale = math.ceil(max(summary[x]["p50_ms"] for x in methods)*2)/2
+    if scale <= 0:
+        raise AssertionError("positive timing expected")
+    s = canvas(474, "The actual latency cost of verified certification",
+               "Linear zero-origin scale showing per-case-method wall-time p50 in milliseconds, with p95 in text. Same SciPy/control frequency samples before and after, proof added only after. Shared Linux CI runner and synthetic filters, not a DSP speedup.")
+    s.extend([
+        text(30,43,"LATENCY TRADE-OFF",14,CYAN,700),
+        text(30,82,"Stronger checking takes longer.",28,FOREGROUND,750),
+        text(30,110,"Wall-clock median / filter (ms), linear scale from zero",15,MUTED),
+        f'<rect x="27" y="133" width="685" height="290" rx="12" fill="{SURFACE}"/>',
+    ])
+    gx,gw=242,344
+    for i in range(4):
+        x=gx+gw*i/3
+        s.append(f'<path d="M {x:.1f} 152 V 397" stroke="{LINE}" stroke-dasharray="3 6"/>')
+        s.append(text(round(x,1),416, f"{scale*i/3:.2f}",13,MUTED,anchor="middle"))
+    for i,(method,name) in enumerate(zip(methods,names)):
+        y=178+i*47
+        value=summary[method]["p50_ms"]
+        p95=summary[method]["p95_ms"]
+        color=CYAN if "after" in method or "only" in method else ORANGE
+        length=gw*value/scale
+        s.extend([
+            text(41,y+7,name,15,FOREGROUND,600),
+            f'<rect x="{gx}" y="{y-8}" width="{max(length,2):.2f}" height="19" rx="4" fill="{color}"/>',
+            text(685,y+8,f"{value:.3f} ms",16,color,700,"end"),
+            text(685,y+24,f"p95 {p95:.3f} ms",10,MUTED,400,"end"),
+        ])
+    a=summary["scipy_after"]["p50_ms"]-summary["scipy_before"]["p50_ms"]
+    b=summary["control_after"]["p50_ms"]-summary["control_before"]["p50_ms"]
+    s.extend([
+        text(30,449,f"Added median: SciPy +{a:.3f} ms  |  control +{b:.3f} ms",14,CYAN,650),
+        text(30,467,"Differences of pooled medians, not paired overhead  •  p95 labeled separately",11,MUTED),
+    ])
     return "\n".join(s+["</svg>"])+"\n"
 
 

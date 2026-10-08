@@ -51,11 +51,7 @@ jobs:
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
       - name: Render directly from frozen 30-repeat evidence
-        run: |
-          python benchmarks/competitive/plot.py --input benchmarks/competitive/results/run-20261008.json --out validation/competitive_figures
-          if test -f benchmarks/competitive/figures/peak-gap.svg; then
-            python benchmarks/competitive/plot.py --input benchmarks/competitive/results/run-20261008.json --out benchmarks/competitive/figures --check
-          fi
+        run: python benchmarks/competitive/plot.py --input benchmarks/competitive/results/run-20261008.json --out validation/competitive_figures
       - name: Emit precise SVG bytes for evidence publication
         run: |
           python - <<'PY'
@@ -65,6 +61,8 @@ jobs:
               raw=(Path("validation/competitive_figures")/(key+".svg")).read_bytes()
               print("FIGURE_BASE64_"+key.upper().replace("-","_")+"="+base64.b64encode(raw).decode("ascii"))
           PY
+      - name: Ensure published SVGs match archived measurements byte-for-byte
+        run: python benchmarks/competitive/plot.py --input benchmarks/competitive/results/run-20261008.json --out benchmarks/competitive/figures --check
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
           name: competitive-readme-figures
