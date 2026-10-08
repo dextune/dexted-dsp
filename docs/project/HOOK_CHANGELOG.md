@@ -29,3 +29,7 @@ The external review, 3-partner integrations, independently reproduced current-co
 - Save all raw timings, p50/p95, fixture/source SHA256, host details and method semantics.
 - Audit stored statistics and fixed-fixture identity; preserve the original v0.1.0 results separately.
 - One adversarial hidden-peak case deliberately causes the sampler to accept a rejected filter; never generalize its incidence.
+
+## Benchmark provenance correction (CI discovered)
+
+The first local designed-SOS timing artifact was made against formatting-different biquad/cascade source files. The CI source-hash audit rejected it, correctly. Instead of replacing the historical timing evidence or editing its hashes, preserve it as an explicitly source-drifted archive and **remeasure with the exact current GitHub source bytes**, storing a second independent 30-trial run. Use [the main-matched result](../../validation/pilot_v2/designed_sos_20261008_main_matched.json) for this branch's pilot audit.

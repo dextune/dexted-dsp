@@ -87,6 +87,7 @@ jobs:
           python-version: '3.13'
       - run: python -m pip install . 'numpy==2.3.5' 'scipy==1.17.0'
       - run: python benchmarks/suites/generate_design_fixtures.py --check
-      - run: python benchmarks/suites/audit_pilot_v2.py validation/pilot_v2/designed_sos_20261008_linux_shared.json
+      - run: python benchmarks/suites/audit_pilot_v2.py validation/pilot_v2/designed_sos_20261008_main_matched.json
+      - run: python benchmarks/suites/audit_pilot_v2.py validation/pilot_v2/designed_sos_20261008_linux_shared.json --allow-source-drift
       - run: python benchmarks/suites/run_pilot_v2.py --trials 3 --limit 6 --out validation/pilot_ci_smoke.json
       - run: python benchmarks/suites/audit_pilot_v2.py validation/pilot_ci_smoke.json
