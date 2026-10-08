@@ -23,7 +23,7 @@ def main() -> None:
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--build-dir',type=Path,default=ROOT/'build')
     args=parser.parse_args()
-    with tempfile.TemporaryDirectory(prefix='dexted-consumer-') as temporary:
+    # Windows MSBuild/vctip can briefly retain handles after a successful CTest.\n    # Best-effort temporary cleanup is safe on disposable CI runners; test errors\n    # still propagate via subprocess.check=True.\n    with tempfile.TemporaryDirectory(prefix='dexted-consumer-',\n                                     ignore_cleanup_errors=(os.name == 'nt')) as temporary:
         folder=Path(temporary).resolve()
         prefix=folder/'install'
         build=folder/'consumer-build'
