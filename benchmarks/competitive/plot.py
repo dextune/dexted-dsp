@@ -124,8 +124,53 @@ def memory(data):
     return "\n".join(s+["</svg>"])+"\n"
 
 
+
+def mobile(data, measure):
+    """Narrow device chart; 390 CSSpx-wide rather than a scaled-down desktop."""
+    info={
+        "decision":("MISSED VIOLATIONS","Before vs after proof","false PASS","false_accepts",
+                    "Both samplers miss the SAME constructed peak",630),
+        "runtime":("VERIFICATION COST","Proof is slower","ms (median)","p50_ms",
+                   "Cost is higher; no sampling speedup claim",630),
+        "memory":("MEMORY FOOTPRINT","Python-traced peak","KiB (median)","peak_python_kib_p50",
+                   "Native NumPy/C allocations and RSS excluded",630)
+    }
+    eyebrow,title,unit,field,note,height=info[measure]
+    methods=("scipy_before","scipy_after","control_before","control_after")
+    scores=[data["summary"][m][field] for m in methods]
+    scale=max(1e-12,max(scores))
+    s=[
+        f'<svg xmlns="http://www.w3.org/2000/svg" width="390" height="{height}" viewBox="0 0 390 {height}" role="img" aria-labelledby="title desc">',
+        f'<title id="title">{escape(title)}</title>',
+        f'<desc id="desc">{escape(note)}. Same 9 synthetic filters and 30 repeat observations.</desc>',
+        f'<rect width="390" height="{height}" rx="16" fill="{BG}"/>',
+        text(26,46,eyebrow,14,CYAN,700),
+        text(26,83,title,25,FOREGROUND,750),
+        text(26,114,unit+" · 9 synthetic filters",16,MUTED),
+    ]
+    for i,(method,value) in enumerate(zip(methods,scores)):
+        if i in (0,2):
+            group="SciPy freqz_sos" if i==0 else "python-control"
+            s.append(text(26,159+(i//2)*223,group,21,FOREGROUND,700))
+        label="BEFORE · grid" if i%2==0 else "AFTER · grid + proof"
+        y=201+i*99+(i//2)*24
+        color=ORANGE if i%2==0 else CYAN
+        s.extend([
+            text(26,y,label,17,FOREGROUND,650),
+            f'<rect x="26" y="{y+16}" width="273" height="22" rx="5" fill="{LINE}"/>',
+            f'<rect x="26" y="{y+16}" width="{273*value/scale:.3f}" height="22" rx="5" fill="{color}"/>',
+            text(365,y+34,number(value) if measure!="decision" else str(value),
+                 18,color,700,"end")
+        ])
+    s.extend([text(26,604,note,12,MUTED),"</svg>"])
+    return "\n".join(s)+"\n"
+
+
 def generate(data):
-    return {"decision.svg":decision(data),"runtime.svg":runtime(data),"memory.svg":memory(data)}
+    return {"decision.svg":decision(data),"runtime.svg":runtime(data),"memory.svg":memory(data),
+            "decision-mobile.svg":mobile(data,"decision"),
+            "runtime-mobile.svg":mobile(data,"runtime"),
+            "memory-mobile.svg":mobile(data,"memory")}
 
 
 def main():

@@ -33,7 +33,7 @@ class CompetitiveEvidenceTests(unittest.TestCase):
 
     def test_svg_is_exactly_from_raw_data(self):
         figs=generate(self.data)
-        self.assertEqual(set(figs),{"decision.svg","runtime.svg","memory.svg"})
+        self.assertEqual(set(figs),{"decision.svg","runtime.svg","memory.svg","decision-mobile.svg","runtime-mobile.svg","memory-mobile.svg"})
         for name,content in figs.items():
             self.assertIn('aria-labelledby="title desc"',content)
             self.assertEqual((ROOT/"benchmarks/competitive/figures"/name).read_text(encoding="utf-8"),content)

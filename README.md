@@ -2,7 +2,10 @@
 
 **The frequency plot passes. The exact gain bound does not.**
 
-![Measured false-PASS detection: actual SciPy and python-control vs the same checks plus verified Dexted proof](benchmarks/competitive/figures/decision.svg)
+<picture>
+  <source media="(max-width: 600px)" srcset="benchmarks/competitive/figures/decision-mobile.svg">
+  <img src="benchmarks/competitive/figures/decision.svg" alt="Measured SciPy and control false-PASS before and after certified proof">
+</picture>
 
 | **Missed specification violations** | **Independent mathematical agreement** | **Added median verification time** |
 |:---:|:---:|:---:|
@@ -20,9 +23,15 @@ python tools/audit_competitive.py validation/my-competitive-run.json
 
 <sub>9 **synthetic** float32 SOS cases · 1,024 frequencies · 30 repeats each · one shared Linux host. Grid results are estimates, not mathematical proofs. Dexted proves only the ideal fixed-coefficient transfer function, not runtime/device safety. Private repository: clone access required.</sub>
 
-![Measured Before vs After time and additional proof-only median and p95](benchmarks/competitive/figures/runtime.svg)
+<picture>
+  <source media="(max-width: 600px)" srcset="benchmarks/competitive/figures/runtime-mobile.svg">
+  <img src="benchmarks/competitive/figures/runtime.svg" alt="Measured SciPy and control runtime before and after certified proof">
+</picture>
 
-![Measured Python allocation peak, explicitly excluding native allocations](benchmarks/competitive/figures/memory.svg)
+<picture>
+  <source media="(max-width: 600px)" srcset="benchmarks/competitive/figures/memory-mobile.svg">
+  <img src="benchmarks/competitive/figures/memory.svg" alt="Measured Python heap peak before and after certified proof">
+</picture>
 
 **Wall-time p50 / p95, ms:** SciPy `0.230 / 0.387` → `1.258 / 3.399`; control `0.217 / 0.266` → `1.142 / 3.277`. One shared synthetic miss; p50 differences are *not* paired mean overhead. Traced allocations exclude native memory and RSS.
 
@@ -30,9 +39,7 @@ python tools/audit_competitive.py validation/my-competitive-run.json
 
 ---
 
-**Your frequency grid can miss a violating peak. Verify the whole band.**
-
-Proof-carrying offline IIR gain verification · Python 3.10+ · C++20 · MIT
+**Verify the whole band beyond a frequency grid.** · Python 3.10+ · C++20 · MIT
 
 [![CI](https://github.com/dextune/dexted-dsp/actions/workflows/ci.yml/badge.svg)](https://github.com/dextune/dexted-dsp/actions/workflows/ci.yml) · [Docs](docs/README.md) · [Python/C++ API](docs/reference/README.md) · [Archived v0.1.0 evidence](benchmarks/results/benchmark.json) · [Current-code synthetic pilot](benchmarks/suites/PROTOCOL_V2.md) · [한국어](docs/ko/README.md) · [日本語](docs/ja/README.md) · [简体中文](docs/zh-CN/README.md)
 
@@ -92,7 +99,7 @@ The 1,200-case [EQ design catalog](benchmarks/suites/EQ_CATALOG_PROTOCOL.md) and
 | Provable peak-gain **enclosures**, plus single-biquad exact cosine peak intervals | General MIMO, arbitrary DNN graphs or automatic filter repair |
 | JSON/Markdown inspection, deterministic demos, CI-friendly status | Crouzeix theorem or OpenAI exact-DFT runtime integration |
 
-The Python SOS bound refiner may return a valid but wide interval, or no interval when resources are insufficient. For a failing strict gain limit, `rejected` does not imply unstable feedback; inspect the reason. The `input_digest` is **not** a digital signature. Arbitrary-precision checks belong offline, never in a real-time audio callback.
+An SOS bound may be wide or unavailable. `rejected` need not imply instability. The digest is **not** a signature; proof belongs offline, not in an audio callback.
 
 **Project status:** research alpha; source installation only until a release is independently approved and published. The repository is currently private, so cloning requires access. This is independently maintained and AI-assisted, not an official OpenAI project or an externally audited safety tool. Source mathematics used by the executable predicate is classical; [OpenAI research is a separate conditional exploration](docs/research/README.md).
 
