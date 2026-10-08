@@ -12,7 +12,7 @@ from math import isfinite, isqrt, nextafter
 from typing import Sequence
 
 from .biquad import integer_coefficients, squared_coefficients
-from .cascade import gap_polynomial, prove_positive, validate_sections
+from .cascade import gap_polynomial, prove_positive, validate_sections, ResourceLimitError
 from .model import Biquad
 
 
@@ -172,12 +172,18 @@ def bound_sos_peak_gain(sections: Sequence[Biquad], *, precision_bits: int = 10,
         raise ValueError('max_nodes must be an integer in [1,100000]')
     if type(max_bracket_steps) is not int or not 1 <= max_bracket_steps <= 128:
         raise ValueError('max_bracket_steps must be an integer in [1,128]')
-    _, stable = gap_polynomial(rows,Fraction(1))
+    try:
+        _, stable = gap_polynomial(rows,Fraction(1))
+    except ResourceLimitError:
+        return None
     if not stable:
         return None
     lo = _sos_sample_lower(rows)
     def verdict(gamma: Fraction) -> str:
-        p,_ = gap_polynomial(rows,gamma)
+        try:
+            p,_ = gap_polynomial(rows,gamma)
+        except ResourceLimitError:
+            return 'unknown'
         return prove_positive(p,max_depth,max_nodes)['verdict']
     # Start with a known lower witness; do not mistake UNKNOWN for failure.
     hi = max(Fraction(1),lo*2)

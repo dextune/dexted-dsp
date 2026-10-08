@@ -266,5 +266,5 @@ def verify_inspection(report: dict, expected, *, precision: str = 'float64',
             return False
         candidate=report.get('gain_bounds')
         return candidate == (expected_bounds.as_dict() if expected_bounds is not None else None)
-    except (ValueError,TypeError,OverflowError,KeyError,ZeroDivisionError,MemoryError):
+    except (ValueError,TypeError,OverflowError,KeyError,ZeroDivisionError,ArithmeticError,MemoryError):
         return False

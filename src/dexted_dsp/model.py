@@ -1,10 +1,11 @@
-"""Explicit coefficient semantics: certify the values actually deployed."""
+"""Explicit, bounded coefficient semantics: certify the values deployed."""
 from __future__ import annotations
 from dataclasses import dataclass
 import math
 from numbers import Complex, Real
 import struct
 from typing import Iterable
+from .request import bounded_take
 
 
 def finite_float(value: object) -> float:
@@ -41,8 +42,8 @@ class Biquad:
 
     def __post_init__(self) -> None:
         try:
-            b = tuple(finite_float(x) for x in self.b)
-            a = tuple(finite_float(x) for x in self.a)
+            b = tuple(finite_float(x) for x in bounded_take(self.b, 3, 'numerator'))
+            a = tuple(finite_float(x) for x in bounded_take(self.a, 3, 'denominator'))
         except TypeError as exc:
             raise ValueError("b and a must be sequences") from exc
         if len(b) != 3 or len(a) != 3:
@@ -57,10 +58,7 @@ class Biquad:
         """Read [b0,b1,b2,a1,a2]. float32 conversion is explicit and checked."""
         if precision not in ('float32', 'float64'):
             raise ValueError("precision must be float32 or float64")
-        try:
-            v = tuple(finite_float(x) for x in values)
-        except TypeError as exc:
-            raise ValueError("five coefficients are required") from exc
+        v = tuple(finite_float(x) for x in bounded_take(values, 5, 'coefficients'))
         if len(v) != 5:
             raise ValueError("five coefficients are required")
         if precision == 'float32':
@@ -68,6 +66,8 @@ class Biquad:
                 v = tuple(struct.unpack('!f', struct.pack('!f', x))[0] for x in v)
             except (OverflowError, struct.error) as exc:
                 raise ValueError("coefficient exceeds float32 range") from exc
+            if not all(math.isfinite(x) for x in v):
+                raise ValueError("rounded float32 coefficients must remain finite")
         return cls(v[:3], (1.0, v[3], v[4]))
 
     @property
@@ -85,8 +85,8 @@ def from_sos(sos: Iterable[Iterable[float]], *, precision: str = 'float64') -> t
     values different from those deployed by the caller.
     """
     result = []
-    for row in sos:
-        values = tuple(finite_float(x) for x in row)
+    for row in bounded_take(sos, 32, 'SOS sections'):
+        values = tuple(finite_float(x) for x in bounded_take(row, 6, 'SOS row'))
         if len(values) != 6 or values[3] != 1.0:
             raise ValueError("each SOS row must contain six finite values with a0=1")
         result.append(Biquad.from_coefficients(values[:3] + values[4:], precision=precision))
