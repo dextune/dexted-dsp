@@ -45,6 +45,41 @@ def _forbid_constant(token):
     raise ValueError('non-standard JSON constant')
 
 
+def _preflight_structure(payload: bytes) -> None:
+    """Bound JSON nesting before building a potentially hostile object graph."""
+    depth = 0
+    tokens = 0
+    quoted = False
+    escaped = False
+    for byte in payload:
+        if quoted:
+            if escaped:
+                escaped = False
+            elif byte == 92:   # reverse solidus
+                escaped = True
+            elif byte == 34:   # quote
+                quoted = False
+            continue
+        if byte == 34:
+            quoted = True
+            tokens += 1
+        elif byte in (123, 91):
+            depth += 1
+            tokens += 1
+            if depth > MAX_NESTING:
+                raise ValueError('JSON nesting exceeds budget')
+        elif byte in (125, 93):
+            depth -= 1
+            if depth < 0:
+                raise ValueError('unbalanced JSON structure')
+        elif byte in (44, 58):
+            tokens += 1
+        if tokens > 1_000_000:
+            raise ValueError('JSON token budget exhausted')
+    if depth != 0 or quoted:
+        raise ValueError('incomplete JSON structure')
+
+
 def parse_certificate_json(payload: bytes, *, max_bytes: int = MAX_PROOF_BYTES) -> dict:
     """Accept legacy JSON layout, but not duplicates, unknown schemas or overrun."""
     if type(payload) is not bytes:
@@ -53,6 +88,7 @@ def parse_certificate_json(payload: bytes, *, max_bytes: int = MAX_PROOF_BYTES) 
         raise ValueError('invalid maximum certificate length')
     if len(payload) > max_bytes:
         raise ValueError('certificate exceeds byte limit')
+    _preflight_structure(payload)
     document = json.loads(payload.decode('utf-8'), object_pairs_hook=_no_duplicate_keys,
                           parse_int=_bounded_integer, parse_float=_finite_decimal,
                           parse_constant=_forbid_constant)
