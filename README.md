@@ -18,15 +18,15 @@ OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python benchmarks/competitive/run.py --
 python tools/audit_competitive.py validation/my-competitive-run.json
 ```
 
-<sub>**Measured**, not modeled: 9 predeclared **synthetic** float32 SOS cases, 1,024 inclusive frequencies, 30 wall-time and 30 Python-allocation observations per case/method, one 2-vCPU AMD EPYC GitHub Actions Linux host. Neither numerical sampler promises full-band certification. Dexted adds **ideal fixed-coefficient** strict gain proof; it does not accelerate numerical response evaluation or prove device runtime arithmetic. This private repository requires clone access.</sub>
+<sub>9 **synthetic** float32 SOS cases · 1,024 frequencies · 30 repeats each · one shared Linux host. Grid results are estimates, not mathematical proofs. Dexted proves only the ideal fixed-coefficient transfer function, not runtime/device safety. Private repository: clone access required.</sub>
 
 ![Measured Before vs After time and additional proof-only median and p95](benchmarks/competitive/figures/runtime.svg)
 
 ![Measured Python allocation peak, explicitly excluding native allocations](benchmarks/competitive/figures/memory.svg)
 
-**Measured p50 / p95 wall time, ms:** SciPy `0.230 / 0.387` → SciPy+Dexted `1.258 / 3.399`; python-control `0.217 / 0.266` → control+Dexted `1.142 / 3.277`. The same single hidden-peak synthetic case was falsely passed by both samplers, and rejected by both +Dexted workflows. The reported p50 costs are differences of pooled medians, **not** paired mean overhead. Traced memory omits native allocations and total process RSS.
+**Wall-time p50 / p95, ms:** SciPy `0.230 / 0.387` → `1.258 / 3.399`; control `0.217 / 0.266` → `1.142 / 3.277`. One shared synthetic miss; p50 differences are *not* paired mean overhead. Traced allocations exclude native memory and RSS.
 
-[Complete method and caveats](benchmarks/competitive/README.md) · [Raw untrimmed observations and host environment](benchmarks/competitive/results/run-20261008.json) · [Independent archive and oracle audit](tools/audit_competitive.py) · [Repeatable SVG generator](benchmarks/competitive/plot.py) · [CI](.github/workflows/competitive-benchmark.yml)
+[Methods and limitations](benchmarks/competitive/README.md) · [Raw data + environment](benchmarks/competitive/results/run-20261008.json) · [Oracle audit](tools/audit_competitive.py) · [SVG generator](benchmarks/competitive/plot.py)
 
 ---
 
@@ -43,9 +43,6 @@ Proof-carrying offline IIR gain verification · Python 3.10+ · C++20 · MIT
 For the included **synthetic adversarial** biquad, a 1,024-point inclusive frequency grid measures a largest gain of about **0.03974**, and would pass a gain-1 check. The **mathematically proven global maximum is exactly 2.0**. Dexted DSP rejects the filter using exact arithmetic over the entire frequency band, not a larger grid.
 
 ```bash
-git clone https://github.com/dextune/dexted-dsp.git
-cd dexted-dsp
-python -m pip install .
 dexted-dsp demo hidden-peak  # reproducible, no SciPy/NumPy required
 ```
 
@@ -102,13 +99,3 @@ The Python SOS bound refiner may return a valid but wide interval, or no interva
 [Exact peak-location proof](docs/research/proofs/peak-localization.md) · [Getting started](docs/en/getting-started/USER_GUIDE.md) · [Inspection API](docs/product/inspection.md) · [Proof details](docs/research/proofs/biquad.md) · [Testing](docs/en/guides/TESTING.md) · [Roadmap and gates](docs/product/implementation-status.md) · [C++ API](docs/reference/cpp-api.md)
 
 
-### Pinpoint a missed peak (without claiming floating-point frequency proof)
-
-```python
-from dexted_dsp import Biquad, localize_peak
-a = 2**-14
-f = Biquad.from_coefficients([a, 0, -a, 0, 1-a], precision='float32')
-region = localize_peak(f, isolation_bits=32, fs=48_000)
-print(region.cosine_intervals)    # (('0', '0'),): exact cos(omega) peak location
-print(region.frequency_hz_approx) # ((12000.0, 12000.0),): display only, NOT certified Hz bounds
-```
