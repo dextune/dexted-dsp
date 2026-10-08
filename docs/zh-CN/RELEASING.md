@@ -29,7 +29,7 @@ ctest --test-dir build -C Release --output-on-failure
 ```
 
 
-审查原始日志与[本次复核摘要](../../validation/rebrand/summary.json)。测试通过属于发布检查，不代表独立的外部证明审计。新基准不必更快。修改运行代码后，应保存新测量版本，不要重写旧哈希或只选择有利的运行结果。
+审查原始日志与[本次复核摘要](../../validation/docs_refresh/summary.json)。测试通过属于发布检查，不代表独立的外部证明审计。新基准不必更快。修改运行代码后，应保存新测量版本，不要重写旧哈希或只选择有利的运行结果。
 
 ## 3. 向现有仓库提交修改
 

@@ -29,7 +29,7 @@ ctest --test-dir build -C Release --output-on-failure
 ```
 
 
-Review raw logs and [the refresh summary](../../validation/rebrand/summary.json). Passing tests is a release check, not an independent proof audit. Benchmark runs need not become faster. If runtime code changes, create a new measured revision rather than rewriting archived hashes or selecting favorable runs.
+Review raw logs and [the refresh summary](../../validation/docs_refresh/summary.json). Passing tests is a release check, not an independent proof audit. Benchmark runs need not become faster. If runtime code changes, create a new measured revision rather than rewriting archived hashes or selecting favorable runs.
 
 ## 3. Contribute to the existing repository
 

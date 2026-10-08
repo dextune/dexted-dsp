@@ -1,0 +1,7 @@
+# Keep benchmark hashes, exact certificates, and Markdown reproducible on every OS.
+* text=auto eol=lf
+# NumPy artifacts are binary even when checked into a validation directory.
+*.npz binary
+*.png binary
+*.whl binary
+*.gz binary
