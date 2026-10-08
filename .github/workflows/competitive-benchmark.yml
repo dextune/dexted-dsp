@@ -35,7 +35,7 @@ jobs:
       - name: Audit published evidence when present
         run: |
           if test -f benchmarks/competitive/results/run-20261008.json; then
-            python tools/audit_competitive.py benchmarks/competitive/results/run-20261008.json --archived
+            python tools/audit_competitive.py benchmarks/competitive/results/run-20261008.json --archived --recheck-oracle
           fi
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         if: always()
@@ -43,4 +43,30 @@ jobs:
           name: competitive-evidence
           path: validation/competitive_ci.json
           if-no-files-found: warn
+          retention-days: 30
+
+  render:
+    name: reproducible SVG artifact and archive check
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - name: Render directly from frozen 30-repeat evidence
+        run: |
+          python benchmarks/competitive/plot.py --input benchmarks/competitive/results/run-20261008.json --out validation/competitive_figures
+          if test -f benchmarks/competitive/figures/decision.svg; then
+            python benchmarks/competitive/plot.py --input benchmarks/competitive/results/run-20261008.json --out benchmarks/competitive/figures --check
+          fi
+      - name: Emit precise SVG bytes for evidence publication
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import base64
+          for key in ("decision", "runtime", "memory"):
+              raw=(Path("validation/competitive_figures")/(key+".svg")).read_bytes()
+              print("FIGURE_BASE64_"+key.upper()+"="+base64.b64encode(raw).decode("ascii"))
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: competitive-readme-figures
+          path: validation/competitive_figures/*.svg
           retention-days: 30

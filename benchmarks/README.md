@@ -1,5 +1,18 @@
 # Benchmark reports / 벤치마크 / 基准测试 / ベンチマーク
 
+## Current SciPy + python-control Before/After evidence (2026-10-08)
+
+**[9-case synthetic competitive protocol](competitive/README.md)** ·
+[untrimmed time/memory results](competitive/results/run-20261008.json) ·
+[replication script](competitive/run.py) ·
+[archive integrity auditor](../tools/audit_competitive.py).
+
+The two actual competitors incorrectly passed the **same** constructed high-Q
+case on the 1,024-point grid; adding verified Dexted proof yielded **zero**
+false PASS on these nine fixtures, at **higher latency**. The new evidence is
+separate from the historical v0.1.0 study and is not evidence of field prevalence.
+
+
 [English](../docs/en/benchmarks/BENCHMARKS.md) · [한국어](../docs/ko/benchmarks/BENCHMARKS.md) · [简体中文](../docs/zh-CN/benchmarks/BENCHMARKS.md) · [日本語](../docs/ja/benchmarks/BENCHMARKS.md)
 
 The four reports include distributions, exact comparator implementations, all repeat

@@ -13,7 +13,7 @@ sys.path.insert(0, str(ROOT / "benchmarks/competitive"))
 from run import CASE_IDS, METHODS, VERSION, q
 
 
-def audit(path, archived=False):
+def audit(path, archived=False, oracle_recheck=False):
     data = json.loads(Path(path).read_text(encoding="utf-8"))
     if data["schema"] != VERSION:
         raise AssertionError("schema mismatch")
@@ -35,8 +35,16 @@ def audit(path, archived=False):
     if ids != list(CASE_IDS) or len(set(ids)) != len(CASE_IDS):
         raise AssertionError("case removed, added or reordered")
     for case in data["cases"]:
+        fixture = {c["id"]: c for c in json.loads((ROOT / inputs["fixture"]).read_text())["cases"]}[case["id"]]
+        if case["sos"] != fixture["sos"] or case["gain_limit"] != fixture["max_gain"] or case["fixture_split"] != fixture["split"]:
+            raise AssertionError("case coefficients, threshold or split differ from frozen fixture")
         if case["oracle_pass"] != (case["oracle_verdict"] == "certified"):
             raise AssertionError("oracle truth mismatch")
+        if archived and oracle_recheck:
+            sys.path.insert(0, str(ROOT / "tools"))
+            from sympy_oracle_audit import oracle_verdict
+            if oracle_verdict(case["sos"], case["gain_limit"]) != case["oracle_verdict"]:
+                raise AssertionError("published oracle truth does not match independent root counter")
         d = case["decisions"]
         if set(d) != set(METHODS):
             raise AssertionError("missing method")
@@ -78,5 +86,6 @@ if __name__ == "__main__":
     p = argparse.ArgumentParser()
     p.add_argument("result", type=Path)
     p.add_argument("--archived", action="store_true")
+    p.add_argument("--recheck-oracle", action="store_true")
     a = p.parse_args()
-    print(json.dumps(audit(a.result, a.archived), indent=2))
+    print(json.dumps(audit(a.result, a.archived, a.recheck_oracle), indent=2))
