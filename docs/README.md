@@ -38,3 +38,9 @@ Reference command: run `python tools/check_links.py`, `python tools/check_docume
 - [Exact rational cosine-domain peak localization](research/proofs/peak-localization.md) — certified `cos(ω)` union, Hz approximation only
 - [Designed-SOS pilot protocol and current-code measurements](../benchmarks/suites/PROTOCOL_V2.md) — synthetic pilot, not external validation
 - [Standalone installed CMake consumer example](../examples/native_consumer/CMakeLists.txt)
+
+## Auditable DSP design workflows
+
+- [Three-band EQ design → binary32 export → certified SOS proof](product/eq-workflow.md)
+- [Reproducible 1,200-case **synthetic** W3C EQ catalog and exact oracle](../benchmarks/suites/EQ_CATALOG_PROTOCOL.md)
+- [Mathematics reviewer request and proof obligations](research/review/INDEPENDENT_REVIEW_PACKET.md)

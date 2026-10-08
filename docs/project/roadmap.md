@@ -17,3 +17,7 @@ See [implementation status and unmet external gates](../product/implementation-s
 ### Next validation gates
 
 Hosted native cross-platform jobs, independent math review, certified Hz conversion, SOS peak localization, licensed representative holdout, independent current-code timing replication and approved public packaging remain open. [Current implementation status](../product/implementation-status.md).
+
+### Executed G3 evidence — synthetic W3C Cookbook model collection
+
+See [deterministic EQ catalog, exact real-root oracle and 64-case holdout](../../benchmarks/suites/EQ_CATALOG_PROTOCOL.md). This does not close the explicit **field-data, outside reviewer, third-party reproducibility or public release** gates. Actual deployed filter exports require permission and provenance, not manufactured substitutes.

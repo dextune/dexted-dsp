@@ -27,3 +27,7 @@ python-control/SLICOT, perceptual-quality or Crouzeix-runtime benchmark.
 Native batch overhead and Python per-call overhead are different experiments.
 Python filter objects are created before timing; certificate allocation and Python
 calls/loops remain inside. Whiskers are observed min/max, not confidence intervals.
+
+## New mathematically independent decision comparison (no timing speedup claim)
+
+[W3C EQ catalog and SymPy root-count protocol](suites/EQ_CATALOG_PROTOCOL.md) · [frozen holdout verdicts](../validation/oracle/reference_holdout_64.json) · [independent review request](../docs/research/review/INDEPENDENT_REVIEW_PACKET.md). All 1,200 cases are application-shaped synthetic designs, NOT real product exports. This experimental evidence is separate from the historical v0.1.0 and 25-case pilot timing data.

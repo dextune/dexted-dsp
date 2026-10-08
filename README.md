@@ -46,6 +46,16 @@ dexted-dsp verify examples/safe.json proof.json
 
 Only exit code `0` passes a deployment gate. Rejections return `1`, invalid inputs `2`, resource-limited `unknown` returns `3`. The existing `check` and `verify` commands and v1 certificates remain supported.
 
+## Real integration path: parametric EQ export
+
+Generate a three-band EQ with the [W3C Audio EQ Cookbook](https://www.w3.org/TR/audio-eq-cookbook/) formulas, round the actual deployment coefficients to float32, inspect the full SOS chain and reverify the certificate:
+
+```bash
+python examples/eq_release_pipeline.py --max-gain 2.0
+```
+
+The 1,200-case [EQ design catalog](benchmarks/suites/EQ_CATALOG_PROTOCOL.md) and [SymPy exact-real-root auditor](tools/sympy_oracle_audit.py) add a **different algorithmic correctness check**; all coefficients are *designed synthetic fixtures*, not product-field statistics or an external human audit. [Walkthrough](docs/product/eq-workflow.md).
+
 ## What you get — and what you do not
 
 | Available today | Outside the certified model |

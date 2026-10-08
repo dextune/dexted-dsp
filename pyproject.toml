@@ -29,6 +29,7 @@ Issues = "https://github.com/dextune/dexted-dsp/issues"
 [project.optional-dependencies]
 bench = ["numpy>=1.26", "scipy>=1.11", "matplotlib>=3.8"]
 dev = ["build>=1.2", "twine>=5", "pytest>=8"]
+audit = ["sympy>=1.13,<2"]
 
 [project.scripts]
 dexted-dsp = "dexted_dsp.cli:main"

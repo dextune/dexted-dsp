@@ -49,3 +49,16 @@ certification, GPU/WASM, real-time audio processing, runtime-roundoff proof or p
 - Freeze a separate 25-case designed synthetic SOS pilot with 30 trials, raw p50/p95 data and integrity audit, without overwriting the v0.1.0 historical benchmark.
 
 See [source changelog](HOOK_CHANGELOG.md) and [unmet 9.5 gates](../product/implementation-status.md).
+
+## Unreleased — G3 exact-oracle and W3C EQ adopter workflow (2026-10-08)
+
+- Add original deterministic W3C-inspired, application-shaped 1,200-case binary32
+  EQ catalog with predeclared SHA holdout and frozen exact 64-case oracle verdicts.
+- Add SymPy exact rational polynomial real-root-count comparator; explicitly
+  separate a standalone independent reference run from producer/verifier agreement.
+- Add Python 3-band EQ deployment-style walkthrough, boundary tests, a standalone
+  math reviewer checklist, and optional `.[audit]` dependency.
+- CI generates artifacts for all 1,200 reference decisions and 64 producer
+  comparisons; do not rewrite the archived v0.1.0 or 25-case timing evidence.
+- All data generated from mathematical design formulas, **not actual device
+  telemetry or quality/performance benchmarks**.

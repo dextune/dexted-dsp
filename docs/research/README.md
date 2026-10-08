@@ -24,3 +24,7 @@ The research notes do not constitute a proof-assistant or independent safety aud
 
 
 - [New: exact biquad peak-location region derivation](proofs/peak-localization.md) — integer/rational stationary-point isolation, no certified Hz interval
+
+## Independent-algorithm review path
+
+The [SymPy rational real-root auditor](../../tools/sympy_oracle_audit.py) is a separate algorithm from the shipped Bernstein certifier. [Review packet](review/INDEPENDENT_REVIEW_PACKET.md). It is **not** independent external human mathematical validation or formal verification.

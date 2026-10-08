@@ -91,3 +91,29 @@ jobs:
       - run: python benchmarks/suites/audit_pilot_v2.py validation/pilot_v2/designed_sos_20261008_linux_shared.json --allow-source-drift
       - run: python benchmarks/suites/run_pilot_v2.py --trials 3 --limit 6 --out validation/pilot_ci_smoke.json
       - run: python benchmarks/suites/audit_pilot_v2.py validation/pilot_ci_smoke.json
+
+  independent-math-oracle:
+    name: exact symbolic oracle vs deployed DSP (synthetic EQ)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
+        with:
+          python-version: '3.13'
+      - run: python -m pip install . 'sympy==1.14.0'
+      - run: python -m unittest discover -s tests -p 'test_eq_catalog.py' -v
+      - run: python -m unittest discover -s tests -p 'test_sympy_oracle.py' -v
+      - run: python benchmarks/suites/eq_catalog.py --check-sha256 873ce092e2fe7fa7e8d16c8fd50b251f377c05c4a02ed267e6917d7599a69120
+      - run: python tools/sympy_oracle_audit.py --count 1200 --split all --oracle-only --output validation/oracle/reference_all_ci.json
+      - run: python tools/sympy_oracle_audit.py --count 64 --split holdout --check-reference validation/oracle/reference_holdout_64.json --output validation/oracle/producer_holdout_ci.json
+      - run: python examples/eq_release_pipeline.py --max-gain 2.0 --proof validation/oracle/eq_proof_ci.json --report validation/oracle/eq_report_ci.md
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        if: always()
+        with:
+          name: exact-oracle-eq-evidence
+          path: |
+            validation/oracle/*_ci.json
+            validation/oracle/*_ci.md
+          if-no-files-found: error
+          retention-days: 14

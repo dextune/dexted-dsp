@@ -17,3 +17,22 @@ A green CI or finished README does **not** imply 9.5/10. Expert review, public d
 | X-01 | External evaluation rubric specified | 5 domain reviewers, 10 new users, >=3 integrations |
 
 **Release restrictions:** repository visibility and PyPI/GitHub Releases are not changed automatically. Public release requires explicit approval, namespace ownership checks and source/binary provenance. No speed or sound-quality improvement is asserted without fair real-world benchmarking.
+
+## G3 — next executed validation gate: independent exact algorithm
+
+The [W3C Audio EQ cookbook integration](eq-workflow.md) and
+[synthetic design catalog](../../benchmarks/suites/EQ_CATALOG_PROTOCOL.md)
+cover 1,200 generated EQ/notch/lowpass/highpass designs with a fixed seed and
+SHA-256 contract. An exact symbolic rational-polynomial root-count method,
+implemented with SymPy and distinct from the shipped integer Bernstein
+subdivision, has a frozen 64-case holdout reference with 25 passes and 39
+strict-limit failures. CI runs the oracle alone on all 1,200 and compares
+the actual Dexted producer + rechecked certificates on those 64 cases.
+The 1,200-case reference-only calculation is NOT a measurement of shipped-code
+correctness. Any failure blocks CI; an 'unknown' is retained, not counted as
+certified. [External reviewer packet](../research/review/INDEPENDENT_REVIEW_PACKET.md).
+
+**Still not complete:** no field-collected or appropriately licensed production
+SOS exports; no independent third-party mathematical proof audit; no user
+interviews; no third-party benchmarks or OpenAI theorem runtime implementation.
+Scores remain unverified and the 9.5/10 gates stay open.
