@@ -1,0 +1,36 @@
+name: Offline validation snapshot
+on:
+  push:
+    branches: ['validation/industrial-final-20261009']
+    paths: ['.github/workflows/validation-snapshot.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: c3cceef6845d0febaf0a01cc2c8cd9847a62802a
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: '3.13'
+      - name: Export tracked source and offline test tooling
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p export/wheelhouse
+          git archive --format=tar HEAD > export/source.tar
+          git rev-parse HEAD > export/BASE_COMMIT.txt
+          git ls-tree -r HEAD > export/SOURCE_TREE.txt
+          python -m pip download --no-deps --only-binary=:all: --dest export/wheelhouse 'control==0.10.2' 'build==1.3.0' 'wheel==0.45.1' 'setuptools==80.9.0' 'packaging==25.0' 'pyproject-hooks==1.2.0'
+          (cd export && sha256sum source.tar BASE_COMMIT.txt SOURCE_TREE.txt wheelhouse/* > SHA256SUMS.txt)
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: dexted-base-source-and-test-tooling
+          path: export/
+          if-no-files-found: error
+          retention-days: 14
