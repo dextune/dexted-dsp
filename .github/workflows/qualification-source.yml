@@ -21,6 +21,11 @@ jobs:
           git archive --format=tar --output=source-snapshot/source.tar HEAD
           git rev-parse HEAD > source-snapshot/COMMIT
           sha256sum source-snapshot/source.tar > source-snapshot/SHA256SUMS
+      - name: Retain the pinned comparator wheel for offline reproduction
+        shell: bash
+        run: |
+          python3 -m pip download --no-deps --only-binary=:all: --dest source-snapshot/dependencies 'control==0.10.2'
+          sha256sum source-snapshot/dependencies/* > source-snapshot/DEPENDENCY_SHA256SUMS
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
           name: qualification-source-${{ github.sha }}
