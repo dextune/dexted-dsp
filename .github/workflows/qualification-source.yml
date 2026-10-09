@@ -1,0 +1,29 @@
+name: Qualification source evidence
+on:
+  push:
+    branches: [main, 'qualification/**']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-snapshot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Archive exact commit without credentials or untracked files
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir source-snapshot
+          git archive --format=tar --output=source-snapshot/source.tar HEAD
+          git rev-parse HEAD > source-snapshot/COMMIT
+          sha256sum source-snapshot/source.tar > source-snapshot/SHA256SUMS
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: qualification-source-${{ github.sha }}
+          path: source-snapshot/
+          if-no-files-found: error
+          retention-days: 14
